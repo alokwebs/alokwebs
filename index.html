@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alok Kumar | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            animation: shine 5s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100%, 100%); }
+        }
+        header img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        header img:hover {
+            transform: scale(1.05);
+        }
+        header h1 {
+            margin-top: 1.5rem;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #0077ff;
+            font-size: 2rem;
+            position: relative;
+        }
+        section h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #00f2fe;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .skills, .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .skill-box, .project-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .skill-box:hover, .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .skill-box i {
+            font-size: 2rem;
+            color: #0077ff;
+            margin-bottom: 1rem;
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover img {
+            opacity: 0.9;
+        }
+        .exam-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .exam-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .exam-button:hover {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            transform: scale(1.05);
+        }
+        footer {
+            background: #1a1a1a;
+            color: #ddd;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        footer a {
+            color: #00f2fe;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: white;
+        }
+        footer i {
+            margin-right: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Hero Section -->
+    <header>
+        <img src="alokwebs.jpg" alt="Alok Photo">
+        <h1>Alok Kumar</h1>
+        <p>MERN Stack Developer | AI Enthusiast | Web Designer</p>
+    </header>
+
+    <!-- About Section -->
+    <section>
+        <h2>About Me</h2>
+        <p>Hi, I'm Alok Kumar, a passionate MERN Stack Developer and AI enthusiast. I love creating modern, responsive websites with beautiful UI and strong backend logic. My goal is to build impactful digital products that solve real-world problems.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section>
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill-box"><i class="fas fa-code"></i>HTML, CSS, JavaScript</div>
+            <div class="skill-box"><i class="fab fa-react"></i>React.js & Redux Toolkit</div>
+            <div class="skill-box"><i class="fab fa-node-js"></i>Node.js & Express.js</div>
+            <div class="skill-box"><i class="fas fa-database"></i>MongoDB & Database Management</div>
+            <div class="skill-box"><i class="fas fa-palette"></i>Tailwind CSS, Bootstrap</div>
+            <div class="skill-box"><i class="fab fa-git-alt"></i>Git & GitHub</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section>
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200" alt="Project 1">
+                <h3>E-Commerce Website</h3>
+                <p>Full-stack e-commerce website with cart, checkout, and payment gateway integration.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200" alt="Project 2">
+                <h3>Portfolio Website</h3>
+                <p>Personal portfolio site with modern UI showcasing projects and skills.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200" alt="Project 3">
+                <h3>Blog Platform</h3>
+                <p>A dynamic blog platform with authentication and admin panel features.</p>
+            </div>
+        </div>
+        <div class="exam-section">
+            <a href="exam.html" class="exam-button">Take Online SSC Exam</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <footer>
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:akbijarniya24@gmail.com"><i class="fas fa-envelope"></i>akbijarniya24@gmail.com</a></p>
+        <p>Phone: <i class="fas fa-phone"></i>+91 9529689944</p>
+        <p>
+            <a href="https://www.linkedin.com/in/alokwebs/"><i class="fab fa-linkedin"></i>LinkedIn</a> |
+            <a href="https://github.com/alokwebs"><i class="fab fa-github"></i>GitHub</a>
+        </p>
+        <p>&copy; 2025 Alok Kumar. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
