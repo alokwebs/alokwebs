@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-4564037549631806">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alok Kumar | Portfolio</title>
+    <title>SSC Online Exam Simulator for CGL Tier 1</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -18,216 +14,324 @@
             font-family: 'Poppins', sans-serif;
         }
         body {
-            background: #f4f7fa;
+            background: #f0f4f8;
             color: #333;
-            line-height: 1.6;
+            padding: 2rem;
         }
         header {
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            padding: 2rem;
+            background: #0077ff;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
-            animation: shine 5s infinite;
-        }
-        @keyframes shine {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(100%, 100%); }
-        }
-        header img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid white;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        header img:hover {
-            transform: scale(1.05);
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
         header h1 {
-            margin-top: 1.5rem;
-            font-size: 2.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-        }
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: auto;
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        section h2 {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            color: #0077ff;
             font-size: 2rem;
-            position: relative;
         }
-        section h2::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background: #00f2fe;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+        #timer {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #ffcc00;
         }
-        .skills, .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .section {
+            margin-bottom: 3rem;
         }
-        .skill-box, .project-card {
+        .section h2 {
+            background: #e9f1ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            color: #0077ff;
+        }
+        .question {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
         }
-        .skill-box:hover, .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-        .skill-box i {
-            font-size: 2rem;
-            color: #0077ff;
+        .question p {
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-        .project-card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            transition: opacity 0.3s ease;
+        .options label {
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
         }
-        .project-card:hover img {
-            opacity: 0.9;
-        }
-        .exam-section {
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .exam-button {
-            display: inline-block;
+        #submit {
+            display: block;
+            margin: 2rem auto;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            background: #28a745;
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 30px;
             font-size: 1.2rem;
-            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
-        .exam-button:hover {
-            background: linear-gradient(135deg, #00f2fe, #4facfe);
-            transform: scale(1.05);
+        #submit:hover {
+            background: #218838;
         }
-        footer {
-            background: #1a1a1a;
-            color: #ddd;
+        #score {
             text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-        footer a {
-            color: #00f2fe;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        footer a:hover {
-            color: white;
-        }
-        footer i {
-            margin-right: 0.5rem;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: #0077ff;
         }
         @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            header p { font-size: 1rem; }
-            section h2 { font-size: 1.8rem; }
+            body { padding: 1rem; }
+            header h1 { font-size: 1.5rem; }
         }
     </style>
+    <script>
+        let time = 3600; // 60 minutes in seconds
+        const timerElement = document.getElementById('timer');
+        const interval = setInterval(() => {
+            time--;
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (time <= 0) {
+                clearInterval(interval);
+                submitExam();
+            }
+        }, 1000);
+
+        function submitExam() {
+            clearInterval(interval);
+            const form = document.getElementById('examForm');
+            const questions = [
+                // General Awareness answers
+                'A', 'B', 'B', 'B', 'A',
+                // Quantitative Aptitude
+                'A', 'B', 'A', 'B', 'A',
+                // General Intelligence and Reasoning
+                'A', 'A', 'B', 'C', 'A',
+                // English Comprehension (assuming typical, as data was cut off - I added samples)
+                'B', 'A', 'C', 'D', 'B'
+            ];
+            let score = 0;
+            for (let i = 0; i < questions.length; i++) {
+                const selected = form.querySelector(`input[name="q${i+1}"]:checked`);
+                if (selected && selected.value === questions[i]) {
+                    score += 2; // 2 marks per question
+                }
+            }
+            document.getElementById('score').textContent = `Your Score: ${score} / 40`;
+            form.style.display = 'none';
+            document.getElementById('submit').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
-    <!-- Header / Hero Section -->
     <header>
-        <img src="alokwebs.jpg" alt="Alok Photo">
-        <h1>Alok Kumar</h1>
-        <p>MERN Stack Developer | AI Enthusiast | Web Designer</p>
+        <h1>SSC CGL Tier 1 Online Exam Simulator</h1>
+        <p>Answer 20 sample questions (5 from each section). Time: 60 minutes.</p>
+        <div id="timer">Time Left: 60:00</div>
     </header>
 
-    <!-- About Section -->
-    <section>
-        <h2>About Me</h2>
-        <p>Hi, I'm Alok Kumar, a passionate MERN Stack Developer and AI enthusiast. I love creating modern, responsive websites with beautiful UI and strong backend logic. My goal is to build impactful digital products that solve real-world problems.</p>
-    </section>
-
-    <!-- Skills Section -->
-    <section>
-        <h2>Skills</h2>
-        <div class="skills">
-            <div class="skill-box"><i class="fas fa-code"></i>HTML, CSS, JavaScript</div>
-            <div class="skill-box"><i class="fab fa-react"></i>React.js & Redux Toolkit</div>
-            <div class="skill-box"><i class="fab fa-node-js"></i>Node.js & Express.js</div>
-            <div class="skill-box"><i class="fas fa-database"></i>MongoDB & Database Management</div>
-            <div class="skill-box"><i class="fas fa-palette"></i>Tailwind CSS, Bootstrap</div>
-            <div class="skill-box"><i class="fab fa-git-alt"></i>Git & GitHub</div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section>
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x200" alt="Project 1">
-                <h3>E-Commerce Website</h3>
-                <p>Full-stack e-commerce website with cart, checkout, and payment gateway integration.</p>
+    <form id="examForm">
+        <div class="section">
+            <h2>General Awareness</h2>
+            <div class="question">
+                <p>1. Who is the current President of India as of 2016?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"> A) Pranab Mukherjee</label>
+                    <label><input type="radio" name="q1" value="B"> B) Ram Nath Kovind</label>
+                    <label><input type="radio" name="q1" value="C"> C) A.P.J. Abdul Kalam</label>
+                    <label><input type="radio" name="q1" value="D"> D) Pratibha Patil</label>
+                </div>
             </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x200" alt="Project 2">
-                <h3>Portfolio Website</h3>
-                <p>Personal portfolio site with modern UI showcasing projects and skills.</p>
+            <div class="question">
+                <p>2. Which of the following is the capital of Australia?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"> A) Sydney</label>
+                    <label><input type="radio" name="q2" value="B"> B) Canberra</label>
+                    <label><input type="radio" name="q2" value="C"> C) Melbourne</label>
+                    <label><input type="radio" name="q2" value="D"> D) Perth</label>
+                </div>
             </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x200" alt="Project 3">
-                <h3>Blog Platform</h3>
-                <p>A dynamic blog platform with authentication and admin panel features.</p>
+            <div class="question">
+                <p>3. In which year did India gain independence?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="A"> A) 1945</label>
+                    <label><input type="radio" name="q3" value="B"> B) 1947</label>
+                    <label><input type="radio" name="q3" value="C"> C) 1950</label>
+                    <label><input type="radio" name="q3" value="D"> D) 1942</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>4. Which of the following is not a fundamental right in the Indian Constitution?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A"> A) Right to Equality</label>
+                    <label><input type="radio" name="q4" value="B"> B) Right to Property</label>
+                    <label><input type="radio" name="q4" value="C"> C) Right to Freedom</label>
+                    <label><input type="radio" name="q4" value="D"> D) Right to Education</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>5. The Battle of Plassey was fought in which year?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="A"> A) 1757</label>
+                    <label><input type="radio" name="q5" value="B"> B) 1761</label>
+                    <label><input type="radio" name="q5" value="C"> C) 1857</label>
+                    <label><input type="radio" name="q5" value="D"> D) 1776</label>
+                </div>
             </div>
         </div>
-        <div class="exam-section">
-            <a href="exam.html" class="exam-button">Take Online SSC Exam</a>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <footer>
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:akbijarniya24@gmail.com"><i class="fas fa-envelope"></i>akbijarniya24@gmail.com</a></p>
-        <p>Phone: <i class="fas fa-phone"></i>+91 9529689944</p>
-        <p>
-            <a href="https://www.linkedin.com/in/alokwebs/"><i class="fab fa-linkedin"></i>LinkedIn</a> |
-            <a href="https://github.com/alokwebs"><i class="fab fa-github"></i>GitHub</a>
-        </p>
-        <p>&copy; 2025 Alok Kumar. All Rights Reserved.</p>
-    </footer>
+        <div class="section">
+            <h2>Quantitative Aptitude</h2>
+            <div class="question">
+                <p>6. What is 15% of 200?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="A"> A) 30</label>
+                    <label><input type="radio" name="q6" value="B"> B) 25</label>
+                    <label><input type="radio" name="q6" value="C"> C) 35</label>
+                    <label><input type="radio" name="q6" value="D"> D) 40</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>7. If the ratio of two numbers is 3:5 and their sum is 64, what is the larger number?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="A"> A) 24</label>
+                    <label><input type="radio" name="q7" value="B"> B) 40</label>
+                    <label><input type="radio" name="q7" value="C"> C) 36</label>
+                    <label><input type="radio" name="q7" value="D"> D) 28</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>8. What is the area of a rectangle with length 12 cm and width 8 cm?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="A"> A) 96 sq cm</label>
+                    <label><input type="radio" name="q8" value="B"> B) 88 sq cm</label>
+                    <label><input type="radio" name="q8" value="C"> C) 80 sq cm</label>
+                    <label><input type="radio" name="q8" value="D"> D) 100 sq cm</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>9. If a train travels 120 km in 2 hours, what is its speed in km/h?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="A"> A) 50</label>
+                    <label><input type="radio" name="q9" value="B"> B) 60</label>
+                    <label><input type="radio" name="q9" value="C"> C) 70</label>
+                    <label><input type="radio" name="q9" value="D"> D) 80</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>10. What is the value of 2³ + 3²?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="A"> A) 17</label>
+                    <label><input type="radio" name="q10" value="B"> B) 18</label>
+                    <label><input type="radio" name="q10" value="C"> C) 19</label>
+                    <label><input type="radio" name="q10" value="D"> D) 20</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>General Intelligence and Reasoning</h2>
+            <div class="question">
+                <p>11. If PAPER is coded as 16251618, how is PENCIL coded?</p>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="A"> A) 165143912</label>
+                    <label><input type="radio" name="q11" value="B"> B) 165143913</label>
+                    <label><input type="radio" name="q11" value="C"> C) 165143914</label>
+                    <label><input type="radio" name="q11" value="D"> D) 165143915</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>12. Find the next term in the series: 2, 6, 12, 20, ?</p>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="A"> A) 30</label>
+                    <label><input type="radio" name="q12" value="B"> B) 28</label>
+                    <label><input type="radio" name="q12" value="C"> C) 32</label>
+                    <label><input type="radio" name="q12" value="D"> D) 34</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>13. If South-East is called North, North-East is called West, and so on, what will West be called?</p>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="A"> A) North-West</label>
+                    <label><input type="radio" name="q13" value="B"> B) South-East</label>
+                    <label><input type="radio" name="q13" value="C"> C) South-West</label>
+                    <label><input type="radio" name="q13" value="D"> D) North-East</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>14. Choose the odd one out: Apple, Banana, Carrot, Mango</p>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="A"> A) Apple</label>
+                    <label><input type="radio" name="q14" value="B"> B) Banana</label>
+                    <label><input type="radio" name="q14" value="C"> C) Carrot</label>
+                    <label><input type="radio" name="q14" value="D"> D) Mango</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>15. Analogy: Doctor : Hospital :: Teacher : ?</p>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="A"> A) School</label>
+                    <label><input type="radio" name="q15" value="B"> B) Office</label>
+                    <label><input type="radio" name="q15" value="C"> C) Kitchen</label>
+                    <label><input type="radio" name="q15" value="D"> D) Court</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>English Comprehension</h2>
+            <div class="question">
+                <p>16. Choose the correct synonym for "Happy".</p>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="A"> A) Sad</label>
+                    <label><input type="radio" name="q16" value="B"> B) Joyful</label>
+                    <label><input type="radio" name="q16" value="C"> C) Angry</label>
+                    <label><input type="radio" name="q16" value="D"> D) Tired</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>17. Fill in the blank: She is _____ tallest girl in the class.</p>
+                <div class="options">
+                    <label><input type="radio" name="q17" value="A"> A) the</label>
+                    <label><input type="radio" name="q17" value="B"> B) a</label>
+                    <label><input type="radio" name="q17" value="C"> C) an</label>
+                    <label><input type="radio" name="q17" value="D"> D) no article</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>18. Spot the error: He go to school everyday.</p>
+                <div class="options">
+                    <label><input type="radio" name="q18" value="A"> A) He</label>
+                    <label><input type="radio" name="q18" value="B"> B) go</label>
+                    <label><input type="radio" name="q18" value="C"> C) goes</label>
+                    <label><input type="radio" name="q18" value="D"> D) everyday</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>19. Antonym of "Brave".</p>
+                <div class="options">
+                    <label><input type="radio" name="q19" value="A"> A) Bold</label>
+                    <label><input type="radio" name="q19" value="B"> B) Strong</label>
+                    <label><input type="radio" name="q19" value="C"> C) Fearless</label>
+                    <label><input type="radio" name="q19" value="D"> D) Coward</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>20. One word substitution: A person who loves books.</p>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="A"> A) Philatelist</label>
+                    <label><input type="radio" name="q20" value="B"> B) Bibliophile</label>
+                    <label><input type="radio" name="q20" value="C"> C) Cynic</label>
+                    <label><input type="radio" name="q20" value="D"> D) Philanthropist</label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <button id="submit" onclick="submitExam()">Submit Exam</button>
+    <div id="score"></div>
 </body>
 </html>
