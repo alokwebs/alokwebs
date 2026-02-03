@@ -2,486 +2,569 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <meta name="google-adsense-account" content="ca-pub-4564037549631806">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4564037549631806"
-     crossorigin="anonymous"></script>
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Universe by Alok | Home</title>
-  <meta name="description" content="Learn Artificial Intelligence in simple Hindi and English with Alok Kumar (Biki). Explore AI basics, ML, deep learning and more.">
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+    <title>Shree Balaji Variety Store - Customer Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="site-header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">AI<span>Universe</span></a>
-      <nav class="nav-links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">AI Courses</a>
-        <a href="blog.html">AI Articles</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy-policy.html">Privacy</a>
-      </nav>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-        ☰
-      </button>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-logo">
+                <i class="fas fa-store"></i>
+                <h1>Shree Balaji Variety Store</h1>
+                <p>Customer Management System</p>
+            </div>
+            
+            <div class="login-form">
+                <h2><i class="fas fa-lock"></i> Store Login</h2>
+                <p>Enter password to access the system</p>
+                
+                <div class="form-group">
+                    <label for="login-password"><i class="fas fa-key"></i> Password</label>
+                    <input type="password" id="login-password" placeholder="Enter store password">
+                </div>
+                
+                <button id="login-btn" class="btn btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i> Login to Store
+                </button>
+                
+                <div id="login-error" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i> Wrong password! Please try again.
+                </div>
+                
+                <div class="login-info">
+                    <p><i class="fas fa-info-circle"></i> Contact store owner for password</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <h1>Welcome to <span>AI Universe</span> by Alok Kumar</h1>
-        <p>
-          Artificial Intelligence (AI) ko simple Hindi + English mein samjho.  
-          Learn AI, Machine Learning, Deep Learning, and more in an easy and practical way.
-        </p>
-        <p class="hero-sub">
-          (AI – कृत्रिम बुद्धिमत्ता – kr̥trim buddhimattā)  
-          Jo मशीनों ko सोचने aur decision lene ki power deti hai.
-        </p>
-        <div class="hero-actions">
-          <a href="services.html" class="btn primary">Start Learning AI</a>
-          <a href="blog.html" class="btn secondary">Read AI Articles</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-orbit">
-          <div class="planet planet-1"></div>
-          <div class="planet planet-2"></div>
-          <div class="planet planet-3"></div>
-        </div>
-        <p class="hero-caption">Universe of AI • By Alok (Biki)</p>
-      </div>
+    <!-- Main Application (Hidden until login) -->
+    <div id="main-app" class="container" style="display: none;">
+        <header>
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <div>
+                    <h1>Shree Balaji Variety Store</h1>
+                    <span class="subtitle">Customer Management System</span>
+                </div>
+            </div>
+            <div class="store-info">
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h3>Total Customers</h3>
+                        <p id="customer-count">0</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-rupee-sign"></i>
+                    <div>
+                        <h3>Total Sales</h3>
+                        <p id="total-sales">₹0</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-database"></i>
+                    <div>
+                        <h3>Firebase Status</h3>
+                        <p id="firebase-status">Connecting...</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-user-shield"></i>
+                    <div>
+                        <h3>Store Owner</h3>
+                        <p id="user-status">Logged In</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="btn-logout" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="sidebar">
+                <nav>
+                    <button class="nav-btn active" id="nav-add-customer">
+                        <i class="fas fa-user-plus"></i> Add Customer
+                    </button>
+                    <button class="nav-btn" id="nav-view-customers">
+                        <i class="fas fa-list"></i> View Customers
+                    </button>
+                    <button class="nav-btn" id="nav-add-purchase">
+                        <i class="fas fa-shopping-cart"></i> Add Purchase
+                    </button>
+                    <button class="nav-btn" id="nav-search-customer">
+                        <i class="fas fa-search"></i> Search Customer
+                    </button>
+                    <button class="nav-btn" id="nav-reports">
+                        <i class="fas fa-chart-bar"></i> Reports
+                    </button>
+                </nav>
+                
+                <div class="recent-activity">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <ul id="recent-activity-list">
+                        <li>System ready. Please login first.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Add Customer Section -->
+                <section id="add-customer-section" class="content-section active">
+                    <div class="section-header">
+                        <h2><i class="fas fa-user-plus"></i> Add New Customer</h2>
+                        <p>Add new customer to your store database</p>
+                    </div>
+                    
+                    <form id="customer-form">
+                        <div class="form-group">
+                            <label for="customer-name"><i class="fas fa-user"></i> Customer Name *</label>
+                            <input type="text" id="customer-name" placeholder="Enter full name" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-phone"><i class="fas fa-phone"></i> Phone Number *</label>
+                                <input type="tel" id="customer-phone" placeholder="Enter 10-digit phone" pattern="[0-9]{10}" required>
+                                <small class="form-text">10 digits only, without +91</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-address"><i class="fas fa-map-marker-alt"></i> Address (Optional)</label>
+                                <input type="text" id="customer-address" placeholder="Enter complete address">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customer-notes"><i class="fas fa-sticky-note"></i> Additional Notes</label>
+                            <textarea id="customer-notes" placeholder="Any additional information about the customer..." rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Customer
+                            </button>
+                            <button type="button" id="reset-form" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Clear Form
+                            </button>
+                        </div>
+                        
+                        <div id="customer-form-message" class="form-message"></div>
+                    </form>
+                </section>
+
+                <!-- View Customers Section -->
+                <section id="view-customers-section" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-list"></i> All Customers</h2>
+                        <p>View and manage all your customers</p>
+                    </div>
+                    
+                    <div class="controls-row">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search-customers" placeholder="Search by name or phone...">
+                        </div>
+                        <div class="controls-right">
+                            <button id="refresh-customers" class="btn btn-small">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <button id="export-customers" class="btn btn-small btn-success">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <i class="fas fa-user-friends"></i>
+                            <span id="total-customers-stat">0</span>
+                            <small>Total Customers</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="active-customers-stat">0</span>
+                            <small>Active Customers</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-rupee-sign"></i>
+                            <span id="avg-purchase-stat">₹0</span>
+                            <small>Avg. Purchase</small>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="customers-table">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Purchases</th>
+                                    <th>Total Amount</th>
+                                    <th>Last Purchase</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customers-table-body">
+                                <tr>
+                                    <td colspan="7" class="no-data">
+                                        <i class="fas fa-users"></i>
+                                        <p>No customers found. Add your first customer!</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-footer">
+                        <div id="table-info">Showing 0 customers</div>
+                        <div class="pagination">
+                            <button class="btn-pagination" disabled>
+                                <i class="fas fa-chevron-left"></i> Previous
+                            </button>
+                            <span>Page 1 of 1</span>
+                            <button class="btn-pagination" disabled>
+                                Next <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Add Purchase Section -->
+                <section id="add-purchase-section" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-shopping-cart"></i> Add Purchase Record</h2>
+                        <p>Record a new purchase for existing customer</p>
+                    </div>
+                    
+                    <form id="purchase-form">
+                        <div class="form-group">
+                            <label for="purchase-customer"><i class="fas fa-user"></i> Select Customer *</label>
+                            <select id="purchase-customer" required>
+                                <option value="">-- Select a customer --</option>
+                                <!-- Options will be loaded here -->
+                            </select>
+                            <small class="form-text">Or <a href="#" id="quick-add-customer">add new customer</a></small>
+                        </div>
+                        
+                        <div class="purchase-items-header">
+                            <h3><i class="fas fa-boxes"></i> Purchase Items</h3>
+                            <button type="button" id="add-item" class="btn btn-small">
+                                <i class="fas fa-plus"></i> Add Item
+                            </button>
+                        </div>
+                        
+                        <div id="purchase-items-container">
+                            <div class="purchase-item">
+                                <div class="item-header">
+                                    <span>Item #1</span>
+                                    <button type="button" class="btn-remove-item" disabled>
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="item-name-1">Item Name *</label>
+                                        <input type="text" id="item-name-1" class="item-name" placeholder="Enter item name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item-quantity-1">Quantity *</label>
+                                        <div class="quantity-control">
+                                            <button type="button" class="quantity-btn minus">-</button>
+                                            <input type="number" id="item-quantity-1" class="item-quantity" min="1" value="1" required>
+                                            <button type="button" class="quantity-btn plus">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item-price-1">Price per item (₹) *</label>
+                                        <input type="number" id="item-price-1" class="item-price" min="0.01" step="0.01" placeholder="0.00" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="purchase-summary">
+                            <h3><i class="fas fa-calculator"></i> Purchase Summary</h3>
+                            <div class="summary-row">
+                                <span>Total Items:</span>
+                                <span id="total-items">1</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Total Quantity:</span>
+                                <span id="total-quantity">1</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal-amount">₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Discount (Optional):</span>
+                                <div class="discount-input">
+                                    <input type="number" id="discount" min="0" step="0.01" placeholder="0.00">
+                                    <select id="discount-type">
+                                        <option value="fixed">₹</option>
+                                        <option value="percent">%</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Final Amount:</span>
+                                <span id="total-amount">₹0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="payment-mode"><i class="fas fa-credit-card"></i> Payment Mode</label>
+                                <select id="payment-mode">
+                                    <option value="cash">Cash</option>
+                                    <option value="upi">UPI</option>
+                                    <option value="card">Card</option>
+                                    <option value="credit">Credit</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="purchase-date"><i class="fas fa-calendar"></i> Purchase Date</label>
+                                <input type="date" id="purchase-date" value="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="purchase-notes"><i class="fas fa-sticky-note"></i> Purchase Notes (Optional)</label>
+                            <textarea id="purchase-notes" placeholder="Any notes about this purchase..." rows="2"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-cart-plus"></i> Save Purchase
+                            </button>
+                            <button type="button" id="clear-purchase-form" class="btn btn-secondary">
+                                <i class="fas fa-broom"></i> Clear All
+                            </button>
+                        </div>
+                        
+                        <div id="purchase-form-message" class="form-message"></div>
+                    </form>
+                </section>
+
+                <!-- Search Customer Section -->
+                <section id="search-customer-section" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-search"></i> Search Customer</h2>
+                        <p>Search and manage customer information</p>
+                    </div>
+                    
+                    <div class="search-container">
+                        <div class="search-box-large">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="customer-search" placeholder="Search by customer name, phone number, or address...">
+                            <button id="search-btn" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                            <button id="advanced-search-toggle" class="btn btn-small">
+                                <i class="fas fa-filter"></i> Advanced
+                            </button>
+                        </div>
+                        
+                        <div id="advanced-search" class="advanced-search" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>From Date</label>
+                                    <input type="date" id="search-from-date">
+                                </div>
+                                <div class="form-group">
+                                    <label>To Date</label>
+                                    <input type="date" id="search-to-date">
+                                </div>
+                                <div class="form-group">
+                                    <label>Min. Purchase Amount</label>
+                                    <input type="number" id="min-amount" placeholder="₹0">
+                                </div>
+                                <div class="form-group">
+                                    <label>Max. Purchase Amount</label>
+                                    <input type="number" id="max-amount" placeholder="₹0">
+                                </div>
+                            </div>
+                            <button id="apply-filters" class="btn btn-small">
+                                <i class="fas fa-check"></i> Apply Filters
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="search-results">
+                        <!-- Search results will appear here -->
+                    </div>
+                    
+                    <div id="customer-detail" class="customer-detail-card" style="display: none;">
+                        <!-- Customer details will appear here -->
+                    </div>
+                </section>
+
+                <!-- Reports Section -->
+                <section id="reports-section" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-bar"></i> Store Reports</h2>
+                        <p>View sales and customer reports</p>
+                    </div>
+                    
+                    <div class="reports-controls">
+                        <div class="date-range">
+                            <div class="form-group">
+                                <label>From Date</label>
+                                <input type="date" id="report-from-date">
+                            </div>
+                            <div class="form-group">
+                                <label>To Date</label>
+                                <input type="date" id="report-to-date">
+                            </div>
+                            <button id="generate-report" class="btn btn-primary">
+                                <i class="fas fa-chart-line"></i> Generate Report
+                            </button>
+                            <button id="print-report" class="btn btn-secondary">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="reports-stats">
+                        <div class="report-stat-card">
+                            <i class="fas fa-rupee-sign"></i>
+                            <div>
+                                <h3>Total Sales</h3>
+                                <p id="report-total-sales">₹0</p>
+                            </div>
+                        </div>
+                        <div class="report-stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div>
+                                <h3>Total Purchases</h3>
+                                <p id="report-total-purchases">0</p>
+                            </div>
+                        </div>
+                        <div class="report-stat-card">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h3>Active Customers</h3>
+                                <p id="report-active-customers">0</p>
+                            </div>
+                        </div>
+                        <div class="report-stat-card">
+                            <i class="fas fa-chart-pie"></i>
+                            <div>
+                                <h3>Avg. Purchase</h3>
+                                <p id="report-avg-purchase">₹0</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <h3><i class="fas fa-chart-bar"></i> Daily Sales</h3>
+                            <div id="daily-sales-chart" class="chart-placeholder">
+                                <p>Select date range to generate chart</p>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3><i class="fas fa-chart-pie"></i> Payment Methods</h3>
+                            <div id="payment-methods-chart" class="chart-placeholder">
+                                <p>No data available</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="top-customers">
+                        <h3><i class="fas fa-trophy"></i> Top 5 Customers</h3>
+                        <div id="top-customers-list" class="top-list">
+                            <div class="empty-list">
+                                <i class="fas fa-users"></i>
+                                <p>No customer data available</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p><i class="fas fa-store"></i> Shree Balaji Variety Store</p>
+                    <p class="footer-address">Customer Management System v1.0</p>
+                </div>
+                <div class="footer-center">
+                    <p id="sync-status"><i class="fas fa-sync"></i> Syncing with Firebase...</p>
+                </div>
+                <div class="footer-right">
+                    <p><i class="fas fa-calendar"></i> <span id="current-date"></span></p>
+                    <p><i class="fas fa-clock"></i> <span id="current-time"></span></p>
+                </div>
+            </div>
+        </footer>
     </div>
-  </section>
 
-  <!-- What is AI Section -->
-  <section class="section" id="what-is-ai">
-    <div class="container">
-      <h2>What is Artificial Intelligence (AI)?</h2>
-      <p class="section-lead">
-        English: AI is the ability of machines to learn, think, and make decisions like humans.  
-        Hindi: AI वह technology है जो मशीनों को इंसानों की तरह सीखने और सोचने की क्षमता देती है।  
-        Pronunciation: <em>AI vah technology hai jo mashīnoṅ ko insānoṅ kī tarah sīkhne aur sochne kī kṣamatā detī hai.</em>
-      </p>
-
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Machine Learning (ML)</h3>
-          <p>
-            Machines ko data se sikhaaya jaata hai.  
-            Jaise – spam email ko automatically पहचानना.
-          </p>
+    <!-- Customer Detail Modal -->
+    <div id="customer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-customer-name"></h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-customer-info"></div>
+                <div class="modal-purchase-history">
+                    <h3><i class="fas fa-history"></i> Purchase History</h3>
+                    <div id="modal-purchase-list"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="edit-customer-btn" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Edit Customer
+                </button>
+                <button id="add-purchase-to-customer" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Add Purchase
+                </button>
+                <button id="close-modal-btn" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
         </div>
-        <div class="card">
-          <h3>Deep Learning</h3>
-          <p>
-            Human brain jaise neural networks use hote hain.  
-            Jaise – face recognition, voice assistant, self-driving cars.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Real Life AI Examples</h3>
-          <p>
-            YouTube recommendation, Google Maps, Chatbots, Online shopping suggestion – sab mein AI ka use hota hai.
-          </p>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Why Learn AI -->
-  <section class="section section-alt">
-    <div class="container">
-      <h2>Why Should You Learn AI?</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <h3>High Demand Career</h3>
-          <p>
-            AI engineers, data scientists, ML developers – sab ki demand bahut high hai aur salary भी strong hoti hai.
-          </p>
+    <!-- Edit Customer Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="edit-modal-title"></h2>
+                <button class="close-edit-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-customer-form">
+                    <!-- Form will be loaded here -->
+                </form>
+            </div>
         </div>
-        <div class="feature">
-          <h3>Future Technology</h3>
-          <p>
-            आने वाले समय में हर field – education, health, business – sab mein AI ka bahut बड़ा role hoga.
-          </p>
-        </div>
-        <div class="feature">
-          <h3>Problem Solving Skill</h3>
-          <p>
-            AI सीखने se tumhara logical thinking, maths aur coding skill भी improve hota hai.
-          </p>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="section cta-section">
-    <div class="container cta-inner">
-      <div>
-        <h2>Start Your AI Journey with Alok Kumar</h2>
-        <p>
-          Step-by-step AI, ML, aur Data Science ko easy Hindi explanations ke saath सीखो.
-        </p>
-      </div>
-      <a href="contact.html" class="btn primary">Contact for Guidance</a>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> AI Universe by Alok Kumar (Biki). All rights reserved.</p>
-      <div class="footer-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
-
-    <title>SSC Online Exam Simulator for CGL Tier 1</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background: #f0f4f8;
-            color: #333;
-            padding: 2rem;
-        }
-        header {
-            text-align: center;
-            padding: 2rem;
-            background: #0077ff;
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-        header h1 {
-            font-size: 2rem;
-        }
-        #timer {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            color: #ffcc00;
-        }
-        .section {
-            margin-bottom: 3rem;
-        }
-        .section h2 {
-            background: #e9f1ff;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            color: #0077ff;
-        }
-        .question {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-bottom: 1.5rem;
-        }
-        .question p {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .options label {
-            display: block;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-        }
-        #submit {
-            display: block;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        #submit:hover {
-            background: #218838;
-        }
-        #score {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            color: #0077ff;
-        }
-        @media (max-width: 768px) {
-            body { padding: 1rem; }
-            header h1 { font-size: 1.5rem; }
-        }
-    </style>
-    <script>
-        let time = 3600; // 60 minutes in seconds
-        const timerElement = document.getElementById('timer');
-        const interval = setInterval(() => {
-            time--;
-            const minutes = Math.floor(time / 60);
-            const seconds = time % 60;
-            timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            if (time <= 0) {
-                clearInterval(interval);
-                submitExam();
-            }
-        }, 1000);
-
-        function submitExam() {
-            clearInterval(interval);
-            const form = document.getElementById('examForm');
-            const questions = [
-                // General Awareness answers
-                'A', 'B', 'B', 'B', 'A',
-                // Quantitative Aptitude
-                'A', 'B', 'A', 'B', 'A',
-                // General Intelligence and Reasoning
-                'A', 'A', 'B', 'C', 'A',
-                // English Comprehension (assuming typical, as data was cut off - I added samples)
-                'B', 'A', 'C', 'D', 'B'
-            ];
-            let score = 0;
-            for (let i = 0; i < questions.length; i++) {
-                const selected = form.querySelector(`input[name="q${i+1}"]:checked`);
-                if (selected && selected.value === questions[i]) {
-                    score += 2; // 2 marks per question
-                }
-            }
-            document.getElementById('score').textContent = `Your Score: ${score} / 40`;
-            form.style.display = 'none';
-            document.getElementById('submit').style.display = 'none';
-        }
-    </script>
-</head>
-<body>
-    <header>
-        <h1>SSC CGL Tier 1 Online Exam Simulator</h1>
-        <p>Answer 20 sample questions (5 from each section). Time: 60 minutes.</p>
-        <div id="timer">Time Left: 60:00</div>
-    </header>
-
-    <form id="examForm">
-        <div class="section">
-            <h2>General Awareness</h2>
-            <div class="question">
-                <p>1. Who is the current President of India as of 2016?</p>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="A"> A) Pranab Mukherjee</label>
-                    <label><input type="radio" name="q1" value="B"> B) Ram Nath Kovind</label>
-                    <label><input type="radio" name="q1" value="C"> C) A.P.J. Abdul Kalam</label>
-                    <label><input type="radio" name="q1" value="D"> D) Pratibha Patil</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>2. Which of the following is the capital of Australia?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="A"> A) Sydney</label>
-                    <label><input type="radio" name="q2" value="B"> B) Canberra</label>
-                    <label><input type="radio" name="q2" value="C"> C) Melbourne</label>
-                    <label><input type="radio" name="q2" value="D"> D) Perth</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>3. In which year did India gain independence?</p>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="A"> A) 1945</label>
-                    <label><input type="radio" name="q3" value="B"> B) 1947</label>
-                    <label><input type="radio" name="q3" value="C"> C) 1950</label>
-                    <label><input type="radio" name="q3" value="D"> D) 1942</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>4. Which of the following is not a fundamental right in the Indian Constitution?</p>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="A"> A) Right to Equality</label>
-                    <label><input type="radio" name="q4" value="B"> B) Right to Property</label>
-                    <label><input type="radio" name="q4" value="C"> C) Right to Freedom</label>
-                    <label><input type="radio" name="q4" value="D"> D) Right to Education</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>5. The Battle of Plassey was fought in which year?</p>
-                <div class="options">
-                    <label><input type="radio" name="q5" value="A"> A) 1757</label>
-                    <label><input type="radio" name="q5" value="B"> B) 1761</label>
-                    <label><input type="radio" name="q5" value="C"> C) 1857</label>
-                    <label><input type="radio" name="q5" value="D"> D) 1776</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Quantitative Aptitude</h2>
-            <div class="question">
-                <p>6. What is 15% of 200?</p>
-                <div class="options">
-                    <label><input type="radio" name="q6" value="A"> A) 30</label>
-                    <label><input type="radio" name="q6" value="B"> B) 25</label>
-                    <label><input type="radio" name="q6" value="C"> C) 35</label>
-                    <label><input type="radio" name="q6" value="D"> D) 40</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>7. If the ratio of two numbers is 3:5 and their sum is 64, what is the larger number?</p>
-                <div class="options">
-                    <label><input type="radio" name="q7" value="A"> A) 24</label>
-                    <label><input type="radio" name="q7" value="B"> B) 40</label>
-                    <label><input type="radio" name="q7" value="C"> C) 36</label>
-                    <label><input type="radio" name="q7" value="D"> D) 28</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>8. What is the area of a rectangle with length 12 cm and width 8 cm?</p>
-                <div class="options">
-                    <label><input type="radio" name="q8" value="A"> A) 96 sq cm</label>
-                    <label><input type="radio" name="q8" value="B"> B) 88 sq cm</label>
-                    <label><input type="radio" name="q8" value="C"> C) 80 sq cm</label>
-                    <label><input type="radio" name="q8" value="D"> D) 100 sq cm</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>9. If a train travels 120 km in 2 hours, what is its speed in km/h?</p>
-                <div class="options">
-                    <label><input type="radio" name="q9" value="A"> A) 50</label>
-                    <label><input type="radio" name="q9" value="B"> B) 60</label>
-                    <label><input type="radio" name="q9" value="C"> C) 70</label>
-                    <label><input type="radio" name="q9" value="D"> D) 80</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>10. What is the value of 2³ + 3²?</p>
-                <div class="options">
-                    <label><input type="radio" name="q10" value="A"> A) 17</label>
-                    <label><input type="radio" name="q10" value="B"> B) 18</label>
-                    <label><input type="radio" name="q10" value="C"> C) 19</label>
-                    <label><input type="radio" name="q10" value="D"> D) 20</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>General Intelligence and Reasoning</h2>
-            <div class="question">
-                <p>11. If PAPER is coded as 16251618, how is PENCIL coded?</p>
-                <div class="options">
-                    <label><input type="radio" name="q11" value="A"> A) 165143912</label>
-                    <label><input type="radio" name="q11" value="B"> B) 165143913</label>
-                    <label><input type="radio" name="q11" value="C"> C) 165143914</label>
-                    <label><input type="radio" name="q11" value="D"> D) 165143915</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>12. Find the next term in the series: 2, 6, 12, 20, ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q12" value="A"> A) 30</label>
-                    <label><input type="radio" name="q12" value="B"> B) 28</label>
-                    <label><input type="radio" name="q12" value="C"> C) 32</label>
-                    <label><input type="radio" name="q12" value="D"> D) 34</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>13. If South-East is called North, North-East is called West, and so on, what will West be called?</p>
-                <div class="options">
-                    <label><input type="radio" name="q13" value="A"> A) North-West</label>
-                    <label><input type="radio" name="q13" value="B"> B) South-East</label>
-                    <label><input type="radio" name="q13" value="C"> C) South-West</label>
-                    <label><input type="radio" name="q13" value="D"> D) North-East</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>14. Choose the odd one out: Apple, Banana, Carrot, Mango</p>
-                <div class="options">
-                    <label><input type="radio" name="q14" value="A"> A) Apple</label>
-                    <label><input type="radio" name="q14" value="B"> B) Banana</label>
-                    <label><input type="radio" name="q14" value="C"> C) Carrot</label>
-                    <label><input type="radio" name="q14" value="D"> D) Mango</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>15. Analogy: Doctor : Hospital :: Teacher : ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q15" value="A"> A) School</label>
-                    <label><input type="radio" name="q15" value="B"> B) Office</label>
-                    <label><input type="radio" name="q15" value="C"> C) Kitchen</label>
-                    <label><input type="radio" name="q15" value="D"> D) Court</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>English Comprehension</h2>
-            <div class="question">
-                <p>16. Choose the correct synonym for "Happy".</p>
-                <div class="options">
-                    <label><input type="radio" name="q16" value="A"> A) Sad</label>
-                    <label><input type="radio" name="q16" value="B"> B) Joyful</label>
-                    <label><input type="radio" name="q16" value="C"> C) Angry</label>
-                    <label><input type="radio" name="q16" value="D"> D) Tired</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>17. Fill in the blank: She is _____ tallest girl in the class.</p>
-                <div class="options">
-                    <label><input type="radio" name="q17" value="A"> A) the</label>
-                    <label><input type="radio" name="q17" value="B"> B) a</label>
-                    <label><input type="radio" name="q17" value="C"> C) an</label>
-                    <label><input type="radio" name="q17" value="D"> D) no article</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>18. Spot the error: He go to school everyday.</p>
-                <div class="options">
-                    <label><input type="radio" name="q18" value="A"> A) He</label>
-                    <label><input type="radio" name="q18" value="B"> B) go</label>
-                    <label><input type="radio" name="q18" value="C"> C) goes</label>
-                    <label><input type="radio" name="q18" value="D"> D) everyday</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>19. Antonym of "Brave".</p>
-                <div class="options">
-                    <label><input type="radio" name="q19" value="A"> A) Bold</label>
-                    <label><input type="radio" name="q19" value="B"> B) Strong</label>
-                    <label><input type="radio" name="q19" value="C"> C) Fearless</label>
-                    <label><input type="radio" name="q19" value="D"> D) Coward</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>20. One word substitution: A person who loves books.</p>
-                <div class="options">
-                    <label><input type="radio" name="q20" value="A"> A) Philatelist</label>
-                    <label><input type="radio" name="q20" value="B"> B) Bibliophile</label>
-                    <label><input type="radio" name="q20" value="C"> C) Cynic</label>
-                    <label><input type="radio" name="q20" value="D"> D) Philanthropist</label>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <button id="submit" onclick="submitExam()">Submit Exam</button>
-    <div id="score"></div>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    
+    <!-- App Files -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
