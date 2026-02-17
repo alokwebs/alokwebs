@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>श्री बालाजी विविध भंडार - अलोक वेब्स</title>
+    <title>श्री बालाजी विविध भंडार - प्रो सिक्योर</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -35,6 +35,18 @@
             width: 100%;
             max-width: 400px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .login-header {
@@ -44,7 +56,7 @@
 
         .login-header h2 {
             color: #333;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
         }
 
@@ -58,82 +70,67 @@
             font-size: 14px;
         }
 
-        .login-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-        }
-
-        .login-tab {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        .login-tab.active {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .login-tab:not(.active):hover {
-            background: #f0f0f0;
-        }
-
-        .login-form {
-            display: none;
-        }
-
-        .login-form.active {
-            display: block;
-        }
-
         .login-form input {
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 15px;
+            margin: 10px 0;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .login-form input:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 10px rgba(102,126,234,0.3);
         }
 
         .login-form button {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 18px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 20px;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .google-btn {
-            background: white !important;
-            color: #333 !important;
-            border: 2px solid #e0e0e0 !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .login-form button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+
+        .login-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .message {
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
             margin: 10px 0;
             text-align: center;
+            font-weight: 500;
         }
 
-        .error-message { background: #ff6b6b; color: white; }
-        .success-message { background: #51cf66; color: white; }
+        .error-message {
+            background: #ff6b6b;
+            color: white;
+        }
 
-        .hidden { display: none !important; }
+        .success-message {
+            background: #51cf66;
+            color: white;
+        }
+
+        .hidden {
+            display: none !important;
+        }
 
         /* Dashboard */
         .dashboard {
@@ -145,6 +142,7 @@
             background: linear-gradient(135deg, #667eea, #764ba2);
             padding: 15px 0;
             color: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -157,79 +155,186 @@
         }
 
         .navbar-brand {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
         }
 
-        .domain-badge {
+        .navbar-brand i {
+            margin-right: 10px;
+        }
+
+        .admin-badge {
             background: #ffd43b;
             color: #333;
-            padding: 3px 10px;
+            padding: 5px 15px;
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: bold;
             margin-left: 10px;
+        }
+
+        .user-info {
+            color: white;
+            margin-right: 20px;
         }
 
         .logout-btn {
             background: rgba(255,255,255,0.2);
             color: white;
             border: 2px solid white;
-            padding: 5px 15px;
+            padding: 8px 25px;
             border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: white;
+            color: #667eea;
         }
 
         .total-dues-card {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
             text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .total-dues-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            opacity: 0.9;
         }
 
         .total-dues-card .amount {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: bold;
+            margin: 10px 0;
         }
 
-        .search-box {
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 140px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.2);
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Search Box */
+        .search-container {
+            position: relative;
             margin: 20px 0;
         }
 
-        .search-box input {
+        .search-container input {
             width: 100%;
-            padding: 12px;
+            padding: 15px 50px 15px 20px;
             border: none;
             border-radius: 50px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            box-shadow: 0 5px 30px rgba(102,126,234,0.3);
+        }
+
+        .search-container i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 20px;
         }
 
         .add-customer-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 30px;
             border-radius: 50px;
-            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s;
             cursor: pointer;
         }
 
+        .add-customer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+
+        .add-customer-btn i {
+            margin-right: 8px;
+        }
+
+        /* Customer Card */
         .customer-card {
             background: white;
-            border-radius: 10px;
-            margin: 10px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .customer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
         }
 
         .customer-header {
-            padding: 15px;
-            border-left: 4px solid #667eea;
-            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            border-left: 5px solid #667eea;
+            border-radius: 15px 15px 0 0;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s;
         }
 
         .customer-header:hover {
@@ -241,33 +346,46 @@
         }
 
         .customer-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
+            margin-bottom: 8px;
         }
 
         .customer-phone {
             color: #666;
-            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .customer-phone i {
+            color: #667eea;
+            margin-right: 8px;
         }
 
         .customer-item {
             color: #888;
-            font-size: 13px;
+            font-size: 14px;
             margin: 5px 0;
         }
 
+        .customer-item i {
+            color: #667eea;
+            margin-right: 5px;
+        }
+
         .customer-badge {
-            background: #ff6b6b;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
             display: inline-block;
+            margin-top: 10px;
         }
 
         .expand-icon {
-            font-size: 20px;
+            font-size: 24px;
             color: #667eea;
             transition: transform 0.3s;
         }
@@ -279,71 +397,118 @@
         .customer-actions {
             display: flex;
             gap: 10px;
-            padding: 10px 15px;
+            padding: 15px 20px;
             background: #f8f9fa;
             border-top: 1px solid #eee;
         }
 
         .action-btn {
             flex: 1;
-            padding: 8px;
+            padding: 10px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            font-size: 13px;
+            gap: 8px;
+            font-size: 14px;
         }
 
-        .whatsapp-btn { background: #25D366; color: white; }
-        .edit-btn { background: #ffd93e; color: #333; }
-        .delete-btn { background: #ff6b6b; color: white; }
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
 
+        .edit-btn {
+            background: linear-gradient(135deg, #ffd93e, #ffb347);
+            color: white;
+        }
+
+        .delete-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5253);
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: scale(0.98);
+        }
+
+        /* Products Section */
         .products-section {
             background: #f0f2f5;
-            padding: 15px;
-            border-radius: 0 0 10px 10px;
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
             display: none;
         }
 
         .products-section.show {
             display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .section-header h6 {
-            margin: 0;
+        .section-header h5 {
             color: #333;
             font-weight: bold;
+            margin: 0;
         }
 
         .add-product-small {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-product-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+        }
+
+        .add-product-small i {
+            margin-right: 5px;
         }
 
         .product-item {
             background: white;
-            border-radius: 8px;
-            padding: 10px;
-            margin: 8px 0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .product-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .product-details {
@@ -353,65 +518,128 @@
         .product-name {
             font-weight: bold;
             color: #333;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .product-price {
             color: #28a745;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+
+        .product-price i {
+            margin-right: 3px;
         }
 
         .product-date {
             color: #888;
-            font-size: 11px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .product-date i {
+            margin-right: 3px;
         }
 
         .product-actions {
             display: flex;
-            gap: 5px;
+            gap: 8px;
         }
 
         .product-actions button {
-            padding: 4px 8px;
+            padding: 6px 12px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 12px;
+            transition: all 0.3s;
         }
 
+        .product-actions button:hover {
+            transform: scale(0.95);
+        }
+
+        .total-amount {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: right;
+            font-weight: bold;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .total-amount i {
+            color: #667eea;
+            margin-right: 5px;
+        }
+
+        /* Modal Styles */
         .modal-content {
-            border-radius: 15px;
+            border-radius: 20px;
+            border: none;
         }
 
         .modal-header {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 25px;
         }
 
         .modal-body input {
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
+            padding: 12px;
+            margin: 8px 0;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
+            transition: all 0.3s;
         }
 
-        .btn-custom {
+        .modal-body input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn-custom-primary {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 25px;
             border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
+        .btn-custom-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+        }
+
+        /* Loading */
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 50px;
         }
 
         .loading i {
-            font-size: 40px;
+            font-size: 50px;
             color: #667eea;
             animation: spin 1s linear infinite;
         }
@@ -421,6 +649,7 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Access Denied */
         .access-denied {
             min-height: 100vh;
             display: flex;
@@ -436,6 +665,7 @@
             padding: 40px;
             max-width: 400px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: slideUp 0.5s ease;
         }
 
         .access-denied-card i {
@@ -444,65 +674,104 @@
             margin-bottom: 20px;
         }
 
-        .stats-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+        .access-denied-card h2 {
+            color: #333;
+            margin-bottom: 15px;
         }
 
-        .stat-card {
-            flex: 1;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            min-width: 120px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .stat-label {
-            font-size: 12px;
+        .access-denied-card p {
             color: #666;
+            margin-bottom: 25px;
         }
 
+        .access-denied-card button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .access-denied-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.3);
+        }
+
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: #888;
         }
 
         .empty-state i {
-            font-size: 40px;
+            font-size: 60px;
             color: #ddd;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .total-amount {
-            background: #e8f4f8;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            text-align: right;
-            font-weight: bold;
-            color: #333;
+        /* Success Toast */
+        .success-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease;
+            z-index: 9999;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-row {
+                flex-direction: column;
+            }
+            
+            .stat-card {
+                min-width: 100%;
+            }
+            
+            .customer-actions {
+                flex-wrap: wrap;
+            }
+            
+            .action-btn {
+                flex: 1 1 calc(50% - 5px);
+            }
+            
+            .total-dues-card .amount {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Access Denied -->
+    <!-- Access Denied Page -->
     <div id="accessDeniedPage" class="access-denied hidden">
         <div class="access-denied-card">
             <i class="fas fa-lock"></i>
             <h2>🔒 पहुंच निषिद्ध</h2>
-            <p>केवल akbijarniya27@gmail.com ही लॉगिन कर सकता है।</p>
-            <button class="btn-custom" onclick="showLoginPage()">वापस लॉगिन पर जाएं</button>
+            <p>आप इस वेबसाइट को एक्सेस नहीं कर सकते। केवल अधिकृत एडमिन ही लॉगिन कर सकते हैं।</p>
+            <button onclick="showLoginPage()">
+                <i class="fas fa-arrow-left"></i> वापस लॉगिन पर जाएं
+            </button>
         </div>
     </div>
 
@@ -511,41 +780,18 @@
         <div class="login-card">
             <div class="login-header">
                 <h2><i class="fas fa-store"></i> श्री बालाजी विविध भंडार</h2>
-                <p>alokwebs.online | केवल मालिक के लिए</p>
-            </div>
-
-            <div class="login-tabs">
-                <div class="login-tab active" onclick="switchTab('email')">📧 Email</div>
-                <div class="login-tab" onclick="switchTab('google')">🌐 Google</div>
+                <p>🔐 केवल एडमिन के लिए</p>
             </div>
 
             <div id="messageContainer"></div>
 
-            <!-- Email Login -->
-            <div id="emailLoginForm" class="login-form active">
-                <input type="email" id="emailInput" placeholder="ईमेल" value="akbijarniya27@gmail.com">
-                <input type="password" id="passwordInput" placeholder="पासवर्ड">
-                <button onclick="loginWithEmail()" id="emailLoginBtn">लॉगिन करें</button>
-                <p class="text-center mt-2">
-                    <a href="#" onclick="showForgotPassword()">पासवर्ड भूल गए?</a>
-                </p>
-            </div>
-
-            <!-- Google Login -->
-            <div id="googleLoginForm" class="login-form">
-                <button class="google-btn" onclick="loginWithGoogle()" id="googleLoginBtn">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20">
-                    Google से लॉगिन करें
+            <!-- Email Login Form -->
+            <div id="emailLoginForm" class="login-form">
+                <input type="email" id="emailInput" placeholder="ईमेल एड्रेस" value="">
+                <input type="password" id="passwordInput" placeholder="पासवर्ड" onkeypress="handleKeyPress(event)">
+                <button onclick="loginWithEmail()" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> लॉगिन करें
                 </button>
-            </div>
-
-            <!-- Forgot Password -->
-            <div id="forgotPasswordSection" class="hidden mt-3">
-                <hr>
-                <h5>🔑 पासवर्ड रीसेट</h5>
-                <input type="email" id="resetEmailInput" value="akbijarniya27@gmail.com">
-                <button class="btn-custom w-100 mt-2" onclick="resetPassword()">रीसेट लिंक भेजें</button>
-                <button class="btn btn-link mt-2" onclick="hideForgotPassword()">वापस लॉगिन पर जाएं</button>
             </div>
         </div>
     </div>
@@ -554,22 +800,29 @@
     <div id="dashboardPage" class="dashboard hidden">
         <nav class="navbar">
             <div class="container">
-                <span class="navbar-brand">
-                    <i class="fas fa-store"></i> श्री बालाजी विविध भंडार
-                    <span class="domain-badge">alokwebs.online</span>
-                </span>
                 <div>
-                    <span class="user-info me-3" id="userEmail"></span>
-                    <button class="logout-btn" onclick="logout()">🚪 लॉगआउट</button>
+                    <span class="navbar-brand">
+                        <i class="fas fa-store"></i> श्री बालाजी विविध भंडार
+                    </span>
+                    <span class="admin-badge" id="adminBadge">
+                        <i class="fas fa-crown"></i> एडमिन
+                    </span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <span class="user-info" id="userEmail"></span>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> लॉगआउट
+                    </button>
                 </div>
             </div>
         </nav>
 
         <div class="container">
-            <!-- Total Dues -->
+            <!-- Total Dues Card -->
             <div class="total-dues-card">
-                <h3>💰 कुल बकाया राशि</h3>
+                <h3><i class="fas fa-rupee-sign"></i> कुल बकाया राशि</h3>
                 <div class="amount" id="totalDues">₹0</div>
+                <p>सभी ग्राहकों का कुल बकाया</p>
             </div>
 
             <!-- Stats Row -->
@@ -592,14 +845,15 @@
                 </div>
             </div>
 
-            <!-- Search -->
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 नाम या नंबर से खोजें..." onkeyup="searchCustomers()">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="नाम या मोबाइल नंबर से खोजें..." onkeyup="searchCustomers()">
+                <i class="fas fa-search"></i>
             </div>
 
-            <!-- Add Customer -->
+            <!-- Add Customer Button -->
             <button class="add-customer-btn" onclick="showAddCustomerModal()">
-                <i class="fas fa-plus"></i> नया ग्राहक
+                <i class="fas fa-plus-circle"></i> नया ग्राहक जोड़ें
             </button>
 
             <!-- Customers List -->
@@ -617,19 +871,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="customerModalTitle">ग्राहक</h5>
+                    <h5 class="modal-title" id="customerModalTitle">
+                        <i class="fas fa-user-plus"></i> नया ग्राहक
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="customerName" placeholder="नाम *">
-                    <input type="text" id="customerPhone" placeholder="फोन नंबर *">
+                    <input type="text" id="customerName" placeholder="ग्राहक का नाम *" required>
+                    <input type="tel" id="customerPhone" placeholder="मोबाइल नंबर *" required>
                     <input type="text" id="customerItem" placeholder="आखिरी सामान">
                     <input type="number" id="customerPrice" placeholder="कीमत (₹)">
                     <input type="date" id="customerDate">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn-custom" onclick="saveCustomer()">सेव करें</button>
+                    <button type="button" class="btn-custom-primary" onclick="saveCustomer()">सेव करें</button>
                 </div>
             </div>
         </div>
@@ -640,17 +896,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">उत्पाद जोड़ें</h5>
+                    <h5 class="modal-title">
+                        <i class="fas fa-box"></i> नया उत्पाद
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="productName" placeholder="नाम *">
-                    <input type="number" id="productPrice" placeholder="कीमत (₹) *">
+                    <input type="text" id="productName" placeholder="उत्पाद का नाम *" required>
+                    <input type="number" id="productPrice" placeholder="कीमत (₹) *" required>
                     <input type="date" id="productDate">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn-custom" onclick="saveProduct()">सेव करें</button>
+                    <button type="button" class="btn-custom-primary" onclick="saveProduct()">सेव करें</button>
                 </div>
             </div>
         </div>
@@ -663,7 +921,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Firebase Config
+        // 🔒 Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDMO9CwYSF4tH4y3y0eD9IEaoYq1yIeP7g",
             authDomain: "shree-balaji-variety-store.firebaseapp.com",
@@ -674,33 +932,51 @@
             appId: "1:455588388635:web:6958b0e092b7455d9a3dbe"
         };
 
-        // Initialize
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const database = firebase.database();
 
-        const AUTHORIZED_EMAIL = "akbijarniya27@gmail.com";
+        // 🔐 Session persistence - browser close hote hi logout
+        auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+
+        // Global Variables
         let currentCustomerId = null;
         let customers = [];
         let expandedCustomerId = null;
 
-        // Auth State
+        // 🔒 Auth State Check - UID based verification
         auth.onAuthStateChanged((user) => {
             if (user) {
-                if (user.email === AUTHORIZED_EMAIL) {
-                    document.getElementById('loginPage').classList.add('hidden');
-                    document.getElementById('dashboardPage').classList.remove('hidden');
-                    document.getElementById('userEmail').textContent = user.email;
-                    loadCustomers();
-                } else {
-                    auth.signOut();
-                    showAccessDenied();
-                }
+                // Check if UID exists in admins node
+                database.ref("admins/" + user.uid).once("value")
+                    .then(snapshot => {
+                        if (snapshot.exists()) {
+                            // Authorized admin
+                            document.getElementById('loginPage').classList.add('hidden');
+                            document.getElementById('dashboardPage').classList.remove('hidden');
+                            document.getElementById('userEmail').textContent = user.email;
+                            document.getElementById('adminBadge').innerHTML = '<i class="fas fa-crown"></i> ' + user.email.split('@')[0];
+                            loadCustomers();
+                            showSuccess('✅ लॉगिन सफल! स्वागत है ' + user.email);
+                        } else {
+                            // Not authorized - force logout
+                            auth.signOut();
+                            showAccessDenied();
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Auth check error:", error);
+                        auth.signOut();
+                        showAccessDenied();
+                    });
             } else {
+                // Not logged in
                 showLoginPage();
             }
         });
 
+        // Show/Hide Functions
         function showLoginPage() {
             document.getElementById('accessDeniedPage').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
@@ -713,40 +989,26 @@
             document.getElementById('dashboardPage').classList.add('hidden');
         }
 
+        // Display Message
         function showMessage(msg, type) {
             const container = document.getElementById('messageContainer');
             container.innerHTML = `<div class="message ${type}-message">${msg}</div>`;
-            setTimeout(() => container.innerHTML = '', 3000);
+            setTimeout(() => container.innerHTML = '', 5000);
         }
 
-        function switchTab(tab) {
-            document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.login-form').forEach(f => f.classList.remove('active'));
-            
-            if (tab === 'email') {
-                document.querySelectorAll('.login-tab')[0].classList.add('active');
-                document.getElementById('emailLoginForm').classList.add('active');
-            } else {
-                document.querySelectorAll('.login-tab')[1].classList.add('active');
-                document.getElementById('googleLoginForm').classList.add('active');
-            }
+        function showSuccess(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'success-toast';
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
         }
 
-        function showForgotPassword() {
-            document.getElementById('emailLoginForm').classList.add('hidden');
-            document.getElementById('forgotPasswordSection').classList.remove('hidden');
-        }
-
-        function hideForgotPassword() {
-            document.getElementById('emailLoginForm').classList.remove('hidden');
-            document.getElementById('forgotPasswordSection').classList.add('hidden');
-        }
-
-        // Email Login
+        // 🔐 Login - Sirf existing users, no auto-signup
         function loginWithEmail() {
-            const email = document.getElementById('emailInput').value;
+            const email = document.getElementById('emailInput').value.trim();
             const password = document.getElementById('passwordInput').value;
-            const btn = document.getElementById('emailLoginBtn');
+            const btn = document.getElementById('loginBtn');
 
             if (!email || !password) {
                 showMessage('❌ ईमेल और पासवर्ड डालें', 'error');
@@ -754,61 +1016,31 @@
             }
 
             btn.disabled = true;
-            btn.innerHTML = '⏳ लॉगिन हो रहा है...';
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> लॉगिन हो रहा है...';
 
             auth.signInWithEmailAndPassword(email, password)
                 .catch((error) => {
+                    console.error("Login error:", error);
                     if (error.code === 'auth/user-not-found') {
-                        if (email === AUTHORIZED_EMAIL) {
-                            return auth.createUserWithEmailAndPassword(email, password);
-                        } else {
-                            throw new Error('unauthorized');
-                        }
-                    }
-                    throw error;
-                })
-                .catch((error) => {
-                    if (error.message === 'unauthorized') {
-                        showMessage('❌ केवल akbijarniya27@gmail.com को अनुमति है', 'error');
+                        showMessage('❌ यूजर नहीं मिला। केवल एडमिन ही लॉगिन कर सकते हैं।', 'error');
+                    } else if (error.code === 'auth/wrong-password') {
+                        showMessage('❌ गलत पासवर्ड', 'error');
+                    } else if (error.code === 'auth/invalid-email') {
+                        showMessage('❌ गलत ईमेल फॉर्मेट', 'error');
                     } else {
-                        showMessage('❌ गलत ईमेल या पासवर्ड', 'error');
+                        showMessage('❌ लॉगिन विफल: ' + error.message, 'error');
                     }
                 })
                 .finally(() => {
                     btn.disabled = false;
-                    btn.innerHTML = 'लॉगिन करें';
+                    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> लॉगिन करें';
                 });
         }
 
-        // Google Login
-        function loginWithGoogle() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            const btn = document.getElementById('googleLoginBtn');
-
-            btn.disabled = true;
-            btn.innerHTML = '⏳ लॉगिन हो रहा है...';
-
-            auth.signInWithPopup(provider)
-                .catch((error) => {
-                    showMessage('❌ Google लॉगिन विफल', 'error');
-                })
-                .finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20"> Google से लॉगिन करें';
-                });
-        }
-
-        // Reset Password
-        function resetPassword() {
-            const email = document.getElementById('resetEmailInput').value;
-            auth.sendPasswordResetEmail(email)
-                .then(() => {
-                    showMessage('✅ रीसेट लिंक भेज दिया गया है', 'success');
-                    setTimeout(hideForgotPassword, 2000);
-                })
-                .catch(() => {
-                    showMessage('❌ ईमेल भेजने में गलती', 'error');
-                });
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                loginWithEmail();
+            }
         }
 
         function logout() {
@@ -844,6 +1076,7 @@
                         customers.push(customer);
                     });
                     
+                    // Sort by name
                     customers.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
                 }
                 
@@ -854,6 +1087,12 @@
                 document.getElementById('totalProducts').textContent = totalProducts;
                 
                 displayCustomers(customers);
+                
+            }, (error) => {
+                console.error("Database error:", error);
+                if (error.code === 'PERMISSION_DENIED') {
+                    showAccessDenied();
+                }
             });
         }
 
@@ -866,6 +1105,9 @@
                     <div class="empty-state">
                         <i class="fas fa-users"></i>
                         <p>कोई ग्राहक नहीं</p>
+                        <button class="add-customer-btn" onclick="showAddCustomerModal()">
+                            <i class="fas fa-plus"></i> पहला ग्राहक जोड़ें
+                        </button>
                     </div>
                 `;
                 return;
@@ -890,7 +1132,7 @@
                         <div class="customer-name">${c.name || 'नाम नहीं'}</div>
                         <div class="customer-phone"><i class="fas fa-phone"></i> ${c.phone || 'नंबर नहीं'}</div>
                         <div class="customer-item"><i class="fas fa-box"></i> आखिरी: ${c.item || 'कोई नहीं'} (${c.date || ''})</div>
-                        <span class="customer-badge ${dueClass}">💰 बकाया: ₹${c.totalDues || 0}</span>
+                        <span class="customer-badge ${dueClass}"><i class="fas fa-rupee-sign"></i> बकाया: ₹${c.totalDues || 0}</span>
                     </div>
                     <div class="expand-icon ${isExpanded ? 'expanded' : ''}">
                         <i class="fas fa-chevron-down"></i>
@@ -979,7 +1221,7 @@
                     <div class="empty-state">
                         <i class="fas fa-box-open"></i>
                         <p>कोई उत्पाद नहीं</p>
-                        <button class="btn-custom btn-sm mt-2" onclick="showAddProductModal('${customerId}')">
+                        <button class="add-product-small" onclick="showAddProductModal('${customerId}')">
                             <i class="fas fa-plus"></i> उत्पाद जोड़ें
                         </button>
                     </div>
@@ -989,9 +1231,9 @@
             
             let html = `
                 <div class="section-header">
-                    <h6>📦 उत्पाद सूची</h6>
+                    <h5><i class="fas fa-box"></i> उत्पाद सूची</h5>
                     <button class="add-product-small" onclick="showAddProductModal('${customerId}')">
-                        <i class="fas fa-plus"></i> नया
+                        <i class="fas fa-plus"></i> नया उत्पाद
                     </button>
                 </div>
             `;
@@ -1007,8 +1249,8 @@
                     <div class="product-item">
                         <div class="product-details">
                             <div class="product-name">${p.name}</div>
-                            <div class="product-price">₹${p.price}</div>
-                            <div class="product-date">📅 ${p.date}</div>
+                            <div class="product-price"><i class="fas fa-rupee-sign"></i> ${p.price}</div>
+                            <div class="product-date"><i class="far fa-calendar"></i> ${p.date}</div>
                         </div>
                         <div class="product-actions">
                             <button class="btn btn-warning btn-sm" onclick="event.stopPropagation(); editProduct('${customerId}', '${id}')">
@@ -1024,14 +1266,14 @@
             
             html += `
                 <div class="total-amount">
-                    कुल: ₹${total}
+                    <i class="fas fa-calculator"></i> कुल: ₹${total}
                 </div>
             `;
             
             container.innerHTML = html;
         }
 
-        // Search
+        // Search Customers
         function searchCustomers() {
             const term = document.getElementById('searchInput').value.toLowerCase();
             if (!term) {
@@ -1046,7 +1288,7 @@
             displayCustomers(filtered);
         }
 
-        // Send WhatsApp to Customer
+        // Send WhatsApp
         function sendWhatsApp(customerId) {
             const customer = customers.find(c => c.id === customerId);
             if (!customer?.phone) {
@@ -1057,35 +1299,26 @@
             let phone = customer.phone.replace(/\D/g, '');
             if (phone.length === 10) phone = '91' + phone;
 
-            let msg = `🏪 *श्री बालाजी विविध भंडार*\n`;
-            msg += `alokwebs.online\n\n`;
+            let msg = `🏪 *श्री बालाजी विविध भंडार*\n\n`;
             msg += `👤 *ग्राहक:* ${customer.name}\n`;
             msg += `📞 *फोन:* ${customer.phone}\n`;
-            msg += `💰 *कुल बकाया:* ₹${customer.totalDues || 0}\n\n`;
-            msg += `📦 *खरीदारी का विवरण:*\n`;
-            msg += `━━━━━━━━━━━━━━━━\n`;
+            msg += `💰 *बकाया:* ₹${customer.totalDues || 0}\n\n`;
             
             if (customer.products) {
-                let total = 0;
+                msg += `📦 *खरीदारी:*\n`;
                 Object.values(customer.products).forEach((p, i) => {
-                    msg += `${i+1}. *${p.name}*\n`;
-                    msg += `   💰 ₹${p.price}\n`;
-                    msg += `   📅 ${p.date}\n`;
-                    total += Number(p.price);
+                    msg += `${i+1}. ${p.name} - ₹${p.price} (${p.date})\n`;
                 });
-                msg += `━━━━━━━━━━━━━━━━\n`;
-                msg += `*कुल योग: ₹${total}*\n`;
             }
             
-            msg += `\n🙏 कृपया जल्द भुगतान करें।\n`;
-            msg += `धन्यवाद! 🙏`;
+            msg += `\n🙏 कृपया जल्द भुगतान करें।\nधन्यवाद! 🙏`;
             
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Customer Modal
+        // Customer Modal Functions
         function showAddCustomerModal() {
-            document.getElementById('customerModalTitle').innerHTML = '➕ नया ग्राहक';
+            document.getElementById('customerModalTitle').innerHTML = '<i class="fas fa-user-plus"></i> नया ग्राहक';
             document.getElementById('customerName').value = '';
             document.getElementById('customerPhone').value = '';
             document.getElementById('customerItem').value = '';
@@ -1097,7 +1330,7 @@
 
         function editCustomer(id) {
             const c = customers.find(c => c.id === id);
-            document.getElementById('customerModalTitle').innerHTML = '✏️ एडिट ग्राहक';
+            document.getElementById('customerModalTitle').innerHTML = '<i class="fas fa-user-edit"></i> एडिट ग्राहक';
             document.getElementById('customerName').value = c.name || '';
             document.getElementById('customerPhone').value = c.phone || '';
             document.getElementById('customerItem').value = c.item || '';
@@ -1115,7 +1348,7 @@
             const date = document.getElementById('customerDate').value;
 
             if (!name) {
-                alert('❌ नाम डालें');
+                alert('❌ कृपया ग्राहक का नाम डालें');
                 return;
             }
 
@@ -1128,41 +1361,59 @@
             };
 
             if (currentCustomerId) {
+                // Update existing customer
                 database.ref('customers/' + currentCustomerId).update(data)
                     .then(() => {
                         if (price && item) {
-                            database.ref('customers/' + currentCustomerId + '/products').push({
+                            return database.ref('customers/' + currentCustomerId + '/products').push({
                                 name: item, 
                                 price: Number(price), 
                                 date,
                                 timestamp: Date.now()
                             });
                         }
+                    })
+                    .then(() => {
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
+                        showSuccess('✅ ग्राहक अपडेट हो गया');
+                    })
+                    .catch(error => {
+                        alert('❌ गलती: ' + error.message);
                     });
             } else {
+                // Add new customer
                 database.ref('customers').push(data)
                     .then((ref) => {
                         if (price && item) {
-                            database.ref('customers/' + ref.key + '/products').push({
+                            return database.ref('customers/' + ref.key + '/products').push({
                                 name: item, 
                                 price: Number(price), 
                                 date,
                                 timestamp: Date.now()
                             });
                         }
+                    })
+                    .then(() => {
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
+                        showSuccess('✅ नया ग्राहक जुड़ गया');
+                    })
+                    .catch(error => {
+                        alert('❌ गलती: ' + error.message);
                     });
             }
         }
 
         function deleteCustomer(id) {
-            if (confirm('⚠️ क्या आप सच में डिलीट करना चाहते हैं?')) {
+            if (confirm('⚠️ क्या आप सच में इस ग्राहक को डिलीट करना चाहते हैं?')) {
                 database.ref('customers/' + id).remove()
                     .then(() => {
                         if (expandedCustomerId === id) {
                             expandedCustomerId = null;
                         }
+                        showSuccess('✅ ग्राहक डिलीट हो गया');
+                    })
+                    .catch(error => {
+                        alert('❌ गलती: ' + error.message);
                     });
             }
         }
@@ -1184,7 +1435,7 @@
             const date = document.getElementById('productDate').value;
 
             if (!name || !price) {
-                alert('❌ नाम और कीमत डालें');
+                alert('❌ नाम और कीमत डालना जरूरी है');
                 return;
             }
 
@@ -1199,6 +1450,10 @@
                 if (expandedCustomerId === currentCustomerId) {
                     renderProducts(currentCustomerId);
                 }
+                showSuccess('✅ उत्पाद जुड़ गया');
+            })
+            .catch(error => {
+                alert('❌ गलती: ' + error.message);
             });
         }
 
@@ -1207,7 +1462,7 @@
             if (!customer || !customer.products) return;
             
             const p = customer.products[productId];
-            const newName = prompt('नाम बदलें:', p.name);
+            const newName = prompt('उत्पाद का नाम बदलें:', p.name);
             const newPrice = prompt('कीमत बदलें:', p.price);
             
             if (newName && newPrice) {
@@ -1215,23 +1470,48 @@
                     name: newName, 
                     price: Number(newPrice),
                     timestamp: Date.now()
-                }).then(() => {
+                })
+                .then(() => {
                     if (expandedCustomerId === customerId) {
                         renderProducts(customerId);
                     }
+                    showSuccess('✅ उत्पाद अपडेट हो गया');
+                })
+                .catch(error => {
+                    alert('❌ गलती: ' + error.message);
                 });
             }
         }
 
         function deleteProduct(customerId, productId) {
-            if (confirm('⚠️ डिलीट करें?')) {
+            if (confirm('⚠️ क्या आप यह उत्पाद डिलीट करना चाहते हैं?')) {
                 database.ref('customers/' + customerId + '/products/' + productId).remove()
                     .then(() => {
                         if (expandedCustomerId === customerId) {
                             renderProducts(customerId);
                         }
+                        showSuccess('✅ उत्पाद डिलीट हो गया');
+                    })
+                    .catch(error => {
+                        alert('❌ गलती: ' + error.message);
                     });
             }
+        }
+
+        // Anti-hacking: Disable console in production
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            // Disable right click
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            
+            // Disable F12, Ctrl+Shift+I, Ctrl+U
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode === 123 || // F12
+                    (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+                    (e.ctrlKey && e.keyCode === 85)) { // Ctrl+U
+                    e.preventDefault();
+                    return false;
+                }
+            });
         }
     </script>
 </body>
