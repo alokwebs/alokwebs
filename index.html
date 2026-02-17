@@ -3,346 +3,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>श्री बालाजी विविध भंडार - Customer Management</title>
-    <!-- Bootstrap CSS -->
+    <title>श्री बालाजी विविध भंडार - अलोक वेब्स</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --dark-color: #2c3e50;
-            --light-color: #f9f9f9;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
-        
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .total-dues {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        
-        .total-dues h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .total-dues .amount {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin: 10px 0;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .search-box {
-            margin: 20px 0;
-            position: relative;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            border: 3px solid transparent;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-        
-        .search-box input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 5px 20px rgba(255,107,107,0.3);
-        }
-        
-        .search-box i {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-color);
-            font-size: 1.3rem;
-        }
-        
-        .customer-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            cursor: pointer;
-            border-left: 5px solid var(--primary-color);
-        }
-        
-        .customer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
-        .customer-card h3 {
-            color: var(--dark-color);
-            margin-bottom: 10px;
-        }
-        
-        .customer-card .badge {
-            font-size: 1rem;
-            padding: 8px 15px;
-            margin: 5px;
-        }
-        
-        .products-section {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .product-item {
-            background: var(--light-color);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            border-right: 4px solid var(--secondary-color);
-        }
-        
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            transform: scale(1.05);
-        }
-        
-        .btn-primary-custom {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary-custom:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
-        }
-        
+
+        /* Login Page */
         .login-container {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
-        
+
         .login-card {
             background: white;
             border-radius: 20px;
             padding: 40px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-        
-        .login-card h2 {
+
+        .login-header {
             text-align: center;
             margin-bottom: 30px;
-            color: var(--dark-color);
         }
-        
-        .login-card input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .login-card input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-        
-        .login-card button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2rem;
+
+        .login-header h2 {
+            color: #333;
+            font-size: 24px;
             font-weight: bold;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
         }
-        
-        .login-card button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+
+        .login-header h2 i {
+            color: #667eea;
+            margin-right: 10px;
         }
-        
-        .modal-content {
-            border-radius: 15px;
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
         }
-        
-        .modal-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .action-buttons {
+
+        .login-tabs {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
         }
-        
-        .action-buttons button {
+
+        .login-tab {
             flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
         }
-        
-        .hidden {
+
+        .login-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .login-tab:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        .login-form {
             display: none;
         }
-        
+
+        .login-form.active {
+            display: block;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .google-btn {
+            background: white !important;
+            color: #333 !important;
+            border: 2px solid #e0e0e0 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .error-message { background: #ff6b6b; color: white; }
+        .success-message { background: #51cf66; color: white; }
+
+        .hidden { display: none !important; }
+
+        /* Dashboard */
+        .dashboard {
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 15px 0;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .domain-badge {
+            background: #ffd43b;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
         .logout-btn {
             background: rgba(255,255,255,0.2);
             color: white;
-            border: 1px solid white;
-            padding: 8px 20px;
+            border: 2px solid white;
+            padding: 5px 15px;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
         }
-        
-        .logout-btn:hover {
+
+        .total-dues-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .total-dues-card .amount {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            margin: 20px 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .add-customer-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .customer-card {
             background: white;
-            color: var(--primary-color);
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .customer-header {
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .customer-header:hover {
+            background: #f5f5f5;
+        }
+
+        .customer-info {
+            flex: 1;
+        }
+
+        .customer-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .customer-phone {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .customer-item {
+            color: #888;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        .customer-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .expand-icon {
+            font-size: 20px;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+
+        .expand-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .customer-actions {
+            display: flex;
+            gap: 10px;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 13px;
+        }
+
+        .whatsapp-btn { background: #25D366; color: white; }
+        .edit-btn { background: #ffd93e; color: #333; }
+        .delete-btn { background: #ff6b6b; color: white; }
+
+        .products-section {
+            background: #f0f2f5;
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            display: none;
+        }
+
+        .products-section.show {
+            display: block;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .section-header h6 {
+            margin: 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .add-product-small {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .product-item {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-name {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .product-price {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .product-date {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .product-actions button {
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .modal-body input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading i {
+            font-size: 40px;
+            color: #667eea;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .access-denied {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .access-denied-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .access-denied-card i {
+            font-size: 80px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 120px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+
+        .empty-state i {
+            font-size: 40px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .total-amount {
+            background: #e8f4f8;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: right;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <!-- Login Page -->
-    <div id="loginPage" class="login-container">
-        <div class="login-card">
-            <h2>🔐 लॉगिन करें</h2>
-            <input type="password" id="passwordInput" placeholder="पासवर्ड डालें" onkeypress="handleKeyPress(event)">
-            <button onclick="login()">लॉगिन</button>
+    <!-- Access Denied -->
+    <div id="accessDeniedPage" class="access-denied hidden">
+        <div class="access-denied-card">
+            <i class="fas fa-lock"></i>
+            <h2>🔒 पहुंच निषिद्ध</h2>
+            <p>केवल akbijarniya27@gmail.com ही लॉगिन कर सकता है।</p>
+            <button class="btn-custom" onclick="showLoginPage()">वापस लॉगिन पर जाएं</button>
         </div>
     </div>
 
-    <!-- Main Dashboard -->
-    <div id="dashboardPage" class="hidden">
-        <nav class="navbar navbar-expand-lg">
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2><i class="fas fa-store"></i> श्री बालाजी विविध भंडार</h2>
+                <p>alokwebs.online | केवल मालिक के लिए</p>
+            </div>
+
+            <div class="login-tabs">
+                <div class="login-tab active" onclick="switchTab('email')">📧 Email</div>
+                <div class="login-tab" onclick="switchTab('google')">🌐 Google</div>
+            </div>
+
+            <div id="messageContainer"></div>
+
+            <!-- Email Login -->
+            <div id="emailLoginForm" class="login-form active">
+                <input type="email" id="emailInput" placeholder="ईमेल" value="akbijarniya27@gmail.com">
+                <input type="password" id="passwordInput" placeholder="पासवर्ड">
+                <button onclick="loginWithEmail()" id="emailLoginBtn">लॉगिन करें</button>
+                <p class="text-center mt-2">
+                    <a href="#" onclick="showForgotPassword()">पासवर्ड भूल गए?</a>
+                </p>
+            </div>
+
+            <!-- Google Login -->
+            <div id="googleLoginForm" class="login-form">
+                <button class="google-btn" onclick="loginWithGoogle()" id="googleLoginBtn">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20">
+                    Google से लॉगिन करें
+                </button>
+            </div>
+
+            <!-- Forgot Password -->
+            <div id="forgotPasswordSection" class="hidden mt-3">
+                <hr>
+                <h5>🔑 पासवर्ड रीसेट</h5>
+                <input type="email" id="resetEmailInput" value="akbijarniya27@gmail.com">
+                <button class="btn-custom w-100 mt-2" onclick="resetPassword()">रीसेट लिंक भेजें</button>
+                <button class="btn btn-link mt-2" onclick="hideForgotPassword()">वापस लॉगिन पर जाएं</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboardPage" class="dashboard hidden">
+        <nav class="navbar">
             <div class="container">
-                <span class="navbar-brand">🏪 श्री बालाजी विविध भंडार</span>
-                <button class="logout-btn" onclick="logout()">लॉगआउट</button>
+                <span class="navbar-brand">
+                    <i class="fas fa-store"></i> श्री बालाजी विविध भंडार
+                    <span class="domain-badge">alokwebs.online</span>
+                </span>
+                <div>
+                    <span class="user-info me-3" id="userEmail"></span>
+                    <button class="logout-btn" onclick="logout()">🚪 लॉगआउट</button>
+                </div>
             </div>
         </nav>
 
         <div class="container">
             <!-- Total Dues -->
-            <div class="total-dues">
-                <h2>कुल बकाया राशि</h2>
+            <div class="total-dues-card">
+                <h3>💰 कुल बकाया राशि</h3>
                 <div class="amount" id="totalDues">₹0</div>
-                <small>सभी ग्राहकों का कुल बकाया</small>
             </div>
 
-            <!-- Search Bar -->
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCustomers">0</div>
+                    <div class="stat-label">कुल ग्राहक</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="highDueCustomers">0</div>
+                    <div class="stat-label">₹500+ बकाया</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgDue">₹0</div>
+                    <div class="stat-label">औसत बकाया</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalProducts">0</div>
+                    <div class="stat-label">कुल उत्पाद</div>
+                </div>
+            </div>
+
+            <!-- Search -->
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="🔍 नाम या नंबर से खोजें..." onkeyup="searchCustomers()">
-                <i class="fas fa-search"></i>
             </div>
 
-            <!-- Add Customer Button -->
-            <button class="btn btn-primary-custom mb-3" onclick="showAddCustomerModal()">
-                <i class="fas fa-plus"></i> नया ग्राहक जोड़ें
+            <!-- Add Customer -->
+            <button class="add-customer-btn" onclick="showAddCustomerModal()">
+                <i class="fas fa-plus"></i> नया ग्राहक
             </button>
 
             <!-- Customers List -->
-            <div id="customersList"></div>
-
-            <!-- Selected Customer Products -->
-            <div id="productsSection" class="products-section hidden">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 id="selectedCustomerName"></h3>
-                    <div>
-                        <button class="btn btn-whatsapp me-2" onclick="sendWhatsApp()">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </button>
-                        <button class="btn btn-primary-custom" onclick="showAddProductModal()">
-                            <i class="fas fa-plus"></i> नया उत्पाद
-                        </button>
-                    </div>
+            <div id="customersList">
+                <div class="loading">
+                    <i class="fas fa-circle-notch"></i>
+                    <p>लोड हो रहा है...</p>
                 </div>
-                <div id="productsList"></div>
             </div>
         </div>
     </div>
 
-    <!-- Add/Edit Customer Modal -->
+    <!-- Customer Modal -->
     <div class="modal fade" id="customerModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="customerModalTitle">ग्राहक जोड़ें</h5>
+                    <h5 class="modal-title" id="customerModalTitle">ग्राहक</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="customerName" class="form-control mb-2" placeholder="नाम">
-                    <input type="text" id="customerPhone" class="form-control mb-2" placeholder="फोन नंबर">
-                    <input type="text" id="customerItem" class="form-control mb-2" placeholder="सामान">
-                    <input type="number" id="customerPrice" class="form-control mb-2" placeholder="कीमत">
-                    <input type="date" id="customerDate" class="form-control mb-2">
+                    <input type="text" id="customerName" placeholder="नाम *">
+                    <input type="text" id="customerPhone" placeholder="फोन नंबर *">
+                    <input type="text" id="customerItem" placeholder="आखिरी सामान">
+                    <input type="number" id="customerPrice" placeholder="कीमत (₹)">
+                    <input type="date" id="customerDate">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="saveCustomer()">सेव करें</button>
+                    <button type="button" class="btn-custom" onclick="saveCustomer()">सेव करें</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Product Modal -->
+    <!-- Product Modal -->
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -351,25 +644,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="productName" class="form-control mb-2" placeholder="उत्पाद का नाम">
-                    <input type="number" id="productPrice" class="form-control mb-2" placeholder="कीमत">
-                    <input type="date" id="productDate" class="form-control mb-2">
+                    <input type="text" id="productName" placeholder="नाम *">
+                    <input type="number" id="productPrice" placeholder="कीमत (₹) *">
+                    <input type="date" id="productDate">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="saveProduct()">सेव करें</button>
+                    <button type="button" class="btn-custom" onclick="saveProduct()">सेव करें</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Firebase Configuration
+        // Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyDMO9CwYSF4tH4y3y0eD9IEaoYq1yIeP7g",
             authDomain: "shree-balaji-variety-store.firebaseapp.com",
@@ -377,355 +671,567 @@
             projectId: "shree-balaji-variety-store",
             storageBucket: "shree-balaji-variety-store.firebasestorage.app",
             messagingSenderId: "455588388635",
-            appId: "1:455588388635:web:6958b0e092b7455d9a3dbe",
-            measurementId: "G-H3FQZ383Y5"
+            appId: "1:455588388635:web:6958b0e092b7455d9a3dbe"
         };
 
-        // Initialize Firebase
+        // Initialize
         firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
         const database = firebase.database();
 
-        // Global Variables
+        const AUTHORIZED_EMAIL = "akbijarniya27@gmail.com";
         let currentCustomerId = null;
         let customers = [];
-        let selectedCustomer = null;
-        const PASSWORD = "balaji@2024"; // आप अपना पासवर्ड यहाँ सेट करें
+        let expandedCustomerId = null;
 
-        // Check login status on page load
-        if (localStorage.getItem('isLoggedIn') === 'true') {
-            document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('dashboardPage').classList.remove('hidden');
-            loadCustomers();
-        }
-
-        // Login Function
-        function login() {
-            const password = document.getElementById('passwordInput').value;
-            if (password === PASSWORD) {
-                localStorage.setItem('isLoggedIn', 'true');
-                document.getElementById('loginPage').classList.add('hidden');
-                document.getElementById('dashboardPage').classList.remove('hidden');
-                loadCustomers();
+        // Auth State
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                if (user.email === AUTHORIZED_EMAIL) {
+                    document.getElementById('loginPage').classList.add('hidden');
+                    document.getElementById('dashboardPage').classList.remove('hidden');
+                    document.getElementById('userEmail').textContent = user.email;
+                    loadCustomers();
+                } else {
+                    auth.signOut();
+                    showAccessDenied();
+                }
             } else {
-                alert('गलत पासवर्ड! कृपया पुनः प्रयास करें।');
+                showLoginPage();
             }
-        }
+        });
 
-        // Handle Enter key press in password field
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                login();
-            }
-        }
-
-        // Logout Function
-        function logout() {
-            localStorage.removeItem('isLoggedIn');
+        function showLoginPage() {
+            document.getElementById('accessDeniedPage').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
             document.getElementById('dashboardPage').classList.add('hidden');
-            document.getElementById('passwordInput').value = '';
         }
 
-        // Load Customers from Firebase
+        function showAccessDenied() {
+            document.getElementById('accessDeniedPage').classList.remove('hidden');
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('dashboardPage').classList.add('hidden');
+        }
+
+        function showMessage(msg, type) {
+            const container = document.getElementById('messageContainer');
+            container.innerHTML = `<div class="message ${type}-message">${msg}</div>`;
+            setTimeout(() => container.innerHTML = '', 3000);
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.login-form').forEach(f => f.classList.remove('active'));
+            
+            if (tab === 'email') {
+                document.querySelectorAll('.login-tab')[0].classList.add('active');
+                document.getElementById('emailLoginForm').classList.add('active');
+            } else {
+                document.querySelectorAll('.login-tab')[1].classList.add('active');
+                document.getElementById('googleLoginForm').classList.add('active');
+            }
+        }
+
+        function showForgotPassword() {
+            document.getElementById('emailLoginForm').classList.add('hidden');
+            document.getElementById('forgotPasswordSection').classList.remove('hidden');
+        }
+
+        function hideForgotPassword() {
+            document.getElementById('emailLoginForm').classList.remove('hidden');
+            document.getElementById('forgotPasswordSection').classList.add('hidden');
+        }
+
+        // Email Login
+        function loginWithEmail() {
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            const btn = document.getElementById('emailLoginBtn');
+
+            if (!email || !password) {
+                showMessage('❌ ईमेल और पासवर्ड डालें', 'error');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '⏳ लॉगिन हो रहा है...';
+
+            auth.signInWithEmailAndPassword(email, password)
+                .catch((error) => {
+                    if (error.code === 'auth/user-not-found') {
+                        if (email === AUTHORIZED_EMAIL) {
+                            return auth.createUserWithEmailAndPassword(email, password);
+                        } else {
+                            throw new Error('unauthorized');
+                        }
+                    }
+                    throw error;
+                })
+                .catch((error) => {
+                    if (error.message === 'unauthorized') {
+                        showMessage('❌ केवल akbijarniya27@gmail.com को अनुमति है', 'error');
+                    } else {
+                        showMessage('❌ गलत ईमेल या पासवर्ड', 'error');
+                    }
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = 'लॉगिन करें';
+                });
+        }
+
+        // Google Login
+        function loginWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            const btn = document.getElementById('googleLoginBtn');
+
+            btn.disabled = true;
+            btn.innerHTML = '⏳ लॉगिन हो रहा है...';
+
+            auth.signInWithPopup(provider)
+                .catch((error) => {
+                    showMessage('❌ Google लॉगिन विफल', 'error');
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20"> Google से लॉगिन करें';
+                });
+        }
+
+        // Reset Password
+        function resetPassword() {
+            const email = document.getElementById('resetEmailInput').value;
+            auth.sendPasswordResetEmail(email)
+                .then(() => {
+                    showMessage('✅ रीसेट लिंक भेज दिया गया है', 'success');
+                    setTimeout(hideForgotPassword, 2000);
+                })
+                .catch(() => {
+                    showMessage('❌ ईमेल भेजने में गलती', 'error');
+                });
+        }
+
+        function logout() {
+            auth.signOut();
+        }
+
+        // Load Customers
         function loadCustomers() {
             const customersRef = database.ref('customers');
             customersRef.on('value', (snapshot) => {
                 customers = [];
                 let totalDues = 0;
+                let totalProducts = 0;
+                let highDueCount = 0;
                 
-                snapshot.forEach((childSnapshot) => {
-                    const customer = childSnapshot.val();
-                    customer.id = childSnapshot.key;
-                    customers.push(customer);
+                if (snapshot.exists()) {
+                    snapshot.forEach((child) => {
+                        const customer = child.val();
+                        customer.id = child.key;
+                        
+                        let customerTotal = 0;
+                        if (customer.products) {
+                            Object.values(customer.products).forEach(p => {
+                                customerTotal += Number(p.price) || 0;
+                                totalDues += Number(p.price) || 0;
+                                totalProducts++;
+                            });
+                        }
+                        customer.totalDues = customerTotal;
+                        
+                        if (customerTotal >= 500) highDueCount++;
+                        
+                        customers.push(customer);
+                    });
                     
-                    // Calculate total dues
-                    if (customer.products) {
-                        Object.values(customer.products).forEach(product => {
-                            totalDues += parseInt(product.price) || 0;
-                        });
-                    }
-                });
-                
-                // Sort customers by name
-                customers.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                    customers.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                }
                 
                 document.getElementById('totalDues').textContent = `₹${totalDues}`;
+                document.getElementById('totalCustomers').textContent = customers.length;
+                document.getElementById('highDueCustomers').textContent = highDueCount;
+                document.getElementById('avgDue').textContent = customers.length ? `₹${Math.round(totalDues/customers.length)}` : '₹0';
+                document.getElementById('totalProducts').textContent = totalProducts;
+                
                 displayCustomers(customers);
             });
         }
 
         // Display Customers
-        function displayCustomers(customersToDisplay) {
-            const customersList = document.getElementById('customersList');
-            customersList.innerHTML = '';
+        function displayCustomers(list) {
+            const container = document.getElementById('customersList');
             
-            customersToDisplay.forEach(customer => {
-                let customerDues = 0;
-                if (customer.products) {
-                    Object.values(customer.products).forEach(product => {
-                        customerDues += parseInt(product.price) || 0;
-                    });
-                }
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-users"></i>
+                        <p>कोई ग्राहक नहीं</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            list.forEach(c => {
+                const dueClass = c.totalDues >= 500 ? 'bg-danger' : (c.totalDues >= 200 ? 'bg-warning' : 'bg-success');
+                const isExpanded = expandedCustomerId === c.id;
                 
                 const card = document.createElement('div');
                 card.className = 'customer-card';
-                card.onclick = () => selectCustomer(customer.id);
+                card.id = `customer-${c.id}`;
                 
-                card.innerHTML = `
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div>
-                            <h3>${customer.name || 'नाम नहीं'}</h3>
-                            <p><i class="fas fa-phone"></i> ${customer.phone || 'नंबर नहीं'}</p>
-                            <p><small>आखिरी सामान: ${customer.item || 'कोई नहीं'}</small></p>
-                        </div>
-                        <div>
-                            <span class="badge bg-danger">बकाया: ₹${customerDues}</span>
-                            <span class="badge bg-info">${customer.date || 'कोई तारीख नहीं'}</span>
-                        </div>
+                // Customer Header
+                const header = document.createElement('div');
+                header.className = 'customer-header';
+                header.onclick = () => toggleCustomer(c.id);
+                header.innerHTML = `
+                    <div class="customer-info">
+                        <div class="customer-name">${c.name || 'नाम नहीं'}</div>
+                        <div class="customer-phone"><i class="fas fa-phone"></i> ${c.phone || 'नंबर नहीं'}</div>
+                        <div class="customer-item"><i class="fas fa-box"></i> आखिरी: ${c.item || 'कोई नहीं'} (${c.date || ''})</div>
+                        <span class="customer-badge ${dueClass}">💰 बकाया: ₹${c.totalDues || 0}</span>
                     </div>
-                    <div class="action-buttons">
-                        <button class="btn btn-warning btn-sm" onclick="event.stopPropagation(); editCustomer('${customer.id}')">
-                            <i class="fas fa-edit"></i> एडिट
-                        </button>
-                        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation(); deleteCustomer('${customer.id}')">
-                            <i class="fas fa-trash"></i> डिलीट
-                        </button>
+                    <div class="expand-icon ${isExpanded ? 'expanded' : ''}">
+                        <i class="fas fa-chevron-down"></i>
                     </div>
                 `;
                 
-                customersList.appendChild(card);
+                // Actions
+                const actions = document.createElement('div');
+                actions.className = 'customer-actions';
+                actions.innerHTML = `
+                    <button class="action-btn whatsapp-btn" onclick="event.stopPropagation(); sendWhatsApp('${c.id}')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="action-btn edit-btn" onclick="event.stopPropagation(); editCustomer('${c.id}')">
+                        <i class="fas fa-edit"></i> एडिट
+                    </button>
+                    <button class="action-btn delete-btn" onclick="event.stopPropagation(); deleteCustomer('${c.id}')">
+                        <i class="fas fa-trash"></i> डिलीट
+                    </button>
+                `;
+                
+                // Products Section
+                const productsSection = document.createElement('div');
+                productsSection.className = `products-section ${isExpanded ? 'show' : ''}`;
+                productsSection.id = `products-${c.id}`;
+                
+                card.appendChild(header);
+                card.appendChild(actions);
+                card.appendChild(productsSection);
+                container.appendChild(card);
+                
+                if (isExpanded) {
+                    renderProducts(c.id);
+                }
             });
         }
 
-        // Search Customers
-        function searchCustomers() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        function toggleCustomer(customerId) {
+            if (expandedCustomerId === customerId) {
+                // Close current
+                const currentSection = document.getElementById(`products-${customerId}`);
+                if (currentSection) {
+                    currentSection.classList.remove('show');
+                }
+                const currentIcon = document.querySelector(`#customer-${customerId} .expand-icon`);
+                if (currentIcon) {
+                    currentIcon.classList.remove('expanded');
+                }
+                expandedCustomerId = null;
+            } else {
+                // Close previous
+                if (expandedCustomerId) {
+                    const prevSection = document.getElementById(`products-${expandedCustomerId}`);
+                    if (prevSection) {
+                        prevSection.classList.remove('show');
+                    }
+                    const prevIcon = document.querySelector(`#customer-${expandedCustomerId} .expand-icon`);
+                    if (prevIcon) {
+                        prevIcon.classList.remove('expanded');
+                    }
+                }
+                
+                // Open new
+                expandedCustomerId = customerId;
+                const newSection = document.getElementById(`products-${customerId}`);
+                if (newSection) {
+                    newSection.classList.add('show');
+                    renderProducts(customerId);
+                }
+                const newIcon = document.querySelector(`#customer-${customerId} .expand-icon`);
+                if (newIcon) {
+                    newIcon.classList.add('expanded');
+                }
+            }
+        }
+
+        function renderProducts(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
             
-            if (searchTerm === '') {
+            const container = document.getElementById(`products-${customerId}`);
+            if (!container) return;
+            
+            if (!customer.products || Object.keys(customer.products).length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <p>कोई उत्पाद नहीं</p>
+                        <button class="btn-custom btn-sm mt-2" onclick="showAddProductModal('${customerId}')">
+                            <i class="fas fa-plus"></i> उत्पाद जोड़ें
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="section-header">
+                    <h6>📦 उत्पाद सूची</h6>
+                    <button class="add-product-small" onclick="showAddProductModal('${customerId}')">
+                        <i class="fas fa-plus"></i> नया
+                    </button>
+                </div>
+            `;
+            
+            // Sort products by date (newest first)
+            const products = Object.entries(customer.products)
+                .sort((a, b) => (b[1].timestamp || 0) - (a[1].timestamp || 0));
+            
+            let total = 0;
+            products.forEach(([id, p]) => {
+                total += Number(p.price);
+                html += `
+                    <div class="product-item">
+                        <div class="product-details">
+                            <div class="product-name">${p.name}</div>
+                            <div class="product-price">₹${p.price}</div>
+                            <div class="product-date">📅 ${p.date}</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-warning btn-sm" onclick="event.stopPropagation(); editProduct('${customerId}', '${id}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="event.stopPropagation(); deleteProduct('${customerId}', '${id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                <div class="total-amount">
+                    कुल: ₹${total}
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Search
+        function searchCustomers() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            if (!term) {
                 displayCustomers(customers);
                 return;
             }
             
-            const filtered = customers.filter(customer => 
-                (customer.name && customer.name.toLowerCase().includes(searchTerm)) ||
-                (customer.phone && customer.phone.includes(searchTerm))
+            const filtered = customers.filter(c => 
+                (c.name && c.name.toLowerCase().includes(term)) ||
+                (c.phone && c.phone.includes(term))
             );
-            
             displayCustomers(filtered);
         }
 
-        // Select Customer
-        function selectCustomer(customerId) {
-            currentCustomerId = customerId;
-            selectedCustomer = customers.find(c => c.id === customerId);
-            
-            document.getElementById('selectedCustomerName').textContent = selectedCustomer.name;
-            document.getElementById('productsSection').classList.remove('hidden');
-            
-            displayProducts();
-        }
-
-        // Display Products
-        function displayProducts() {
-            const productsList = document.getElementById('productsList');
-            productsList.innerHTML = '';
-            
-            if (selectedCustomer && selectedCustomer.products) {
-                Object.entries(selectedCustomer.products).forEach(([productId, product]) => {
-                    const productDiv = document.createElement('div');
-                    productDiv.className = 'product-item';
-                    productDiv.innerHTML = `
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5>${product.name}</h5>
-                                <p>कीमत: ₹${product.price}</p>
-                                <small>तारीख: ${product.date}</small>
-                            </div>
-                            <div>
-                                <button class="btn btn-warning btn-sm me-2" onclick="editProduct('${productId}')">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-danger btn-sm" onclick="deleteProduct('${productId}')">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    productsList.appendChild(productDiv);
-                });
-            } else {
-                productsList.innerHTML = '<p class="text-center">कोई उत्पाद नहीं</p>';
+        // Send WhatsApp to Customer
+        function sendWhatsApp(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer?.phone) {
+                alert('❌ ग्राहक का फोन नंबर नहीं है');
+                return;
             }
+
+            let phone = customer.phone.replace(/\D/g, '');
+            if (phone.length === 10) phone = '91' + phone;
+
+            let msg = `🏪 *श्री बालाजी विविध भंडार*\n`;
+            msg += `alokwebs.online\n\n`;
+            msg += `👤 *ग्राहक:* ${customer.name}\n`;
+            msg += `📞 *फोन:* ${customer.phone}\n`;
+            msg += `💰 *कुल बकाया:* ₹${customer.totalDues || 0}\n\n`;
+            msg += `📦 *खरीदारी का विवरण:*\n`;
+            msg += `━━━━━━━━━━━━━━━━\n`;
+            
+            if (customer.products) {
+                let total = 0;
+                Object.values(customer.products).forEach((p, i) => {
+                    msg += `${i+1}. *${p.name}*\n`;
+                    msg += `   💰 ₹${p.price}\n`;
+                    msg += `   📅 ${p.date}\n`;
+                    total += Number(p.price);
+                });
+                msg += `━━━━━━━━━━━━━━━━\n`;
+                msg += `*कुल योग: ₹${total}*\n`;
+            }
+            
+            msg += `\n🙏 कृपया जल्द भुगतान करें।\n`;
+            msg += `धन्यवाद! 🙏`;
+            
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Show Add Customer Modal
+        // Customer Modal
         function showAddCustomerModal() {
-            document.getElementById('customerModalTitle').textContent = 'नया ग्राहक जोड़ें';
+            document.getElementById('customerModalTitle').innerHTML = '➕ नया ग्राहक';
             document.getElementById('customerName').value = '';
             document.getElementById('customerPhone').value = '';
             document.getElementById('customerItem').value = '';
             document.getElementById('customerPrice').value = '';
             document.getElementById('customerDate').value = new Date().toISOString().split('T')[0];
-            
             currentCustomerId = null;
             new bootstrap.Modal(document.getElementById('customerModal')).show();
         }
 
-        // Edit Customer
-        function editCustomer(customerId) {
-            const customer = customers.find(c => c.id === customerId);
-            
-            document.getElementById('customerModalTitle').textContent = 'ग्राहक एडिट करें';
-            document.getElementById('customerName').value = customer.name || '';
-            document.getElementById('customerPhone').value = customer.phone || '';
-            document.getElementById('customerItem').value = customer.item || '';
+        function editCustomer(id) {
+            const c = customers.find(c => c.id === id);
+            document.getElementById('customerModalTitle').innerHTML = '✏️ एडिट ग्राहक';
+            document.getElementById('customerName').value = c.name || '';
+            document.getElementById('customerPhone').value = c.phone || '';
+            document.getElementById('customerItem').value = c.item || '';
             document.getElementById('customerPrice').value = '';
-            document.getElementById('customerDate').value = customer.date || new Date().toISOString().split('T')[0];
-            
-            currentCustomerId = customerId;
+            document.getElementById('customerDate').value = c.date || new Date().toISOString().split('T')[0];
+            currentCustomerId = id;
             new bootstrap.Modal(document.getElementById('customerModal')).show();
         }
 
-        // Save Customer
         function saveCustomer() {
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const item = document.getElementById('customerItem').value;
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const item = document.getElementById('customerItem').value.trim();
             const price = document.getElementById('customerPrice').value;
             const date = document.getElementById('customerDate').value;
-            
+
             if (!name) {
-                alert('कृपया नाम डालें');
+                alert('❌ नाम डालें');
                 return;
             }
-            
-            const customerData = {
-                name: name,
-                phone: phone,
-                item: item,
-                date: date
+
+            const data = { 
+                name, 
+                phone, 
+                item, 
+                date, 
+                timestamp: Date.now() 
             };
-            
+
             if (currentCustomerId) {
-                // Update existing customer
-                database.ref('customers/' + currentCustomerId).update(customerData)
+                database.ref('customers/' + currentCustomerId).update(data)
                     .then(() => {
-                        bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
-                        
-                        // Add product if price is provided
-                        if (price) {
-                            const productData = {
-                                name: item,
-                                price: price,
-                                date: date
-                            };
-                            database.ref('customers/' + currentCustomerId + '/products').push(productData);
+                        if (price && item) {
+                            database.ref('customers/' + currentCustomerId + '/products').push({
+                                name: item, 
+                                price: Number(price), 
+                                date,
+                                timestamp: Date.now()
+                            });
                         }
+                        bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
                     });
             } else {
-                // Add new customer
-                database.ref('customers').push(customerData)
+                database.ref('customers').push(data)
                     .then((ref) => {
+                        if (price && item) {
+                            database.ref('customers/' + ref.key + '/products').push({
+                                name: item, 
+                                price: Number(price), 
+                                date,
+                                timestamp: Date.now()
+                            });
+                        }
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
-                        
-                        // Add product if price is provided
-                        if (price) {
-                            const productData = {
-                                name: item,
-                                price: price,
-                                date: date
-                            };
-                            database.ref('customers/' + ref.key + '/products').push(productData);
-                        }
                     });
             }
         }
 
-        // Delete Customer
-        function deleteCustomer(customerId) {
-            if (confirm('क्या आप इस ग्राहक को डिलीट करना चाहते हैं?')) {
-                database.ref('customers/' + customerId).remove()
+        function deleteCustomer(id) {
+            if (confirm('⚠️ क्या आप सच में डिलीट करना चाहते हैं?')) {
+                database.ref('customers/' + id).remove()
                     .then(() => {
-                        if (currentCustomerId === customerId) {
-                            document.getElementById('productsSection').classList.add('hidden');
-                            currentCustomerId = null;
-                            selectedCustomer = null;
+                        if (expandedCustomerId === id) {
+                            expandedCustomerId = null;
                         }
                     });
             }
         }
 
-        // Show Add Product Modal
-        function showAddProductModal() {
-            if (!currentCustomerId) return;
-            
+        // Product Functions
+        function showAddProductModal(customerId) {
+            currentCustomerId = customerId;
             document.getElementById('productName').value = '';
             document.getElementById('productPrice').value = '';
             document.getElementById('productDate').value = new Date().toISOString().split('T')[0];
-            
             new bootstrap.Modal(document.getElementById('productModal')).show();
         }
 
-        // Save Product
         function saveProduct() {
             if (!currentCustomerId) return;
             
-            const name = document.getElementById('productName').value;
+            const name = document.getElementById('productName').value.trim();
             const price = document.getElementById('productPrice').value;
             const date = document.getElementById('productDate').value;
-            
+
             if (!name || !price) {
-                alert('कृपया सभी जानकारी भरें');
+                alert('❌ नाम और कीमत डालें');
                 return;
             }
-            
-            const productData = {
-                name: name,
-                price: price,
-                date: date
-            };
-            
-            database.ref('customers/' + currentCustomerId + '/products').push(productData)
-                .then(() => {
-                    bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
-                });
+
+            database.ref('customers/' + currentCustomerId + '/products').push({ 
+                name, 
+                price: Number(price), 
+                date,
+                timestamp: Date.now()
+            })
+            .then(() => {
+                bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+                if (expandedCustomerId === currentCustomerId) {
+                    renderProducts(currentCustomerId);
+                }
+            });
         }
 
-        // Edit Product
-        function editProduct(productId) {
-            // You can implement product editing here
-            alert('Product editing functionality coming soon!');
-        }
-
-        // Delete Product
-        function deleteProduct(productId) {
-            if (!currentCustomerId) return;
+        function editProduct(customerId, productId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer || !customer.products) return;
             
-            if (confirm('क्या आप इस उत्पाद को डिलीट करना चाहते हैं?')) {
-                database.ref('customers/' + currentCustomerId + '/products/' + productId).remove();
-            }
-        }
-
-        // Send WhatsApp Message
-        function sendWhatsApp() {
-            if (!selectedCustomer) return;
+            const p = customer.products[productId];
+            const newName = prompt('नाम बदलें:', p.name);
+            const newPrice = prompt('कीमत बदलें:', p.price);
             
-            let message = `*श्री बालाजी विविध भंडार*\n`;
-            message += `ग्राहक: ${selectedCustomer.name}\n`;
-            message += `फोन: ${selectedCustomer.phone}\n`;
-            message += `\n*खरीदारी का विवरण:*\n`;
-            
-            if (selectedCustomer.products) {
-                Object.values(selectedCustomer.products).forEach(product => {
-                    message += `\n📦 ${product.name}\n`;
-                    message += `💰 ₹${product.price}\n`;
-                    message += `📅 ${product.date}\n`;
+            if (newName && newPrice) {
+                database.ref('customers/' + customerId + '/products/' + productId).update({
+                    name: newName, 
+                    price: Number(newPrice),
+                    timestamp: Date.now()
+                }).then(() => {
+                    if (expandedCustomerId === customerId) {
+                        renderProducts(customerId);
+                    }
                 });
             }
-            
-            const phoneNumber = "9413408402";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+        }
+
+        function deleteProduct(customerId, productId) {
+            if (confirm('⚠️ डिलीट करें?')) {
+                database.ref('customers/' + customerId + '/products/' + productId).remove()
+                    .then(() => {
+                        if (expandedCustomerId === customerId) {
+                            renderProducts(customerId);
+                        }
+                    });
+            }
         }
     </script>
 </body>
