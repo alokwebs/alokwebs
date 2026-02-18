@@ -5,116 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>श्री बालाजी वेरायटी स्टोर, खूड़ | alokwebs.online</title>
     
-    <!-- Bootstrap 5 CDN -->
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background: linear-gradient(145deg, #f6f9fc 0%, #edf2f7 100%);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f2ff 100%);
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-        }
-
-        /* Floating Background Animation */
-        .bg-bubbles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .bg-bubbles span {
-            position: absolute;
-            bottom: -100px;
-            width: 40px;
-            height: 40px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Login Page */
+        /* ===== LOGIN PAGE ===== */
         .login-page {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            position: relative;
+            background: linear-gradient(135deg, #0284c7, #0c4a6e);
         }
 
         .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 30px;
             padding: 40px;
             width: 100%;
             max-width: 420px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-            animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2);
         }
 
         .login-header {
@@ -125,20 +54,13 @@
         .store-icon {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(102,126,234,0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(102,126,234,0.6); }
-            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(102,126,234,0.4); }
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
         }
 
         .store-icon i {
@@ -147,18 +69,18 @@
         }
 
         .login-header h2 {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0c4a6e;
+        }
+
+        .login-header h2 span {
+            color: #0284c7;
         }
 
         .login-header p {
             color: #64748b;
             font-size: 14px;
-            font-weight: 500;
         }
 
         .input-group-custom {
@@ -173,8 +95,6 @@
             transform: translateY(-50%);
             color: #94a3b8;
             font-size: 18px;
-            z-index: 1;
-            transition: all 0.3s;
         }
 
         .input-group-custom input {
@@ -183,26 +103,19 @@
             border: 2px solid #e2e8f0;
             border-radius: 16px;
             font-size: 16px;
-            font-weight: 500;
-            background: white;
             transition: all 0.3s;
         }
 
         .input-group-custom input:focus {
-            border-color: #667eea;
+            border-color: #0284c7;
             outline: none;
-            box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
-            transform: translateY(-2px);
-        }
-
-        .input-group-custom input:focus + i {
-            color: #667eea;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
         }
 
         .login-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             color: white;
             border: none;
             border-radius: 16px;
@@ -211,37 +124,11 @@
             margin-top: 20px;
             cursor: pointer;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .login-btn:hover::before {
-            width: 300px;
-            height: 300px;
         }
 
         .login-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(102,126,234,0.4);
-        }
-
-        .login-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
         }
 
         .message {
@@ -251,105 +138,127 @@
             text-align: center;
             font-weight: 600;
             font-size: 14px;
-            animation: slideIn 0.3s;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .error-message {
-            background: linear-gradient(135deg, #fee, #ffd1d1);
+            background: #fee2e2;
             color: #dc2626;
-            border: 1px solid #fecaca;
         }
 
         .success-message {
-            background: linear-gradient(135deg, #e7f5e8, #d1fae5);
+            background: #dcfce7;
             color: #059669;
-            border: 1px solid #a7f3d0;
         }
 
-        .info-message {
-            background: linear-gradient(135deg, #e6f0ff, #dbeafe);
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-        }
-
-        /* Dashboard */
+        /* ===== DASHBOARD ===== */
         .dashboard {
             min-height: 100vh;
-            background: #f8fafc;
+            background: #f0f9ff;
         }
 
-        /* Mini Navbar */
+        /* Mini Navbar - Fixed */
         .mini-navbar {
             background: white;
-            padding: 10px 16px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.9);
-            border-bottom: 1px solid rgba(226,232,240,0.5);
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
         }
 
         .mini-brand {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .mini-brand i {
             font-size: 24px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #0284c7;
         }
 
-        .mini-brand span {
+        .mini-brand .brand-text {
             font-weight: 700;
             font-size: 18px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #0c4a6e;
+        }
+        
+        .mini-brand .brand-text span {
+            color: #0284c7;
+            font-size: 14px;
+            font-weight: 400;
+            display: block;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .recycle-icon {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0284c7;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .recycle-icon:hover {
+            background: #e0f2fe;
+            transform: scale(1.05);
+        }
+
+        .deleted-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
         }
 
         .admin-chip {
-            background: linear-gradient(135deg, #667eea15, #764ba215);
+            background: #f1f5f9;
             padding: 6px 14px;
-            border-radius: 40px;
+            border-radius: 30px;
+            color: #0284c7;
+            font-weight: 500;
             font-size: 13px;
-            font-weight: 600;
-            color: #4f46e5;
             display: flex;
             align-items: center;
             gap: 6px;
-            border: 1px solid rgba(102,126,234,0.2);
         }
 
         .admin-chip i {
-            font-size: 14px;
             color: #fbbf24;
         }
 
-        .logout-mini {
-            background: none;
-            border: 1px solid #e2e8f0;
+        .logout-btn {
+            background: #f1f5f9;
+            border: none;
             width: 40px;
             height: 40px;
-            border-radius: 40px;
+            border-radius: 10px;
             color: #64748b;
             cursor: pointer;
             transition: all 0.3s;
@@ -358,79 +267,42 @@
             justify-content: center;
         }
 
-        .logout-mini:hover {
+        .logout-btn:hover {
             background: #fee2e2;
             color: #dc2626;
-            border-color: #fee2e2;
-            transform: rotate(180deg);
         }
 
-        /* Main Content Container */
+        /* Main Container */
         .main-container {
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Total Dues Card - Modern */
-        .total-dues-modern {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 30px;
-            padding: 30px;
-            margin-bottom: 25px;
+        /* Total Dues Card */
+        .total-dues-card {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 20px;
             color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(102,126,234,0.3);
-            animation: glow 3s infinite;
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
         }
 
-        @keyframes glow {
-            0% { box-shadow: 0 20px 40px rgba(102,126,234,0.3); }
-            50% { box-shadow: 0 30px 60px rgba(102,126,234,0.5); }
-            100% { box-shadow: 0 20px 40px rgba(102,126,234,0.3); }
-        }
-
-        .total-dues-modern::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .dues-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .dues-label {
-            font-size: 16px;
+        .total-dues-card h3 {
+            font-size: 15px;
             opacity: 0.9;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        .dues-amount {
-            font-size: 52px;
-            font-weight: 800;
-            line-height: 1;
+        .total-dues-card .amount {
+            font-size: 40px;
+            font-weight: 700;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .dues-sub {
-            font-size: 14px;
+        .total-dues-card .store-name {
+            font-size: 13px;
             opacity: 0.8;
         }
 
@@ -438,683 +310,431 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
-        .stat-item-modern {
+        .stat-card {
             background: white;
-            border-radius: 20px;
-            padding: 20px 15px;
+            border-radius: 18px;
+            padding: 15px 10px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-            transition: all 0.3s;
-            border: 1px solid rgba(226,232,240,0.5);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid #f1f5f9;
         }
 
-        .stat-item-modern:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(102,126,234,0.1);
-            border-color: #667eea40;
-        }
-
-        .stat-icon-modern {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
+        .stat-card i {
             font-size: 24px;
-            color: #4f46e5;
+            color: #0284c7;
+            margin-bottom: 8px;
         }
 
-        .stat-value-modern {
-            font-size: 24px;
-            font-weight: 800;
-            color: #1e293b;
-            line-height: 1.2;
+        .stat-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0c4a6e;
         }
 
-        .stat-label-modern {
-            font-size: 12px;
+        .stat-card .label {
+            font-size: 11px;
             color: #64748b;
-            font-weight: 500;
         }
 
-        /* 🔥 ULTIMATE SEARCH BAR - जहां CUSTOMER दिखेगा, KEYWORD नहीं! */
+        /* 🔥 SEARCH BAR */
         .search-section {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .search-wrapper {
             background: white;
-            border-radius: 60px;
-            padding: 6px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid rgba(226,232,240,0.8);
-            transition: all 0.3s;
-            position: relative;
+            border-radius: 18px;
+            padding: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #e0f2fe;
+            display: flex;
+            align-items: center;
         }
 
         .search-wrapper:focus-within {
-            box-shadow: 0 0 0 4px rgba(102,126,234,0.15);
-            border-color: #667eea;
-        }
-
-        .search-input-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border-color: #0284c7;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
         }
 
         .search-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #4f46e5;
-            font-size: 18px;
-            margin-left: 4px;
-        }
-
-        .search-input-group input {
-            flex: 1;
-            border: none;
-            padding: 12px 0;
-            font-size: 16px;
-            font-weight: 500;
-            background: transparent;
-            outline: none;
-            color: #1e293b;
-        }
-
-        .search-input-group input::placeholder {
-            color: #94a3b8;
-            font-weight: 400;
-        }
-
-        .search-count {
+            width: 45px;
+            height: 45px;
             background: #f1f5f9;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #475569;
-            margin-right: 8px;
-        }
-
-        /* 🔥 REAL-TIME SEARCH RESULTS - CUSTOMER दिखेंगे, KEYWORD नहीं! */
-        .search-results-container {
-            margin-top: 12px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            border-radius: 24px;
-            background: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        .search-results-container.show {
-            max-height: 450px;
-            overflow-y: auto;
-            padding: 16px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .result-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 16px;
-            border-radius: 20px;
-            background: white;
-            margin-bottom: 8px;
-            border: 1px solid #f1f5f9;
-            cursor: pointer;
-            transition: all 0.3s;
-            animation: fadeInUp 0.3s ease;
-            position: relative;
-        }
-
-        .result-item:hover {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            transform: translateX(5px);
-            border-color: #667eea;
-        }
-
-        .result-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #4f46e5;
-            font-size: 22px;
+            color: #0284c7;
+            margin: 4px;
         }
 
-        .result-info {
+        .search-wrapper input {
             flex: 1;
+            padding: 10px 12px;
+            border: none;
+            font-size: 15px;
+            background: transparent;
         }
 
-        .result-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 4px;
+        .search-wrapper input:focus {
+            outline: none;
         }
 
-        .result-name span {
-            background: linear-gradient(135deg, #fef9c3, #fef08a);
-            padding: 0 4px;
-            border-radius: 6px;
-            font-weight: 800;
-        }
-
-        .result-phone {
+        .clear-search {
+            width: 38px;
+            height: 38px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 10px;
             color: #64748b;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 6px;
+            margin-right: 6px;
+            cursor: pointer;
+            display: none;
         }
 
-        .result-due {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .due-high {
+        .clear-search:hover {
             background: #fee2e2;
             color: #dc2626;
         }
 
-        .due-medium {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .due-low {
-            background: #dcfce7;
-            color: #059669;
-        }
-
-        .result-arrow {
-            width: 36px;
-            height: 36px;
-            background: #f1f5f9;
-            border-radius: 50%;
+        .search-stats {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            transition: all 0.3s;
+            margin-top: 10px;
+            padding: 0 5px;
         }
 
-        .result-item:hover .result-arrow {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .search-count {
+            background: #f1f5f9;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #0284c7;
+            font-weight: 500;
+        }
+
+        .result-badge {
+            background: #0284c7;
             color: white;
-            transform: translateX(5px);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
         }
 
         /* Add Customer Button */
-        .add-customer-btn-modern {
+        .add-btn {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: white;
-            border: 2px dashed #cbd5e1;
-            border-radius: 20px;
-            color: #334155;
+            border: 2px dashed #0284c7;
+            border-radius: 18px;
+            color: #0284c7;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 15px 0;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 15px;
         }
 
-        .add-customer-btn-modern:hover {
-            border-color: #667eea;
-            background: #f8fafc;
-            color: #4f46e5;
-            transform: scale(1.02);
+        .add-btn:hover {
+            background: #f0f9ff;
+            border-style: solid;
         }
 
-        .add-customer-btn-modern i {
-            font-size: 20px;
-            transition: transform 0.3s;
-        }
-
-        .add-customer-btn-modern:hover i {
-            transform: rotate(90deg);
+        .add-btn.hidden {
+            display: none;
         }
 
         /* Customers Grid */
         .customers-grid {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
-        .customer-card-modern {
-            background: white;
-            border-radius: 24px;
+        /* 🌈 CUSTOMER CARDS */
+        .customer-card {
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
             transition: all 0.3s;
-            animation: fadeInUp 0.5s ease;
-            scroll-margin-top: 20px;
+            animation: fadeIn 0.3s ease;
         }
 
-        .customer-card-modern.selected {
-            border: 2px solid #667eea;
-            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .customer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(2, 132, 199, 0.1);
         }
 
-        .customer-card-modern:hover {
-            box-shadow: 0 20px 35px rgba(102,126,234,0.1);
-            border-color: #667eea40;
-        }
+        /* 🎨 6 अलग-अलग रंग */
+        .customer-card[data-color="1"] { background: #7db2d5; }  /* हल्का नीला */
+        .customer-card[data-color="2"] { background: #ea1927; }  /* हल्का गुलाबी */
+        .customer-card[data-color="3"] { background: #74bb8a; }  /* हल्का हरा */
+        .customer-card[data-color="4"] { background: #c0b868; }  /* हल्का पीला */
+        .customer-card[data-color="5"] { background: #9a65d3; }  /* हल्का बैंगनी */
+        .customer-card[data-color="6"] { background: #c5666c; }  /* हल्का लाल */
 
-        .customer-main {
-            padding: 20px;
-            cursor: pointer;
+        .customer-header {
+            padding: 18px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: background 0.3s;
+            gap: 12px;
         }
 
-        .customer-main:hover {
-            background: #f8fafc;
-        }
-
-        .customer-avatar-modern {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            border-radius: 20px;
+        .customer-avatar {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #0284c7;
             font-size: 26px;
-            color: #4f46e5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
-        .customer-info-modern {
+        .customer-info {
             flex: 1;
         }
 
-        .customer-name-modern {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e293b;
+        .customer-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #0c4a6e;
             margin-bottom: 6px;
         }
 
-        .customer-meta-modern {
+        .customer-meta {
             display: flex;
-            align-items: center;
-            gap: 16px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .meta-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            color: #64748b;
+            gap: 5px;
+            color: #334155;
             font-size: 13px;
-            font-weight: 500;
         }
 
         .meta-item i {
-            color: #94a3b8;
-            font-size: 14px;
+            color: #0284c7;
+            font-size: 12px;
         }
 
-        .due-badge-modern {
-            padding: 4px 12px;
-            border-radius: 40px;
+        .due-badge {
+            background: white;
+            padding: 3px 10px;
+            border-radius: 30px;
+            color: #dc2626;
+            font-weight: 600;
             font-size: 13px;
-            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .expand-icon-modern {
-            width: 40px;
-            height: 40px;
-            background: #f1f5f9;
-            border-radius: 14px;
+        /* Customer Actions */
+        .customer-actions {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            transition: all 0.3s;
-        }
-
-        .expand-icon-modern.expanded {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            transform: rotate(180deg);
-        }
-
-        .customer-actions-modern {
-            display: flex;
-            gap: 10px;
-            padding: 16px 20px;
-            background: #f8fafc;
-            border-top: 1px solid #f1f5f9;
-        }
-
-        .action-btn-modern {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 16px;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 8px;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.7);
+            border-top: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .whatsapp-btn-modern {
+        .whatsapp-btn {
             background: #25D366;
             color: white;
         }
 
-        .whatsapp-btn-modern:hover {
+        .whatsapp-btn:hover {
             background: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px #25D36640;
         }
 
-        .edit-btn-modern {
+        .edit-btn {
             background: #fbbf24;
-            color: white;
+            color: #0c4a6e;
         }
 
-        .edit-btn-modern:hover {
+        .edit-btn:hover {
             background: #f59e0b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px #fbbf2440;
         }
 
-        .delete-btn-modern {
+        .delete-btn {
             background: #ef4444;
             color: white;
         }
 
-        .delete-btn-modern:hover {
+        .delete-btn:hover {
             background: #dc2626;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px #ef444440;
         }
 
-        /* Products Section */
-        .products-section-modern {
-            padding: 20px;
-            background: #ffffff;
-            border-top: 2px solid #f1f5f9;
-            display: none;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .products-section-modern.show {
-            display: block;
+        /* 🌈 PRODUCTS SECTION */
+        .products-section {
+            padding: 18px;
+            background: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(0,0,0,0.03);
         }
 
         .products-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
-        .products-header h6 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1e293b;
+        .products-header h5 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #0284c7;
             margin: 0;
         }
 
         .add-product-mini {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: white;
+            color: #0284c7;
             border: none;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .add-product-mini:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102,126,234,0.3);
+            background: #f1f5f9;
         }
 
-        .product-item-modern {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 12px;
+        /* 🌈 PRODUCT ITEMS */
+        .product-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s;
-            border: 1px solid #f1f5f9;
         }
 
-        .product-item-modern:hover {
-            background: white;
-            border-color: #667eea40;
-            transform: translateX(5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+        .product-item[data-color="1"] { background: #bae6fd; }  /* नीला */
+        .product-item[data-color="2"] { background: #fecaca; }  /* लाल */
+        .product-item[data-color="3"] { background: #bbf7d0; }  /* हरा */
+        .product-item[data-color="4"] { background: #fed7aa; }  /* नारंगी */
+        .product-item[data-color="5"] { background: #e9d5ff; }  /* बैंगनी */
+
+        .product-item:hover {
+            transform: translateX(3px);
         }
 
-        .product-details-modern h5 {
-            font-size: 16px;
+        .product-name {
             font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 8px;
+            color: #0c4a6e;
+            font-size: 14px;
+            margin-bottom: 4px;
         }
 
-        .product-details-modern p {
+        .product-details {
+            display: flex;
+            gap: 12px;
+            color: #334155;
+            font-size: 12px;
+        }
+
+        .product-details i {
+            color: #0284c7;
+            margin-right: 3px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .product-actions button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: white;
             color: #64748b;
             font-size: 13px;
-            margin: 4px 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .product-actions-modern {
-            display: flex;
-            gap: 6px;
+        .product-actions button:hover {
+            background: #f1f5f9;
+            color: #0284c7;
         }
 
-        .product-actions-modern button {
-            width: 36px;
-            height: 36px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .product-actions-modern button:hover {
-            transform: scale(0.9);
-        }
-
-        .total-amount-modern {
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            padding: 16px;
-            border-radius: 16px;
-            margin-top: 16px;
-            text-align: right;
-            font-weight: 700;
-            color: #1e293b;
-            border: 1px solid #667eea20;
-        }
-
-        /* Modal Styles */
-        .modal-content-custom {
-            border-radius: 30px !important;
-            border: none !important;
-            overflow: hidden;
-        }
-
-        .modal-header-custom {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px 25px;
-            border: none;
-        }
-
-        .modal-header-custom h5 {
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-body-custom {
-            padding: 25px;
-        }
-
-        .modal-body-custom input {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-
-        .modal-body-custom input:focus {
-            border-color: #667eea;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
-        }
-
-        .modal-footer-custom {
-            padding: 20px 25px;
-            border-top: 2px solid #f1f5f9;
-            gap: 12px;
-        }
-
-        .btn-custom {
-            padding: 14px 28px;
-            border-radius: 16px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-custom-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .btn-custom-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
-        }
-
-        /* Success Toast */
-        .toast-success {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+        .total-amount {
             background: white;
-            color: #059669;
-            padding: 16px 24px;
-            border-radius: 60px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 12px;
+            text-align: right;
             font-weight: 600;
-            z-index: 9999;
-            animation: slideRight 0.3s ease;
-            border-left: 4px solid #059669;
+            color: #0284c7;
+            font-size: 14px;
         }
 
-        @keyframes slideRight {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        /* Search Highlight */
+        .search-highlight {
+            background: #fbbf24;
+            color: #0c4a6e;
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-weight: 600;
         }
 
         /* Loading Spinner */
         .loading-spinner {
             text-align: center;
-            padding: 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 18px;
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border: 4px solid #f1f5f9;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid #0284c7;
             border-radius: 50%;
-            margin: 0 auto 15px;
+            margin: 0 auto 12px;
             animation: spin 1s linear infinite;
         }
 
@@ -1124,29 +744,28 @@
         }
 
         /* Empty State */
-        .empty-state-modern {
+        .empty-state {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px;
             background: white;
-            border-radius: 30px;
-            border: 2px dashed #e2e8f0;
+            border-radius: 18px;
         }
 
-        .empty-state-modern i {
-            font-size: 60px;
-            color: #94a3b8;
-            margin-bottom: 20px;
+        .empty-state i {
+            font-size: 50px;
+            color: #e0f2fe;
+            margin-bottom: 15px;
         }
 
-        .empty-state-modern h4 {
-            color: #334155;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .empty-state h3 {
+            color: #0c4a6e;
+            margin-bottom: 8px;
+            font-size: 18px;
         }
 
-        .empty-state-modern p {
+        .empty-state p {
             color: #64748b;
-            margin-bottom: 20px;
+            font-size: 14px;
         }
 
         .hidden {
@@ -1159,82 +778,45 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .dues-amount {
-                font-size: 40px;
+            .customer-meta {
+                gap: 8px;
             }
             
-            .customer-meta-modern {
-                gap: 10px;
-            }
-            
-            .meta-item {
-                font-size: 12px;
-            }
-            
-            .customer-actions-modern {
+            .customer-actions {
                 flex-wrap: wrap;
             }
             
-            .action-btn-modern {
-                flex: 1 1 calc(50% - 5px);
+            .action-btn {
+                flex: 1 1 calc(50% - 4px);
+                font-size: 12px;
+                padding: 8px;
             }
             
-            .search-results-container.show {
-                max-height: 350px;
+            .mini-navbar {
+                padding: 8px 12px;
+            }
+            
+            .brand-text {
+                font-size: 16px;
             }
         }
 
         @media (max-width: 480px) {
-            .mini-brand span {
-                font-size: 16px;
+            .mini-brand .brand-text span {
+                font-size: 12px;
             }
             
             .admin-chip span {
                 display: none;
             }
             
-            .stats-grid {
-                gap: 10px;
-            }
-            
-            .stat-item-modern {
-                padding: 15px 10px;
-            }
-            
-            .stat-value-modern {
-                font-size: 20px;
-            }
-            
-            .customer-main {
-                padding: 15px;
-            }
-            
-            .customer-avatar-modern {
-                width: 50px;
-                height: 50px;
-                font-size: 22px;
-            }
-            
-            .customer-name-modern {
-                font-size: 16px;
+            .total-dues-card .amount {
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-bubbles">
-        <span style="left:10%; width:60px; height:60px; animation-duration:12s;"></span>
-        <span style="left:20%; width:80px; height:80px; animation-duration:18s;"></span>
-        <span style="left:30%; width:40px; height:40px; animation-duration:15s;"></span>
-        <span style="left:40%; width:100px; height:100px; animation-duration:20s;"></span>
-        <span style="left:50%; width:70px; height:70px; animation-duration:14s;"></span>
-        <span style="left:60%; width:50px; height:50px; animation-duration:16s;"></span>
-        <span style="left:70%; width:90px; height:90px; animation-duration:22s;"></span>
-        <span style="left:80%; width:60px; height:60px; animation-duration:13s;"></span>
-        <span style="left:90%; width:70px; height:70px; animation-duration:19s;"></span>
-    </div>
-
     <!-- Login Page -->
     <div id="loginPage" class="login-page">
         <div class="login-card">
@@ -1242,15 +824,15 @@
                 <div class="store-icon">
                     <i class="fas fa-store"></i>
                 </div>
-                <h2>श्री बालाजी वेरायटी स्टोर, खूड़</h2>
-                <p>alokwebs.online | केवल एडमिन के लिए</p>
+                <h2>श्री बालाजी <span>वेरायटी स्टोर</span></h2>
+                <p>खूड़ | alokwebs.online | केवल एडमिन</p>
             </div>
 
             <div id="messageContainer"></div>
 
             <div class="input-group-custom">
                 <i class="fas fa-envelope"></i>
-                <input type="email" id="emailInput" placeholder="ईमेल एड्रेस" value="">
+                <input type="email" id="emailInput" placeholder="ईमेल">
             </div>
 
             <div class="input-group-custom">
@@ -1259,98 +841,93 @@
             </div>
 
             <button class="login-btn" onclick="loginWithEmail()" id="loginBtn">
-                <i class="fas fa-sign-in-alt"></i> लॉगिन करें
+                लॉगिन करें
             </button>
         </div>
     </div>
 
     <!-- Dashboard -->
     <div id="dashboardPage" class="dashboard hidden">
-        <!-- Mini Navbar -->
+        <!-- Mini Navbar - Fixed -->
         <div class="mini-navbar">
             <div class="mini-brand">
                 <i class="fas fa-store"></i>
-                <span>श्री बालाजी वेरायटी स्टोर, खूड़</span>
+                <div class="brand-text">
+                    श्री बालाजी वेरायटी स्टोर
+                    <span>खूड़</span>
+                </div>
             </div>
             
-            <div class="admin-chip">
-                <i class="fas fa-crown"></i>
-                <span id="adminEmail"></span>
-            </div>
+            <div class="nav-icons">
+                <a href="recycle.html" class="recycle-icon" title="पुराने ग्राहक">
+                    <i class="fas fa-trash-alt"></i>
+                    <span class="deleted-count" id="deletedCount">0</span>
+                </a>
+                
+                <div class="admin-chip">
+                    <i class="fas fa-crown"></i>
+                    <span id="adminEmail"></span>
+                </div>
 
-            <button class="logout-mini" onclick="logout()">
-                <i class="fas fa-power-off"></i>
-            </button>
+                <button class="logout-btn" onclick="logout()" title="लॉगआउट">
+                    <i class="fas fa-power-off"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Main Container -->
         <div class="main-container">
-            <!-- Total Dues Card -->
-            <div class="total-dues-modern animate__animated animate__fadeIn">
-                <div class="dues-content">
-                    <div class="dues-label">
-                        <i class="fas fa-rupee-sign"></i> कुल बकाया राशि
-                    </div>
-                    <div class="dues-amount" id="totalDues">₹0</div>
-                    <div class="dues-sub">सभी ग्राहकों का कुल बकाया</div>
-                </div>
+            <!-- Total Dues -->
+            <div class="total-dues-card">
+                <h3>कुल बकाया राशि</h3>
+                <div class="amount" id="totalDues">₹0</div>
+                <div class="store-name">श्री बालाजी वेरायटी स्टोर, खूड़</div>
             </div>
 
-            <!-- Stats Grid -->
+            <!-- Stats -->
             <div class="stats-grid">
-                <div class="stat-item-modern">
-                    <div class="stat-icon-modern">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-value-modern" id="totalCustomers">0</div>
-                    <div class="stat-label-modern">कुल ग्राहक</div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="value" id="totalCustomers">0</div>
+                    <div class="label">कुल ग्राहक</div>
                 </div>
-                <div class="stat-item-modern">
-                    <div class="stat-icon-modern">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="stat-value-modern" id="highDueCustomers">0</div>
-                    <div class="stat-label-modern">₹500+ बकाया</div>
+                <div class="stat-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="value" id="highDueCustomers">0</div>
+                    <div class="label">₹500+ बकाया</div>
                 </div>
-                <div class="stat-item-modern">
-                    <div class="stat-icon-modern">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <div class="stat-value-modern" id="avgDue">₹0</div>
-                    <div class="stat-label-modern">औसत बकाया</div>
+                <div class="stat-card">
+                    <i class="fas fa-calculator"></i>
+                    <div class="value" id="avgDue">₹0</div>
+                    <div class="label">औसत बकाया</div>
                 </div>
-                <div class="stat-item-modern">
-                    <div class="stat-icon-modern">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="stat-value-modern" id="totalProducts">0</div>
-                    <div class="stat-label-modern">कुल उत्पाद</div>
+                <div class="stat-card">
+                    <i class="fas fa-box"></i>
+                    <div class="value" id="totalProducts">0</div>
+                    <div class="label">कुल उत्पाद</div>
                 </div>
             </div>
 
-            <!-- 🔥 ULTIMATE SEARCH SECTION - REAL CUSTOMERS, NO KEYWORDS! -->
+            <!-- 🔥 SEARCH BAR -->
             <div class="search-section">
                 <div class="search-wrapper">
-                    <div class="search-input-group">
-                        <div class="search-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <input type="text" 
-                               id="searchInput" 
-                               placeholder="नाम या मोबाइल नंबर से खोजें..." 
-                               autocomplete="off">
-                        <span class="search-count" id="searchCount">0 ग्राहक</span>
+                    <div class="search-icon">
+                        <i class="fas fa-search"></i>
                     </div>
+                    <input type="text" id="searchInput" placeholder="नाम या मोबाइल नंबर से खोजें..." autocomplete="off">
+                    <button class="clear-search" id="clearSearch" onclick="clearSearch()">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-
-                <!-- 🔥 LIVE SEARCH RESULTS - सिर्फ CUSTOMER दिखेंगे! -->
-                <div class="search-results-container" id="searchResultsContainer">
-                    <!-- Results will appear here dynamically -->
+                
+                <div class="search-stats">
+                    <span class="search-count" id="searchCount">0 ग्राहक</span>
+                    <span class="result-badge" id="resultBadge">सभी ग्राहक</span>
                 </div>
             </div>
 
             <!-- Add Customer Button -->
-            <button class="add-customer-btn-modern" onclick="showAddCustomerModal()">
+            <button class="add-btn" id="addCustomerBtn" onclick="showAddCustomerModal()">
                 <i class="fas fa-plus-circle"></i> नया ग्राहक जोड़ें
             </button>
 
@@ -1364,26 +941,27 @@
         </div>
     </div>
 
-    <!-- Customer Modal -->
+    <!-- Customer Modal - Only Name & Phone for Edit -->
     <div class="modal fade" id="customerModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-content-custom">
-                <div class="modal-header-custom">
+            <div class="modal-content" style="border-radius: 20px;">
+                <div class="modal-header" style="background: #0284c7; color: white; border: none;">
                     <h5 class="modal-title" id="customerModalTitle">
                         <i class="fas fa-user-plus"></i> नया ग्राहक
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body-custom">
-                    <input type="text" id="customerName" placeholder="ग्राहक का नाम *" required>
-                    <input type="tel" id="customerPhone" placeholder="मोबाइल नंबर *" required>
-                    <input type="text" id="customerItem" placeholder="आखिरी सामान">
-                    <input type="number" id="customerPrice" placeholder="कीमत (₹)">
-                    <input type="date" id="customerDate">
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="customerName" placeholder="ग्राहक का नाम *" style="margin-bottom: 12px;">
+                    <input type="tel" class="form-control" id="customerPhone" placeholder="मोबाइल नंबर *" style="margin-bottom: 12px;">
+                    <input type="text" class="form-control" id="customerItem" placeholder="सामान का नाम (नए के लिए)" style="margin-bottom: 12px;">
+                    <input type="number" class="form-control" id="customerPrice" placeholder="कीमत (₹) (नए के लिए)" style="margin-bottom: 12px;">
+                    <input type="date" class="form-control" id="customerDate">
+                    <small class="text-muted">एडिट करते समय सिर्फ नाम और फोन बदलें</small>
                 </div>
-                <div class="modal-footer-custom">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn-custom btn-custom-primary" onclick="saveCustomer()">सेव करें</button>
+                    <button type="button" class="btn" style="background: #0284c7; color: white;" onclick="saveCustomer()">सेव करें</button>
                 </div>
             </div>
         </div>
@@ -1392,34 +970,34 @@
     <!-- Product Modal -->
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-content-custom">
-                <div class="modal-header-custom">
+            <div class="modal-content" style="border-radius: 20px;">
+                <div class="modal-header" style="background: #0284c7; color: white; border: none;">
                     <h5 class="modal-title">
                         <i class="fas fa-box"></i> नया उत्पाद
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body-custom">
-                    <input type="text" id="productName" placeholder="उत्पाद का नाम *" required>
-                    <input type="number" id="productPrice" placeholder="कीमत (₹) *" required>
-                    <input type="date" id="productDate">
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="productName" placeholder="उत्पाद का नाम *" style="margin-bottom: 12px;">
+                    <input type="number" class="form-control" id="productPrice" placeholder="कीमत (₹) *" style="margin-bottom: 12px;">
+                    <input type="date" class="form-control" id="productDate">
                 </div>
-                <div class="modal-footer-custom">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn-custom btn-custom-primary" onclick="saveProduct()">सेव करें</button>
+                    <button type="button" class="btn" style="background: #0284c7; color: white;" onclick="saveProduct()">सेव करें</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Firebase Configuration
+        // Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyDMO9CwYSF4tH4y3y0eD9IEaoYq1yIeP7g",
             authDomain: "shree-balaji-variety-store.firebaseapp.com",
@@ -1430,235 +1008,84 @@
             appId: "1:455588388635:web:6958b0e092b7455d9a3dbe"
         };
 
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const database = firebase.database();
 
-        // Session persistence
-        auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-
         // Global Variables
         let currentCustomerId = null;
-        let customers = [];
-        let expandedCustomerId = null;
+        let allCustomers = [];
         let searchTimeout = null;
 
-        // Auth State Check
+        // Auth State
         auth.onAuthStateChanged((user) => {
             if (user) {
-                // Check if admin
                 database.ref("admins/" + user.uid).once("value")
                     .then(snapshot => {
                         if (snapshot.exists()) {
-                            // Authorized
                             document.getElementById('loginPage').classList.add('hidden');
                             document.getElementById('dashboardPage').classList.remove('hidden');
                             document.getElementById('adminEmail').innerHTML = user.email.split('@')[0];
                             loadCustomers();
-                            showSuccess('✅ लॉगिन सफल!');
-                            
-                            // Setup search listener
-                            setupSearchListener();
+                            loadDeletedCount();
                         } else {
                             auth.signOut();
                             showMessage('❌ आप एडमिन नहीं हैं', 'error');
                         }
                     });
             } else {
-                // Show login
                 document.getElementById('loginPage').classList.remove('hidden');
                 document.getElementById('dashboardPage').classList.add('hidden');
             }
         });
 
-        // 🔥 ULTIMATE SEARCH SETUP
-        function setupSearchListener() {
-            const searchInput = document.getElementById('searchInput');
-            const searchContainer = document.getElementById('searchResultsContainer');
-            
-            searchInput.addEventListener('input', function(e) {
-                const query = e.target.value.toLowerCase().trim();
-                
-                // Clear previous timeout
-                clearTimeout(searchTimeout);
-                
-                if (query.length === 0) {
-                    searchContainer.classList.remove('show');
-                    document.getElementById('searchCount').textContent = '0 ग्राहक';
-                    displayCustomers(customers);
-                    return;
-                }
-                
-                // Show loading
-                searchContainer.innerHTML = `
-                    <div class="loading-spinner" style="padding: 20px;">
-                        <div class="spinner" style="width: 30px; height: 30px;"></div>
-                        <p style="font-size: 13px;">खोज रहे हैं...</p>
-                    </div>
-                `;
-                searchContainer.classList.add('show');
-                
-                // Debounce search for performance
-                searchTimeout = setTimeout(() => {
-                    performInstantSearch(query);
-                }, 300);
-            });
-            
-            // Close search when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!searchInput.contains(e.target) && !searchContainer.contains(e.target)) {
-                    searchContainer.classList.remove('show');
-                }
-            });
+        // Load Deleted Count
+        function loadDeletedCount() {
+            database.ref('deleted_customers').once('value')
+                .then(snapshot => {
+                    const count = snapshot.exists() ? snapshot.numChildren() : 0;
+                    document.getElementById('deletedCount').textContent = count;
+                });
         }
 
-        // 🔥 INSTANT SEARCH - सिर्फ CUSTOMER दिखाएगा, KEYWORD नहीं!
-        function performInstantSearch(query) {
-            if (!query) return;
-            
-            // Search in customers array
-            const results = customers.filter(customer => 
-                (customer.name && customer.name.toLowerCase().includes(query)) ||
-                (customer.phone && customer.phone.includes(query))
-            );
-            
-            // Update search count
-            document.getElementById('searchCount').textContent = results.length + ' ग्राहक';
-            
-            if (results.length === 0) {
-                document.getElementById('searchResultsContainer').innerHTML = `
-                    <div class="empty-state-modern" style="padding: 30px;">
-                        <i class="fas fa-user-slash"></i>
-                        <h4>कोई ग्राहक नहीं मिला</h4>
-                        <p>"${document.getElementById('searchInput').value}" से कोई ग्राहक नहीं</p>
-                        <button class="add-customer-btn-modern" onclick="showAddCustomerModal()" style="margin:0; width:auto;">
-                            <i class="fas fa-plus"></i> नया ग्राहक जोड़ें
-                        </button>
-                    </div>
-                `;
+        // Login
+        function loginWithEmail() {
+            const email = document.getElementById('emailInput').value.trim();
+            const password = document.getElementById('passwordInput').value;
+            const btn = document.getElementById('loginBtn');
+
+            if (!email || !password) {
+                showMessage('❌ ईमेल और पासवर्ड डालें', 'error');
                 return;
             }
-            
-            // 🔥 HIGHLIGHT MATCHING TEXT
-            const highlightText = (text, query) => {
-                if (!text) return '';
-                const regex = new RegExp(`(${query})`, 'gi');
-                return text.replace(regex, '<span>$1</span>');
-            };
-            
-            // Display results with highlighted text
-            let html = '';
-            results.slice(0, 8).forEach(customer => {
-                const dueClass = customer.totalDues >= 500 ? 'due-high' : 
-                                (customer.totalDues >= 200 ? 'due-medium' : 'due-low');
-                
-                html += `
-                    <div class="result-item" onclick="viewCustomerDetails('${customer.id}')">
-                        <div class="result-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="result-info">
-                            <div class="result-name">${highlightText(customer.name, query)}</div>
-                            <div class="result-phone">
-                                <i class="fas fa-phone-alt"></i> ${highlightText(customer.phone, query)}
-                            </div>
-                            <div class="result-due ${dueClass}">
-                                <i class="fas fa-rupee-sign"></i> बकाया: ₹${customer.totalDues || 0}
-                            </div>
-                        </div>
-                        <div class="result-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            if (results.length > 8) {
-                html += `
-                    <div style="text-align: center; padding: 15px; color: #64748b; font-size: 13px;">
-                        और ${results.length - 8} ग्राहक...
-                    </div>
-                `;
-            }
-            
-            document.getElementById('searchResultsContainer').innerHTML = html;
-            
-            // Also filter main list
-            filterMainList(query);
+
+            btn.disabled = true;
+            btn.innerHTML = 'लॉगिन हो रहा है...';
+
+            auth.signInWithEmailAndPassword(email, password)
+                .catch(error => showMessage('❌ लॉगिन विफल: ' + error.message, 'error'))
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = 'लॉगिन करें';
+                });
         }
 
-        // Filter main customer list
-        function filterMainList(query) {
-            if (!query) {
-                displayCustomers(customers);
-                return;
-            }
-            
-            const filtered = customers.filter(customer => 
-                (customer.name && customer.name.toLowerCase().includes(query)) ||
-                (customer.phone && customer.phone.includes(query))
-            );
-            
-            displayCustomers(filtered);
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') loginWithEmail();
         }
 
-        // 🔥 FIXED: viewCustomerDetails function - अब PRODUCTS उसी के नीचे दिखेंगे!
-        function viewCustomerDetails(customerId) {
-            // सबसे पहले सारे कस्टमर वापस दिखाओ
-            displayCustomers(customers);
-            
-            // उस कस्टमर को खोलो
-            expandedCustomerId = customerId;
-            
-            // उस कस्टमर के कार्ड को ढूंढो और ऊपर लाओ
-            setTimeout(() => {
-                const customerCard = document.getElementById(`customer-${customerId}`);
-                if (customerCard) {
-                    // कार्ड को स्क्रॉल करके ऊपर लाओ
-                    customerCard.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                    
-                    // उसके प्रोडक्ट्स दिखाओ
-                    const productsSection = document.getElementById(`products-${customerId}`);
-                    if (productsSection) {
-                        productsSection.classList.add('show');
-                        renderProducts(customerId);
-                    }
-                    
-                    // एक्सपेंड आइकन को अपडेट करो
-                    const expandIcon = customerCard.querySelector('.expand-icon-modern');
-                    if (expandIcon) {
-                        expandIcon.classList.add('expanded');
-                    }
-                    
-                    // हाइलाइट करो
-                    customerCard.classList.add('selected');
-                    setTimeout(() => {
-                        customerCard.classList.remove('selected');
-                    }, 2000);
-                }
-            }, 100);
-            
-            // सर्च बॉक्स और रिजल्ट्स को क्लियर करो
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchResultsContainer').classList.remove('show');
-            document.getElementById('searchCount').textContent = '0 ग्राहक';
+        function logout() {
+            auth.signOut();
         }
 
         // Load Customers
         function loadCustomers() {
-            const customersRef = database.ref('customers');
-            customersRef.on('value', (snapshot) => {
-                customers = [];
-                let totalDues = 0;
-                let totalProducts = 0;
-                let highDueCount = 0;
+            database.ref('customers').on('value', (snapshot) => {
+                allCustomers = [];
+                let totalDues = 0, totalProducts = 0, highDueCount = 0;
                 
                 if (snapshot.exists()) {
-                    snapshot.forEach((child) => {
+                    snapshot.forEach(child => {
                         const customer = child.val();
                         customer.id = child.key;
                         
@@ -1670,26 +1097,72 @@
                             });
                         }
                         customer.totalDues = customerTotal;
-                        
                         if (customerTotal >= 500) highDueCount++;
-                        
-                        customers.push(customer);
+                        allCustomers.push(customer);
                     });
                     
-                    // Sort by name
-                    customers.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                    allCustomers.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
                 }
                 
-                // Update stats
-                totalDues = customers.reduce((sum, c) => sum + (c.totalDues || 0), 0);
+                totalDues = allCustomers.reduce((sum, c) => sum + (c.totalDues || 0), 0);
                 document.getElementById('totalDues').innerHTML = `₹${totalDues}`;
-                document.getElementById('totalCustomers').textContent = customers.length;
+                document.getElementById('totalCustomers').textContent = allCustomers.length;
                 document.getElementById('highDueCustomers').textContent = highDueCount;
-                document.getElementById('avgDue').innerHTML = customers.length ? `₹${Math.round(totalDues/customers.length)}` : '₹0';
+                document.getElementById('avgDue').innerHTML = allCustomers.length ? `₹${Math.round(totalDues/allCustomers.length)}` : '₹0';
                 document.getElementById('totalProducts').textContent = totalProducts;
                 
-                displayCustomers(customers);
+                displayCustomers(allCustomers);
             });
+        }
+
+        // 🔥 SEARCH FUNCTION
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const clearBtn = document.getElementById('clearSearch');
+            const addBtn = document.getElementById('addCustomerBtn');
+            
+            clearBtn.style.display = query ? 'flex' : 'none';
+            clearTimeout(searchTimeout);
+            
+            if (!query) {
+                addBtn.classList.remove('hidden');
+                displayCustomers(allCustomers);
+                document.getElementById('searchCount').textContent = `${allCustomers.length} ग्राहक`;
+                document.getElementById('resultBadge').textContent = 'सभी ग्राहक';
+                return;
+            }
+            
+            addBtn.classList.add('hidden');
+            
+            searchTimeout = setTimeout(() => {
+                const filtered = allCustomers.filter(c => 
+                    (c.name && c.name.toLowerCase().includes(query)) ||
+                    (c.phone && c.phone.includes(query))
+                );
+                
+                displayCustomers(filtered);
+                document.getElementById('searchCount').textContent = `${filtered.length} ग्राहक मिले`;
+                document.getElementById('resultBadge').textContent = `"${e.target.value}" के परिणाम`;
+            }, 300);
+        });
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearch').style.display = 'none';
+            document.getElementById('addCustomerBtn').classList.remove('hidden');
+            displayCustomers(allCustomers);
+            document.getElementById('searchCount').textContent = `${allCustomers.length} ग्राहक`;
+            document.getElementById('resultBadge').textContent = 'सभी ग्राहक';
+        }
+
+        // Format Date in Hindi
+        function formatDateHindi(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            const day = date.getDate();
+            const month = date.toLocaleString('hi-IN', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
         }
 
         // Display Customers
@@ -1698,188 +1171,151 @@
             
             if (list.length === 0) {
                 container.innerHTML = `
-                    <div class="empty-state-modern">
+                    <div class="empty-state">
                         <i class="fas fa-users"></i>
-                        <h4>कोई ग्राहक नहीं</h4>
-                        <p>अपना पहला ग्राहक जोड़ें</p>
-                        <button class="add-customer-btn-modern" onclick="showAddCustomerModal()" style="margin:0 auto; width:200px;">
-                            <i class="fas fa-plus"></i> ग्राहक जोड़ें
-                        </button>
+                        <h3>कोई ग्राहक नहीं</h3>
+                        <p>${document.getElementById('searchInput').value ? 'आपकी खोज से मेल खाता कोई ग्राहक नहीं' : 'नया ग्राहक जोड़ें'}</p>
                     </div>
                 `;
                 return;
             }
+            
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
             
             container.innerHTML = '';
-            
-            list.forEach(c => {
-                const dueClass = c.totalDues >= 500 ? 'due-high' : 
-                                (c.totalDues >= 200 ? 'due-medium' : 'due-low');
+            list.forEach((c, index) => {
+                const colorNum = (index % 6) + 1;
                 
-                const card = document.createElement('div');
-                card.className = 'customer-card-modern';
-                card.id = `customer-${c.id}`;
+                let displayName = c.name || 'नाम नहीं';
+                let displayPhone = c.phone || '';
                 
-                // Customer Main
-                const main = document.createElement('div');
-                main.className = 'customer-main';
-                main.onclick = () => toggleCustomer(c.id);
-                main.innerHTML = `
-                    <div class="customer-avatar-modern">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="customer-info-modern">
-                        <div class="customer-name-modern">${c.name || 'नाम नहीं'}</div>
-                        <div class="customer-meta-modern">
-                            <span class="meta-item">
-                                <i class="fas fa-phone-alt"></i> ${c.phone || 'नंबर नहीं'}
-                            </span>
-                            <span class="meta-item">
-                                <i class="fas fa-box"></i> ${c.item || 'कोई सामान नहीं'}
-                            </span>
-                            <span class="due-badge-modern ${dueClass}">
-                                <i class="fas fa-rupee-sign"></i> बकाया: ₹${c.totalDues || 0}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="expand-icon-modern ${expandedCustomerId === c.id ? 'expanded' : ''}">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                `;
-                
-                // Actions
-                const actions = document.createElement('div');
-                actions.className = 'customer-actions-modern';
-                actions.innerHTML = `
-                    <button class="action-btn-modern whatsapp-btn-modern" onclick="event.stopPropagation(); sendWhatsApp('${c.id}')">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </button>
-                    <button class="action-btn-modern edit-btn-modern" onclick="event.stopPropagation(); editCustomer('${c.id}')">
-                        <i class="fas fa-edit"></i> एडिट
-                    </button>
-                    <button class="action-btn-modern delete-btn-modern" onclick="event.stopPropagation(); deleteCustomer('${c.id}')">
-                        <i class="fas fa-trash"></i> डिलीट
-                    </button>
-                `;
-                
-                // Products Section
-                const productsSection = document.createElement('div');
-                productsSection.className = `products-section-modern ${expandedCustomerId === c.id ? 'show' : ''}`;
-                productsSection.id = `products-${c.id}`;
-                
-                card.appendChild(main);
-                card.appendChild(actions);
-                card.appendChild(productsSection);
-                container.appendChild(card);
-                
-                if (expandedCustomerId === c.id) {
-                    renderProducts(c.id);
+                if (query) {
+                    const regex = new RegExp(`(${query})`, 'gi');
+                    displayName = displayName.replace(regex, '<span class="search-highlight">$1</span>');
+                    displayPhone = displayPhone.replace(regex, '<span class="search-highlight">$1</span>');
                 }
+                
+                // Products HTML
+                let productsHTML = '';
+                if (c.products && Object.keys(c.products).length > 0) {
+                    productsHTML = `
+                        <div class="products-section">
+                            <div class="products-header">
+                                <h5><i class="fas fa-box"></i> उत्पाद सूची</h5>
+                                <button class="add-product-mini" onclick="event.stopPropagation(); showAddProductModal('${c.id}')">
+                                    <i class="fas fa-plus"></i> नया
+                                </button>
+                            </div>
+                    `;
+                    
+                    let total = 0;
+                    let productIndex = 0;
+                    Object.entries(c.products).forEach(([pid, p]) => {
+                        total += Number(p.price);
+                        const productColor = (productIndex % 5) + 1;
+                        productIndex++;
+                        
+                        productsHTML += `
+                            <div class="product-item" data-color="${productColor}">
+                                <div>
+                                    <div class="product-name">${p.name}</div>
+                                    <div class="product-details">
+                                        <span><i class="fas fa-rupee-sign"></i> ${p.price}</span>
+                                        <span><i class="far fa-calendar"></i> ${formatDateHindi(p.date)}</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button onclick="event.stopPropagation(); editProduct('${c.id}', '${pid}')"><i class="fas fa-edit"></i></button>
+                                    <button onclick="event.stopPropagation(); deleteProduct('${c.id}', '${pid}')"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    productsHTML += `
+                            <div class="total-amount">कुल राशि: ₹${total}</div>
+                        </div>
+                    `;
+                } else {
+                    productsHTML = `
+                        <div class="products-section">
+                            <div class="text-center py-3" style="color: #64748b;">
+                                <i class="fas fa-box-open" style="font-size: 30px; margin-bottom: 10px; color: #bae6fd;"></i>
+                                <p>कोई उत्पाद नहीं</p>
+                                <button class="add-product-mini" onclick="event.stopPropagation(); showAddProductModal('${c.id}')">
+                                    <i class="fas fa-plus"></i> उत्पाद जोड़ें
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                const card = `
+                    <div class="customer-card" data-color="${colorNum}">
+                        <div class="customer-header">
+                            <div class="customer-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="customer-info">
+                                <div class="customer-name">${displayName}</div>
+                                <div class="customer-meta">
+                                    <span class="meta-item"><i class="fas fa-phone"></i> ${displayPhone}</span>
+                                    <span class="due-badge">₹${c.totalDues || 0}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customer-actions">
+                            <button class="action-btn whatsapp-btn" onclick="event.stopPropagation(); sendWhatsApp('${c.id}')">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="action-btn edit-btn" onclick="event.stopPropagation(); editCustomer('${c.id}')">
+                                <i class="fas fa-edit"></i> एडिट
+                            </button>
+                            <button class="action-btn delete-btn" onclick="event.stopPropagation(); deleteCustomer('${c.id}')">
+                                <i class="fas fa-trash"></i> डिलीट
+                            </button>
+                        </div>
+                        ${productsHTML}
+                    </div>
+                `;
+                
+                container.innerHTML += card;
             });
         }
 
-        function toggleCustomer(customerId) {
-            if (expandedCustomerId === customerId) {
-                expandedCustomerId = null;
-            } else {
-                expandedCustomerId = customerId;
-            }
-            displayCustomers(customers);
-        }
-
-        function renderProducts(customerId) {
-            const customer = customers.find(c => c.id === customerId);
-            if (!customer) return;
-            
-            const container = document.getElementById(`products-${customerId}`);
-            if (!container) return;
-            
-            if (!customer.products || Object.keys(customer.products).length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state-modern" style="padding: 20px;">
-                        <i class="fas fa-box-open"></i>
-                        <h4>कोई उत्पाद नहीं</h4>
-                        <button class="add-product-mini" onclick="showAddProductModal('${customerId}')">
-                            <i class="fas fa-plus"></i> उत्पाद जोड़ें
-                        </button>
-                    </div>
-                `;
+        // 📱 FIXED WhatsApp Function - बिल्कुल आपके फॉर्मेट में
+        function sendWhatsApp(id) {
+            const c = allCustomers.find(c => c.id === id);
+            if (!c?.phone) {
+                showMessage('❌ फोन नंबर नहीं है', 'error');
                 return;
             }
             
-            let html = `
-                <div class="products-header">
-                    <h6><i class="fas fa-box"></i> उत्पाद सूची</h6>
-                    <button class="add-product-mini" onclick="showAddProductModal('${customerId}')">
-                        <i class="fas fa-plus"></i> नया उत्पाद
-                    </button>
-                </div>
-            `;
-            
-            const products = Object.entries(customer.products)
-                .sort((a, b) => (b[1].timestamp || 0) - (a[1].timestamp || 0));
-            
-            let total = 0;
-            products.forEach(([id, p]) => {
-                total += Number(p.price);
-                html += `
-                    <div class="product-item-modern">
-                        <div class="product-details-modern">
-                            <h5>${p.name}</h5>
-                            <p><i class="fas fa-rupee-sign"></i> ${p.price}</p>
-                            <p><i class="far fa-calendar"></i> ${p.date}</p>
-                        </div>
-                        <div class="product-actions-modern">
-                            <button class="btn btn-warning" onclick="event.stopPropagation(); editProduct('${customerId}', '${id}')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-danger" onclick="event.stopPropagation(); deleteProduct('${customerId}', '${id}')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            html += `
-                <div class="total-amount-modern">
-                    <i class="fas fa-calculator"></i> कुल: ₹${total}
-                </div>
-            `;
-            
-            container.innerHTML = html;
-        }
-
-        // Send WhatsApp
-        function sendWhatsApp(customerId) {
-            const customer = customers.find(c => c.id === customerId);
-            if (!customer?.phone) {
-                showMessage('❌ ग्राहक का फोन नंबर नहीं है', 'error');
-                return;
-            }
-
-            let phone = customer.phone.replace(/\D/g, '');
+            let phone = c.phone.replace(/\D/g, '');
             if (phone.length === 10) phone = '91' + phone;
-
-            let msg = `🏪 *श्री बालाजी वेरायटी स्टोर, खूड़*\n\n`;
-            msg += `👤 *ग्राहक:* ${customer.name}\n`;
-            msg += `📞 *फोन:* ${customer.phone}\n`;
-            msg += `💰 *बकाया:* ₹${customer.totalDues || 0}\n\n`;
             
-            if (customer.products) {
-                msg += `📦 *खरीदारी:*\n`;
-                Object.values(customer.products).forEach((p, i) => {
-                    msg += `${i+1}. ${p.name} - ₹${p.price} (${p.date})\n`;
+            // बिल्कुल आपके दिए फॉर्मेट में मैसेज
+            let msg = `🏪 श्री बालाजी वेरायटी स्टोर, खूड़\n\n`;
+            msg += `👤 ग्राहक: ${c.name}\n`;
+            msg += `📞 फोन: ${c.phone}\n`;
+            msg += `💰 बकाया: ₹${c.totalDues || 0}\n\n`;
+            
+            if (c.products && Object.keys(c.products).length > 0) {
+                msg += `📦 खरीदारी:\n`;
+                let i = 1;
+                Object.values(c.products).forEach(p => {
+                    const dateHindi = formatDateHindi(p.date);
+                    msg += `${i}. ${p.name} - ₹${p.price} (${dateHindi})\n`;
+                    i++;
                 });
             }
             
             msg += `\n🙏 कृपया जल्द भुगतान करें।\nधन्यवाद! 🙏`;
-
             
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Customer Modal Functions
+        // Customer CRUD
         function showAddCustomerModal() {
             document.getElementById('customerModalTitle').innerHTML = '<i class="fas fa-user-plus"></i> नया ग्राहक';
             document.getElementById('customerName').value = '';
@@ -1892,13 +1328,15 @@
         }
 
         function editCustomer(id) {
-            const c = customers.find(c => c.id === id);
+            const c = allCustomers.find(c => c.id === id);
+            if (!c) return;
+            
             document.getElementById('customerModalTitle').innerHTML = '<i class="fas fa-user-edit"></i> एडिट ग्राहक';
             document.getElementById('customerName').value = c.name || '';
             document.getElementById('customerPhone').value = c.phone || '';
-            document.getElementById('customerItem').value = c.item || '';
-            document.getElementById('customerPrice').value = '';
-            document.getElementById('customerDate').value = c.date || new Date().toISOString().split('T')[0];
+            document.getElementById('customerItem').value = ''; // खाली रखो
+            document.getElementById('customerPrice').value = ''; // खाली रखो
+            document.getElementById('customerDate').value = new Date().toISOString().split('T')[0];
             currentCustomerId = id;
             new bootstrap.Modal(document.getElementById('customerModal')).show();
         }
@@ -1911,48 +1349,32 @@
             const date = document.getElementById('customerDate').value;
 
             if (!name) {
-                showMessage('❌ कृपया ग्राहक का नाम डालें', 'error');
+                showMessage('❌ नाम डालें', 'error');
                 return;
             }
 
-            const data = { 
-                name, 
-                phone, 
-                item, 
-                date, 
-                timestamp: Date.now() 
-            };
+            if (!phone) {
+                showMessage('❌ फोन नंबर डालें', 'error');
+                return;
+            }
+
+            const data = { name, phone, timestamp: Date.now() };
 
             if (currentCustomerId) {
-                // Update existing customer
+                // एडिट मोड - सिर्फ नाम और फोन अपडेट करो
                 database.ref('customers/' + currentCustomerId).update(data)
-                    .then(() => {
-                        if (price && item) {
-                            return database.ref('customers/' + currentCustomerId + '/products').push({
-                                name: item, 
-                                price: Number(price), 
-                                date,
-                                timestamp: Date.now()
-                            });
-                        }
-                    })
                     .then(() => {
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
                         showSuccess('✅ ग्राहक अपडेट हो गया');
                     })
-                    .catch(error => {
-                        showMessage('❌ गलती: ' + error.message, 'error');
-                    });
+                    .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             } else {
-                // Add new customer
+                // नया ग्राहक
                 database.ref('customers').push(data)
-                    .then((ref) => {
+                    .then(ref => {
                         if (price && item) {
                             return database.ref('customers/' + ref.key + '/products').push({
-                                name: item, 
-                                price: Number(price), 
-                                date,
-                                timestamp: Date.now()
+                                name: item, price: Number(price), date, timestamp: Date.now()
                             });
                         }
                     })
@@ -1960,24 +1382,31 @@
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
                         showSuccess('✅ नया ग्राहक जुड़ गया');
                     })
-                    .catch(error => {
-                        showMessage('❌ गलती: ' + error.message, 'error');
-                    });
+                    .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             }
         }
 
         function deleteCustomer(id) {
-            if (confirm('⚠️ क्या आप सच में इस ग्राहक को डिलीट करना चाहते हैं?')) {
-                database.ref('customers/' + id).remove()
+            const customer = allCustomers.find(c => c.id === id);
+            if (!customer) return;
+            
+            if (confirm(`⚠️ "${customer.name}" को पुराने ग्राहकों में भेजें?`)) {
+                const deletedData = {
+                    ...customer,
+                    deletedAt: new Date().toISOString(),
+                    deletedAtTimestamp: Date.now(),
+                    originalId: id
+                };
+                
+                const deletedId = `deleted_${Date.now()}`;
+                
+                database.ref('deleted_customers/' + deletedId).set(deletedData)
+                    .then(() => database.ref('customers/' + id).remove())
                     .then(() => {
-                        if (expandedCustomerId === id) {
-                            expandedCustomerId = null;
-                        }
-                        showSuccess('✅ ग्राहक डिलीट हो गया');
+                        loadDeletedCount();
+                        showSuccess(`✅ "${customer.name}" पुराने ग्राहकों में भेज दिया गया`);
                     })
-                    .catch(error => {
-                        showMessage('❌ गलती: ' + error.message, 'error');
-                    });
+                    .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             }
         }
 
@@ -1998,104 +1427,50 @@
             const date = document.getElementById('productDate').value;
 
             if (!name || !price) {
-                showMessage('❌ नाम और कीमत डालना जरूरी है', 'error');
+                showMessage('❌ नाम और कीमत डालें', 'error');
                 return;
             }
 
             database.ref('customers/' + currentCustomerId + '/products').push({ 
-                name, 
-                price: Number(price), 
-                date,
-                timestamp: Date.now()
+                name, price: Number(price), date, timestamp: Date.now()
             })
             .then(() => {
                 bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
-                if (expandedCustomerId === currentCustomerId) {
-                    renderProducts(currentCustomerId);
-                }
                 showSuccess('✅ उत्पाद जुड़ गया');
             })
-            .catch(error => {
-                showMessage('❌ गलती: ' + error.message, 'error');
-            });
+            .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
         }
 
         function editProduct(customerId, productId) {
-            const customer = customers.find(c => c.id === customerId);
-            if (!customer || !customer.products) return;
+            const customer = allCustomers.find(c => c.id === customerId);
+            if (!customer?.products) return;
             
             const p = customer.products[productId];
-            const newName = prompt('उत्पाद का नाम बदलें:', p.name);
-            const newPrice = prompt('कीमत बदलें:', p.price);
+            const newName = prompt('उत्पाद का नाम:', p.name);
+            const newPrice = prompt('कीमत:', p.price);
             
             if (newName && newPrice) {
-                database.ref('customers/' + customerId + '/products/' + productId).update({
-                    name: newName, 
-                    price: Number(newPrice),
-                    timestamp: Date.now()
+                database.ref(`customers/${customerId}/products/${productId}`).update({
+                    name: newName, price: Number(newPrice), timestamp: Date.now()
                 })
                 .then(() => {
-                    if (expandedCustomerId === customerId) {
-                        renderProducts(customerId);
-                    }
-                    showSuccess('✅ उत्पाद अपडेट हो गया');
+                    showSuccess('✅ अपडेट हो गया');
                 })
-                .catch(error => {
-                    showMessage('❌ गलती: ' + error.message, 'error');
-                });
+                .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             }
         }
 
         function deleteProduct(customerId, productId) {
-            if (confirm('⚠️ क्या आप यह उत्पाद डिलीट करना चाहते हैं?')) {
-                database.ref('customers/' + customerId + '/products/' + productId).remove()
+            if (confirm('⚠️ डिलीट करें?')) {
+                database.ref(`customers/${customerId}/products/${productId}`).remove()
                     .then(() => {
-                        if (expandedCustomerId === customerId) {
-                            renderProducts(customerId);
-                        }
-                        showSuccess('✅ उत्पाद डिलीट हो गया');
+                        showSuccess('✅ डिलीट हो गया');
                     })
-                    .catch(error => {
-                        showMessage('❌ गलती: ' + error.message, 'error');
-                    });
+                    .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             }
         }
 
-        // Login Functions
-        function loginWithEmail() {
-            const email = document.getElementById('emailInput').value.trim();
-            const password = document.getElementById('passwordInput').value;
-            const btn = document.getElementById('loginBtn');
-
-            if (!email || !password) {
-                showMessage('❌ ईमेल और पासवर्ड डालें', 'error');
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> लॉगिन हो रहा है...';
-
-            auth.signInWithEmailAndPassword(email, password)
-                .catch((error) => {
-                    showMessage('❌ लॉगिन विफल: ' + error.message, 'error');
-                })
-                .finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> लॉगिन करें';
-                });
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                loginWithEmail();
-            }
-        }
-
-        function logout() {
-            auth.signOut();
-        }
-
-        // Message Functions
+        // Messages
         function showMessage(msg, type) {
             const container = document.getElementById('messageContainer');
             container.innerHTML = `<div class="message ${type}-message">${msg}</div>`;
@@ -2104,23 +1479,10 @@
 
         function showSuccess(msg) {
             const toast = document.createElement('div');
-            toast.className = 'toast-success';
-            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+            toast.style.cssText = 'position:fixed; bottom:30px; right:30px; background:white; color:#0284c7; padding:16px 24px; border-radius:60px; box-shadow:0 10px 30px rgba(0,0,0,0.1); display:flex; align-items:center; gap:12px; z-index:9999; border-left:4px solid #0284c7;';
+            toast.innerHTML = `<i class="fas fa-check-circle" style="color:#0284c7;"></i> ${msg}`;
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
-        }
-
-        // Security
-        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            document.addEventListener('contextmenu', e => e.preventDefault());
-            document.addEventListener('keydown', function(e) {
-                if (e.keyCode === 123 || 
-                    (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
-                    (e.ctrlKey && e.keyCode === 85)) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
         }
     </script>
 </body>
