@@ -2,28 +2,28 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>श्री बालाजी वेरायटी स्टोर, खूड़ | alokwebs.online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>श्री बालाजी वेरायटी स्टोर, खूड़</title>
     
-    <!-- Bootstrap 5 -->
+    <!-- Bootstrap 5 Minimal (सिर्फ जरूरी) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f2ff 100%);
+            background: linear-gradient(145deg, #f0f9ff 0%, #dbeafe 100%);
             min-height: 100vh;
         }
 
@@ -33,59 +33,64 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #0284c7, #0c4a6e);
+            padding: 16px;
+            background: linear-gradient(135deg, #0284c7, #075985);
         }
 
         .login-card {
             background: white;
-            border-radius: 30px;
-            padding: 40px;
+            border-radius: 32px;
+            padding: 32px 24px;
             width: 100%;
-            max-width: 420px;
-            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2);
+            max-width: 380px;
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.3);
         }
 
         .login-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .store-icon {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             background: linear-gradient(135deg, #0284c7, #0369a1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
+            margin: 0 auto 16px;
+            box-shadow: 0 8px 16px rgba(2, 132, 199, 0.2);
         }
 
         .store-icon i {
-            font-size: 48px;
+            font-size: 42px;
             color: white;
         }
 
         .login-header h2 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #0c4a6e;
+            line-height: 1.3;
         }
-
+        
         .login-header h2 span {
             color: #0284c7;
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
         }
 
         .login-header p {
             color: #64748b;
-            font-size: 14px;
+            font-size: 13px;
+            margin-top: 8px;
         }
 
         .input-group-custom {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .input-group-custom i {
@@ -95,15 +100,17 @@
             transform: translateY(-50%);
             color: #94a3b8;
             font-size: 18px;
+            z-index: 1;
         }
 
         .input-group-custom input {
             width: 100%;
             padding: 16px 16px 16px 50px;
             border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            font-size: 16px;
-            transition: all 0.3s;
+            border-radius: 20px;
+            font-size: 15px;
+            background: white;
+            transition: all 0.2s;
         }
 
         .input-group-custom input:focus {
@@ -118,26 +125,25 @@
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: white;
             border: none;
-            border-radius: 16px;
-            font-size: 18px;
+            border-radius: 20px;
+            font-size: 17px;
             font-weight: 600;
-            margin-top: 20px;
+            margin-top: 16px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
-        .login-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
+        .login-btn:active {
+            transform: scale(0.98);
         }
 
         .message {
-            padding: 16px;
-            border-radius: 12px;
-            margin: 20px 0;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 16px 0;
             text-align: center;
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 500;
+            font-size: 13px;
         }
 
         .error-message {
@@ -156,25 +162,26 @@
             background: #f0f9ff;
         }
 
-        /* Mini Navbar - Fixed */
+        /* 🔥 FIXED NAVBAR - अब perfect alignment */
         .mini-navbar {
             background: white;
-            padding: 10px 20px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #e2e8f0;
-            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(2, 132, 199, 0.1);
+            gap: 8px;
         }
 
         .mini-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-shrink: 0;
         }
 
         .mini-brand i {
@@ -182,24 +189,25 @@
             color: #0284c7;
         }
 
-        .mini-brand .brand-text {
+        .brand-text {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             color: #0c4a6e;
+            line-height: 1.2;
         }
         
-        .mini-brand .brand-text span {
-            color: #0284c7;
-            font-size: 14px;
-            font-weight: 400;
+        .brand-text small {
             display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: #64748b;
         }
 
         .nav-icons {
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 8px;
+            flex-wrap: nowrap;
         }
 
         .recycle-icon {
@@ -207,24 +215,25 @@
             width: 40px;
             height: 40px;
             background: #f1f5f9;
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #0284c7;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            flex-shrink: 0;
         }
 
-        .recycle-icon:hover {
+        .recycle-icon:active {
             background: #e0f2fe;
-            transform: scale(1.05);
+            transform: scale(0.95);
         }
 
         .deleted-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -4px;
+            right: -4px;
             background: #ef4444;
             color: white;
             font-size: 10px;
@@ -235,11 +244,12 @@
             align-items: center;
             justify-content: center;
             border: 2px solid white;
+            font-weight: 600;
         }
 
         .admin-chip {
             background: #f1f5f9;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 30px;
             color: #0284c7;
             font-weight: 500;
@@ -247,10 +257,18 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
         }
 
         .admin-chip i {
             color: #fbbf24;
+            font-size: 12px;
+        }
+
+        .admin-chip span {
+            max-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .logout-btn {
@@ -258,51 +276,54 @@
             border: none;
             width: 40px;
             height: 40px;
-            border-radius: 10px;
+            border-radius: 12px;
             color: #64748b;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
-        .logout-btn:hover {
+        .logout-btn:active {
             background: #fee2e2;
             color: #dc2626;
         }
 
         /* Main Container */
         .main-container {
-            padding: 20px;
-            max-width: 1200px;
+            padding: 16px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
         /* Total Dues Card */
         .total-dues-card {
             background: linear-gradient(135deg, #0284c7, #0369a1);
-            border-radius: 25px;
-            padding: 25px;
+            border-radius: 28px;
+            padding: 24px 20px;
             margin-bottom: 20px;
             color: white;
             box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
         }
 
         .total-dues-card h3 {
-            font-size: 15px;
+            font-size: 14px;
             opacity: 0.9;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
         .total-dues-card .amount {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            line-height: 1;
         }
 
         .total-dues-card .store-name {
-            font-size: 13px;
+            font-size: 12px;
             opacity: 0.8;
         }
 
@@ -310,47 +331,49 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 8px;
             margin-bottom: 20px;
         }
 
         .stat-card {
             background: white;
             border-radius: 18px;
-            padding: 15px 10px;
+            padding: 14px 4px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            border: 1px solid #f1f5f9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid rgba(2, 132, 199, 0.1);
         }
 
         .stat-card i {
-            font-size: 24px;
+            font-size: 22px;
             color: #0284c7;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .stat-card .value {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #0c4a6e;
+            line-height: 1.2;
         }
 
         .stat-card .label {
-            font-size: 11px;
+            font-size: 10px;
             color: #64748b;
+            line-height: 1.3;
         }
 
-        /* 🔥 SEARCH BAR */
+        /* 🔥 SEARCH BAR - PERFECT */
         .search-section {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .search-wrapper {
             background: white;
-            border-radius: 18px;
+            border-radius: 24px;
             padding: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            border: 1px solid #e0f2fe;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid rgba(2, 132, 199, 0.2);
             display: flex;
             align-items: center;
         }
@@ -361,23 +384,29 @@
         }
 
         .search-icon {
-            width: 45px;
-            height: 45px;
+            width: 44px;
+            height: 44px;
             background: #f1f5f9;
-            border-radius: 14px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #0284c7;
             margin: 4px;
+            flex-shrink: 0;
         }
 
         .search-wrapper input {
             flex: 1;
-            padding: 10px 12px;
+            padding: 10px 8px;
             border: none;
             font-size: 15px;
             background: transparent;
+            min-width: 0;
+        }
+
+        .search-wrapper input::placeholder {
+            color: #94a3b8;
         }
 
         .search-wrapper input:focus {
@@ -385,18 +414,19 @@
         }
 
         .clear-search {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             background: #f1f5f9;
             border: none;
-            border-radius: 10px;
+            border-radius: 16px;
             color: #64748b;
             margin-right: 6px;
             cursor: pointer;
             display: none;
+            flex-shrink: 0;
         }
 
-        .clear-search:hover {
+        .clear-search:active {
             background: #fee2e2;
             color: #dc2626;
         }
@@ -406,14 +436,14 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
-            padding: 0 5px;
+            padding: 0 4px;
         }
 
         .search-count {
             background: #f1f5f9;
             padding: 5px 14px;
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 12px;
             color: #0284c7;
             font-weight: 500;
         }
@@ -423,8 +453,12 @@
             color: white;
             padding: 5px 14px;
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         /* Add Customer Button */
@@ -433,22 +467,23 @@
             padding: 14px;
             background: white;
             border: 2px dashed #0284c7;
-            border-radius: 18px;
+            border-radius: 24px;
             color: #0284c7;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin: 15px 0;
+            margin: 16px 0;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             font-size: 15px;
         }
 
-        .add-btn:hover {
+        .add-btn:active {
             background: #f0f9ff;
             border-style: solid;
+            transform: scale(0.98);
         }
 
         .add-btn.hidden {
@@ -459,16 +494,17 @@
         .customers-grid {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         /* 🌈 CUSTOMER CARDS */
         .customer-card {
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.2s;
             animation: fadeIn 0.3s ease;
+            border: 1px solid rgba(2, 132, 199, 0.1);
         }
 
         @keyframes fadeIn {
@@ -476,67 +512,73 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .customer-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(2, 132, 199, 0.1);
+        .customer-card:active {
+            transform: scale(0.99);
         }
 
         /* 🎨 6 अलग-अलग रंग */
-        .customer-card[data-color="1"] { background: #7db2d5; }  /* हल्का नीला */
-        .customer-card[data-color="2"] { background: #ea1927; }  /* हल्का गुलाबी */
-        .customer-card[data-color="3"] { background: #74bb8a; }  /* हल्का हरा */
-        .customer-card[data-color="4"] { background: #c0b868; }  /* हल्का पीला */
-        .customer-card[data-color="5"] { background: #9a65d3; }  /* हल्का बैंगनी */
-        .customer-card[data-color="6"] { background: #c5666c; }  /* हल्का लाल */
+        .customer-card[data-color="1"] { background: linear-gradient(145deg, #5996bf, #dbeafe); }
+        .customer-card[data-color="2"] { background: linear-gradient(145deg, #e08289, #ffe4e6); }
+        .customer-card[data-color="3"] { background: linear-gradient(145deg, #62c981, #dcfce7); }
+        .customer-card[data-color="4"] { background: linear-gradient(145deg, #cbc36b, #fef08a); }
+        .customer-card[data-color="5"] { background: linear-gradient(145deg, #975dd6, #e9d5ff); }
+        .customer-card[data-color="6"] { background: linear-gradient(145deg, #dc969b, #fecaca); }
 
         .customer-header {
-            padding: 18px;
+            padding: 16px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .customer-avatar {
-            width: 55px;
-            height: 55px;
+            width: 52px;
+            height: 52px;
             background: white;
-            border-radius: 16px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #0284c7;
-            font-size: 26px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            flex-shrink: 0;
         }
 
         .customer-info {
             flex: 1;
+            min-width: 0;
         }
 
         .customer-name {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             color: #0c4a6e;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .customer-meta {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .meta-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             color: #334155;
-            font-size: 13px;
+            font-size: 12px;
+            white-space: nowrap;
         }
 
         .meta-item i {
             color: #0284c7;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .due-badge {
@@ -545,32 +587,40 @@
             border-radius: 30px;
             color: #dc2626;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            white-space: nowrap;
         }
 
         /* Customer Actions */
         .customer-actions {
             display: flex;
-            gap: 8px;
-            padding: 14px 18px;
-            background: rgba(255,255,255,0.7);
-            border-top: 1px solid rgba(0,0,0,0.03);
+            gap: 6px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(255,255,255,0.8);
+            flex-wrap: wrap;
         }
 
         .action-btn {
             flex: 1;
-            padding: 10px;
+            min-width: 80px;
+            padding: 10px 6px;
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
             font-weight: 500;
-            font-size: 13px;
+            font-size: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .action-btn:active {
+            transform: scale(0.96);
         }
 
         .whatsapp-btn {
@@ -578,17 +628,9 @@
             color: white;
         }
 
-        .whatsapp-btn:hover {
-            background: #128C7E;
-        }
-
         .edit-btn {
             background: #fbbf24;
             color: #0c4a6e;
-        }
-
-        .edit-btn:hover {
-            background: #f59e0b;
         }
 
         .delete-btn {
@@ -596,15 +638,11 @@
             color: white;
         }
 
-        .delete-btn:hover {
-            background: #dc2626;
-        }
-
         /* 🌈 PRODUCTS SECTION */
         .products-section {
-            padding: 18px;
-            background: rgba(255,255,255,0.5);
-            border-top: 1px solid rgba(0,0,0,0.03);
+            padding: 16px;
+            background: rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.5);
         }
 
         .products-header {
@@ -615,7 +653,7 @@
         }
 
         .products-header h5 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #0284c7;
             margin: 0;
@@ -627,75 +665,75 @@
             border: none;
             padding: 5px 12px;
             border-radius: 30px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .add-product-mini:hover {
+        .add-product-mini:active {
             background: #f1f5f9;
         }
 
-        /* 🌈 PRODUCT ITEMS */
         .product-item {
             padding: 12px;
             margin-bottom: 8px;
-            border-radius: 14px;
+            border-radius: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
-        .product-item[data-color="1"] { background: #bae6fd; }  /* नीला */
-        .product-item[data-color="2"] { background: #fecaca; }  /* लाल */
-        .product-item[data-color="3"] { background: #bbf7d0; }  /* हरा */
-        .product-item[data-color="4"] { background: #fed7aa; }  /* नारंगी */
-        .product-item[data-color="5"] { background: #e9d5ff; }  /* बैंगनी */
-
-        .product-item:hover {
+        .product-item:active {
             transform: translateX(3px);
         }
 
         .product-name {
             font-weight: 600;
             color: #0c4a6e;
-            font-size: 14px;
-            margin-bottom: 4px;
+            font-size: 13px;
+            margin-bottom: 3px;
         }
 
         .product-details {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             color: #334155;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .product-details i {
             color: #0284c7;
-            margin-right: 3px;
+            margin-right: 2px;
         }
 
         .product-actions {
             display: flex;
-            gap: 6px;
+            gap: 5px;
         }
 
         .product-actions button {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             background: white;
             color: #64748b;
-            font-size: 13px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .product-actions button:hover {
+        .product-actions button:active {
             background: #f1f5f9;
             color: #0284c7;
         }
@@ -703,12 +741,13 @@
         .total-amount {
             background: white;
             padding: 12px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-top: 12px;
             text-align: right;
             font-weight: 600;
             color: #0284c7;
-            font-size: 14px;
+            font-size: 13px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
 
         /* Search Highlight */
@@ -716,21 +755,21 @@
             background: #fbbf24;
             color: #0c4a6e;
             padding: 2px 5px;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: 600;
         }
 
         /* Loading Spinner */
         .loading-spinner {
             text-align: center;
-            padding: 40px;
+            padding: 40px 16px;
             background: white;
-            border-radius: 18px;
+            border-radius: 24px;
         }
 
         .spinner {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border: 4px solid #f1f5f9;
             border-top: 4px solid #0284c7;
             border-radius: 50%;
@@ -746,72 +785,61 @@
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 40px;
+            padding: 40px 16px;
             background: white;
-            border-radius: 18px;
+            border-radius: 24px;
         }
 
         .empty-state i {
-            font-size: 50px;
+            font-size: 48px;
             color: #e0f2fe;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .empty-state h3 {
             color: #0c4a6e;
-            margin-bottom: 8px;
-            font-size: 18px;
+            margin-bottom: 6px;
+            font-size: 17px;
         }
 
         .empty-state p {
             color: #64748b;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .hidden {
             display: none !important;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .customer-meta {
-                gap: 8px;
-            }
-            
-            .customer-actions {
-                flex-wrap: wrap;
-            }
-            
-            .action-btn {
-                flex: 1 1 calc(50% - 4px);
-                font-size: 12px;
-                padding: 8px;
-            }
-            
-            .mini-navbar {
-                padding: 8px 12px;
-            }
-            
+        /* Mobile Optimizations */
+        @media (max-width: 380px) {
             .brand-text {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .mini-brand .brand-text span {
-                font-size: 12px;
+                font-size: 14px;
             }
             
             .admin-chip span {
-                display: none;
+                max-width: 60px;
             }
             
-            .total-dues-card .amount {
-                font-size: 32px;
+            .stat-card {
+                padding: 10px 2px;
+            }
+            
+            .stat-card .value {
+                font-size: 16px;
+            }
+            
+            .stat-card .label {
+                font-size: 9px;
+            }
+            
+            .action-btn {
+                font-size: 11px;
+                padding: 8px 4px;
+            }
+            
+            .customer-meta {
+                gap: 6px;
             }
         }
     </style>
@@ -824,8 +852,8 @@
                 <div class="store-icon">
                     <i class="fas fa-store"></i>
                 </div>
-                <h2>श्री बालाजी <span>वेरायटी स्टोर</span></h2>
-                <p>खूड़ | alokwebs.online | केवल एडमिन</p>
+                <h2>श्री बालाजी <span>वेरायटी स्टोर, खूड़</span></h2>
+                <p>केवल अधिकृत एडमिन</p>
             </div>
 
             <div id="messageContainer"></div>
@@ -848,13 +876,13 @@
 
     <!-- Dashboard -->
     <div id="dashboardPage" class="dashboard hidden">
-        <!-- Mini Navbar - Fixed -->
+        <!-- Mini Navbar - FIXED -->
         <div class="mini-navbar">
             <div class="mini-brand">
                 <i class="fas fa-store"></i>
                 <div class="brand-text">
-                    श्री बालाजी वेरायटी स्टोर
-                    <span>खूड़</span>
+                    श्री बालाजी
+                    <small>वेरायटी स्टोर, खूड़</small>
                 </div>
             </div>
             
@@ -889,22 +917,22 @@
                 <div class="stat-card">
                     <i class="fas fa-users"></i>
                     <div class="value" id="totalCustomers">0</div>
-                    <div class="label">कुल ग्राहक</div>
+                    <div class="label">ग्राहक</div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-exclamation-triangle"></i>
                     <div class="value" id="highDueCustomers">0</div>
-                    <div class="label">₹500+ बकाया</div>
+                    <div class="label">₹500+</div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-calculator"></i>
                     <div class="value" id="avgDue">₹0</div>
-                    <div class="label">औसत बकाया</div>
+                    <div class="label">औसत</div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-box"></i>
                     <div class="value" id="totalProducts">0</div>
-                    <div class="label">कुल उत्पाद</div>
+                    <div class="label">उत्पाद</div>
                 </div>
             </div>
 
@@ -914,7 +942,7 @@
                     <div class="search-icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <input type="text" id="searchInput" placeholder="नाम या मोबाइल नंबर से खोजें..." autocomplete="off">
+                    <input type="text" id="searchInput" placeholder="नाम या मोबाइल नंबर..." autocomplete="off">
                     <button class="clear-search" id="clearSearch" onclick="clearSearch()">
                         <i class="fas fa-times"></i>
                     </button>
@@ -941,27 +969,27 @@
         </div>
     </div>
 
-    <!-- Customer Modal - Only Name & Phone for Edit -->
+    <!-- Customer Modal -->
     <div class="modal fade" id="customerModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 20px;">
-                <div class="modal-header" style="background: #0284c7; color: white; border: none;">
+            <div class="modal-content" style="border-radius: 24px;">
+                <div class="modal-header" style="background: #0284c7; color: white; border: none; padding: 16px 20px;">
                     <h5 class="modal-title" id="customerModalTitle">
                         <i class="fas fa-user-plus"></i> नया ग्राहक
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="customerName" placeholder="ग्राहक का नाम *" style="margin-bottom: 12px;">
-                    <input type="tel" class="form-control" id="customerPhone" placeholder="मोबाइल नंबर *" style="margin-bottom: 12px;">
-                    <input type="text" class="form-control" id="customerItem" placeholder="सामान का नाम (नए के लिए)" style="margin-bottom: 12px;">
-                    <input type="number" class="form-control" id="customerPrice" placeholder="कीमत (₹) (नए के लिए)" style="margin-bottom: 12px;">
-                    <input type="date" class="form-control" id="customerDate">
-                    <small class="text-muted">एडिट करते समय सिर्फ नाम और फोन बदलें</small>
+                <div class="modal-body" style="padding: 20px;">
+                    <input type="text" class="form-control" id="customerName" placeholder="ग्राहक का नाम *" style="margin-bottom: 12px; border-radius: 16px; padding: 12px 16px;">
+                    <input type="tel" class="form-control" id="customerPhone" placeholder="मोबाइल नंबर *" style="margin-bottom: 12px; border-radius: 16px; padding: 12px 16px;">
+                    <input type="text" class="form-control" id="customerItem" placeholder="सामान (नए के लिए)" style="margin-bottom: 12px; border-radius: 16px; padding: 12px 16px;">
+                    <input type="number" class="form-control" id="customerPrice" placeholder="कीमत (नए के लिए)" style="margin-bottom: 12px; border-radius: 16px; padding: 12px 16px;">
+                    <input type="date" class="form-control" id="customerDate" style="border-radius: 16px; padding: 12px 16px;">
+                    <small class="text-muted d-block mt-2">एडिट में सिर्फ नाम-फोन बदलें</small>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn" style="background: #0284c7; color: white;" onclick="saveCustomer()">सेव करें</button>
+                <div class="modal-footer" style="padding: 16px 20px; border-top: 1px solid #f1f5f9;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 30px; padding: 10px 20px;">रद्द करें</button>
+                    <button type="button" class="btn" style="background: #0284c7; color: white; border-radius: 30px; padding: 10px 25px;" onclick="saveCustomer()">सेव करें</button>
                 </div>
             </div>
         </div>
@@ -970,27 +998,27 @@
     <!-- Product Modal -->
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 20px;">
-                <div class="modal-header" style="background: #0284c7; color: white; border: none;">
+            <div class="modal-content" style="border-radius: 24px;">
+                <div class="modal-header" style="background: #0284c7; color: white; border: none; padding: 16px 20px;">
                     <h5 class="modal-title">
                         <i class="fas fa-box"></i> नया उत्पाद
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="productName" placeholder="उत्पाद का नाम *" style="margin-bottom: 12px;">
-                    <input type="number" class="form-control" id="productPrice" placeholder="कीमत (₹) *" style="margin-bottom: 12px;">
-                    <input type="date" class="form-control" id="productDate">
+                <div class="modal-body" style="padding: 20px;">
+                    <input type="text" class="form-control" id="productName" placeholder="उत्पाद का नाम *" style="margin-bottom: 12px; border-radius: 16px; padding: 12px 16px;">
+                    <input type="number" class="form-control" id="productPrice" placeholder="कीमत (₹) *" style="margin-bottom: 12px; border-radius: 16px; padding: 12px 16px;">
+                    <input type="date" class="form-control" id="productDate" style="border-radius: 16px; padding: 12px 16px;">
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
-                    <button type="button" class="btn" style="background: #0284c7; color: white;" onclick="saveProduct()">सेव करें</button>
+                <div class="modal-footer" style="padding: 16px 20px; border-top: 1px solid #f1f5f9;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 30px; padding: 10px 20px;">रद्द करें</button>
+                    <button type="button" class="btn" style="background: #0284c7; color: white; border-radius: 30px; padding: 10px 25px;" onclick="saveProduct()">सेव करें</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
@@ -1008,6 +1036,7 @@
             appId: "1:455588388635:web:6958b0e092b7455d9a3dbe"
         };
 
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const database = firebase.database();
@@ -1115,7 +1144,7 @@
             });
         }
 
-        // 🔥 SEARCH FUNCTION
+        // SEARCH FUNCTION
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const query = e.target.value.toLowerCase().trim();
             const clearBtn = document.getElementById('clearSearch');
@@ -1142,7 +1171,7 @@
                 
                 displayCustomers(filtered);
                 document.getElementById('searchCount').textContent = `${filtered.length} ग्राहक मिले`;
-                document.getElementById('resultBadge').textContent = `"${e.target.value}" के परिणाम`;
+                document.getElementById('resultBadge').textContent = `"${e.target.value}"`;
             }, 300);
         });
 
@@ -1195,7 +1224,6 @@
                     displayPhone = displayPhone.replace(regex, '<span class="search-highlight">$1</span>');
                 }
                 
-                // Products HTML
                 let productsHTML = '';
                 if (c.products && Object.keys(c.products).length > 0) {
                     productsHTML = `
@@ -1212,11 +1240,10 @@
                     let productIndex = 0;
                     Object.entries(c.products).forEach(([pid, p]) => {
                         total += Number(p.price);
-                        const productColor = (productIndex % 5) + 1;
                         productIndex++;
                         
                         productsHTML += `
-                            <div class="product-item" data-color="${productColor}">
+                            <div class="product-item">
                                 <div>
                                     <div class="product-name">${p.name}</div>
                                     <div class="product-details">
@@ -1233,7 +1260,7 @@
                     });
                     
                     productsHTML += `
-                            <div class="total-amount">कुल राशि: ₹${total}</div>
+                            <div class="total-amount">कुल: ₹${total}</div>
                         </div>
                     `;
                 } else {
@@ -1283,7 +1310,7 @@
             });
         }
 
-        // 📱 FIXED WhatsApp Function - बिल्कुल आपके फॉर्मेट में
+        // WhatsApp Function
         function sendWhatsApp(id) {
             const c = allCustomers.find(c => c.id === id);
             if (!c?.phone) {
@@ -1294,7 +1321,6 @@
             let phone = c.phone.replace(/\D/g, '');
             if (phone.length === 10) phone = '91' + phone;
             
-            // बिल्कुल आपके दिए फॉर्मेट में मैसेज
             let msg = `🏪 श्री बालाजी वेरायटी स्टोर, खूड़\n\n`;
             msg += `👤 ग्राहक: ${c.name}\n`;
             msg += `📞 फोन: ${c.phone}\n`;
@@ -1304,8 +1330,7 @@
                 msg += `📦 खरीदारी:\n`;
                 let i = 1;
                 Object.values(c.products).forEach(p => {
-                    const dateHindi = formatDateHindi(p.date);
-                    msg += `${i}. ${p.name} - ₹${p.price} (${dateHindi})\n`;
+                    msg += `${i}. ${p.name} - ₹${p.price} (${formatDateHindi(p.date)})\n`;
                     i++;
                 });
             }
@@ -1334,8 +1359,8 @@
             document.getElementById('customerModalTitle').innerHTML = '<i class="fas fa-user-edit"></i> एडिट ग्राहक';
             document.getElementById('customerName').value = c.name || '';
             document.getElementById('customerPhone').value = c.phone || '';
-            document.getElementById('customerItem').value = ''; // खाली रखो
-            document.getElementById('customerPrice').value = ''; // खाली रखो
+            document.getElementById('customerItem').value = '';
+            document.getElementById('customerPrice').value = '';
             document.getElementById('customerDate').value = new Date().toISOString().split('T')[0];
             currentCustomerId = id;
             new bootstrap.Modal(document.getElementById('customerModal')).show();
@@ -1361,7 +1386,7 @@
             const data = { name, phone, timestamp: Date.now() };
 
             if (currentCustomerId) {
-                // एडिट मोड - सिर्फ नाम और फोन अपडेट करो
+                // Edit mode - only update name and phone
                 database.ref('customers/' + currentCustomerId).update(data)
                     .then(() => {
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
@@ -1369,7 +1394,7 @@
                     })
                     .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             } else {
-                // नया ग्राहक
+                // New customer
                 database.ref('customers').push(data)
                     .then(ref => {
                         if (price && item) {
@@ -1479,11 +1504,14 @@
 
         function showSuccess(msg) {
             const toast = document.createElement('div');
-            toast.style.cssText = 'position:fixed; bottom:30px; right:30px; background:white; color:#0284c7; padding:16px 24px; border-radius:60px; box-shadow:0 10px 30px rgba(0,0,0,0.1); display:flex; align-items:center; gap:12px; z-index:9999; border-left:4px solid #0284c7;';
+            toast.style.cssText = 'position:fixed; bottom:20px; right:20px; left:20px; background:white; color:#0284c7; padding:16px 20px; border-radius:60px; box-shadow:0 10px 30px rgba(0,0,0,0.1); display:flex; align-items:center; gap:12px; z-index:9999; border-left:4px solid #0284c7; max-width:400px; margin:0 auto;';
             toast.innerHTML = `<i class="fas fa-check-circle" style="color:#0284c7;"></i> ${msg}`;
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
+
+        // Security: Disable right click
+        document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
