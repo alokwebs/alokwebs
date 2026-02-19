@@ -1310,7 +1310,7 @@
             });
         }
 
-        // WhatsApp Function
+        // ✅ FIXED: WhatsApp Function - आपके फॉर्मेट में
         function sendWhatsApp(id) {
             const c = allCustomers.find(c => c.id === id);
             if (!c?.phone) {
@@ -1359,13 +1359,14 @@
             document.getElementById('customerModalTitle').innerHTML = '<i class="fas fa-user-edit"></i> एडिट ग्राहक';
             document.getElementById('customerName').value = c.name || '';
             document.getElementById('customerPhone').value = c.phone || '';
-            document.getElementById('customerItem').value = '';
-            document.getElementById('customerPrice').value = '';
+            document.getElementById('customerItem').value = ''; // खाली रखो
+            document.getElementById('customerPrice').value = ''; // खाली रखो
             document.getElementById('customerDate').value = new Date().toISOString().split('T')[0];
             currentCustomerId = id;
             new bootstrap.Modal(document.getElementById('customerModal')).show();
         }
 
+        // ✅ FIXED: Save Customer Function - अब PRODUCT भी सेव होगा
         function saveCustomer() {
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
@@ -1373,6 +1374,7 @@
             const price = document.getElementById('customerPrice').value;
             const date = document.getElementById('customerDate').value;
 
+            // Validation
             if (!name) {
                 showMessage('❌ नाम डालें', 'error');
                 return;
@@ -1383,29 +1385,39 @@
                 return;
             }
 
-            const data = { name, phone, timestamp: Date.now() };
+            const data = { 
+                name, 
+                phone, 
+                timestamp: Date.now() 
+            };
 
+            // 🔥 EDIT MODE - सिर्फ नाम और फोन अपडेट
             if (currentCustomerId) {
-                // Edit mode - only update name and phone
                 database.ref('customers/' + currentCustomerId).update(data)
                     .then(() => {
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
                         showSuccess('✅ ग्राहक अपडेट हो गया');
                     })
                     .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
-            } else {
-                // New customer
+            } 
+            // 🔥 NEW CUSTOMER - नाम, फोन और PRODUCT सब सेव होंगे
+            else {
+                // पहले ग्राहक का डेटा सेव करो
                 database.ref('customers').push(data)
                     .then(ref => {
-                        if (price && item) {
+                        // 🔥 अगर सामान और कीमत दी है तो PRODUCT भी सेव करो
+                        if (item && price) {
                             return database.ref('customers/' + ref.key + '/products').push({
-                                name: item, price: Number(price), date, timestamp: Date.now()
+                                name: item, 
+                                price: Number(price), 
+                                date: date || new Date().toISOString().split('T')[0], 
+                                timestamp: Date.now()
                             });
                         }
                     })
                     .then(() => {
                         bootstrap.Modal.getInstance(document.getElementById('customerModal')).hide();
-                        showSuccess('✅ नया ग्राहक जुड़ गया');
+                        showSuccess('✅ नया ग्राहक और उत्पाद जुड़ गया');
                     })
                     .catch(error => showMessage('❌ गलती: ' + error.message, 'error'));
             }
