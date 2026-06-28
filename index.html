@@ -2086,7 +2086,7 @@
             color: #0284c7;
         }
 
-        /* ===== MODAL TWEAKS ===== */
+        /* ===== MODAL ===== */
         .modal-content {
             border-radius: 24px;
             border: none;
@@ -2171,17 +2171,21 @@
 
         <div class="input-group-custom">
             <i class="fas fa-user"></i>
-            <input type="text" id="loginUser" placeholder="यूजरनेम" value="home123">
+            <input type="text" id="loginUser" placeholder="यूजरनेम">
         </div>
 
         <div class="input-group-custom">
             <i class="fas fa-lock"></i>
-            <input type="password" id="loginPass" placeholder="पासवर्ड" value="home@123" onkeypress="if(event.key==='Enter') doLogin()">
+            <input type="password" id="loginPass" placeholder="पासवर्ड" onkeypress="if(event.key==='Enter') doLogin()">
         </div>
 
         <button class="login-btn" onclick="doLogin()">
             <i class="fas fa-sign-in-alt"></i> लॉगिन करें
         </button>
+        
+        <div style="text-align:center; margin-top:12px; font-size:12px; color:#94a3b8;">
+            <i class="fas fa-info-circle"></i> home123 / home@123
+        </div>
     </div>
 </div>
 
@@ -2334,7 +2338,6 @@
     const database = firebase.database();
 
     // ===== LOGIN SYSTEM =====
-    // Only home123 / home@123 can login
     const VALID_USER = 'home123';
     const VALID_PASS = 'home@123';
 
@@ -2343,9 +2346,15 @@
         const pass = document.getElementById('loginPass').value.trim();
         const errorDiv = document.getElementById('loginError');
 
+        if (!user || !pass) {
+            errorDiv.classList.add('show');
+            errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> कृपया यूजरनेम और पासवर्ड डालें';
+            setTimeout(() => errorDiv.classList.remove('show'), 3000);
+            return;
+        }
+
         if (user === VALID_USER && pass === VALID_PASS) {
             errorDiv.classList.remove('show');
-            // Login success - show app
             document.getElementById('loginPage').classList.add('app-hidden');
             document.getElementById('appMain').classList.remove('app-hidden');
             loadAllExpenses();
@@ -2360,12 +2369,11 @@
     function doLogout() {
         document.getElementById('appMain').classList.add('app-hidden');
         document.getElementById('loginPage').classList.remove('app-hidden');
-        document.getElementById('loginUser').value = 'home123';
-        document.getElementById('loginPass').value = 'home@123';
+        document.getElementById('loginUser').value = '';
+        document.getElementById('loginPass').value = '';
         showToast('🔒 लॉगआउट हो गया');
     }
 
-    // Enter key for login
     document.getElementById('loginPass').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') doLogin();
     });
@@ -2379,27 +2387,12 @@
         database.ref('expenses').on('value', (snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.val();
-                allExpenses.home = data.home ? Object.values(data.home) : [];
-                allExpenses.daily = data.daily ? Object.values(data.daily) : [];
-                allExpenses.person = data.person ? Object.values(data.person) : [];
-                
-                // Attach IDs
-                if (data.home) {
-                    const keys = Object.keys(data.home);
-                    allExpenses.home.forEach((item, i) => { item.id = keys[i]; });
-                }
-                if (data.daily) {
-                    const keys = Object.keys(data.daily);
-                    allExpenses.daily.forEach((item, i) => { item.id = keys[i]; });
-                }
-                if (data.person) {
-                    const keys = Object.keys(data.person);
-                    allExpenses.person.forEach((item, i) => { item.id = keys[i]; });
-                }
+                allExpenses.home = data.home ? Object.keys(data.home).map(key => ({ ...data.home[key], id: key })) : [];
+                allExpenses.daily = data.daily ? Object.keys(data.daily).map(key => ({ ...data.daily[key], id: key })) : [];
+                allExpenses.person = data.person ? Object.keys(data.person).map(key => ({ ...data.person[key], id: key })) : [];
             } else {
                 allExpenses = { home: [], daily: [], person: [] };
             }
-            
             updateUI();
         });
     }
@@ -2422,9 +2415,14 @@
                 daily: 'कोई दैनिक खर्च नहीं',
                 person: 'कोई व्यक्ति खर्च नहीं'
             };
+            const icons = {
+                home: 'fa-home',
+                daily: 'fa-coffee',
+                person: 'fa-users'
+            };
             container.innerHTML = `
                 <div class="empty-state">
-                    <i class="fas ${type === 'home' ? 'fa-home' : type === 'daily' ? 'fa-coffee' : 'fa-users'}"></i>
+                    <i class="fas ${icons[type]}"></i>
                     <h4>${emptyMessages[type]}</h4>
                     <p>नया खर्च जोड़ने के लिए नीचे बटन दबाएँ</p>
                 </div>
@@ -2439,7 +2437,7 @@
         };
 
         container.innerHTML = items.map(item => {
-            const date = item.date ? new Date(item.date).toLocaleDateString('hi-IN') : 'कोई तारीख नहीं';
+            const date = item.date ? new Date(item.date).toLocaleDateString('hi-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'कोई तारीख नहीं';
             const personInfo = item.personName ? `<span><i class="fas fa-user"></i> ${item.personName}</span>` : '';
             
             return `
@@ -2448,7 +2446,7 @@
                         <i class="fas ${icons[type].icon}"></i>
                     </div>
                     <div class="expense-info">
-                        <div class="title">${item.title || 'बिना शीर्षक'}</div>
+                        <div class="title">${escapeHtml(item.title || 'बिना शीर्षक')}</div>
                         <div class="meta">
                             <span><i class="far fa-calendar"></i> ${date}</span>
                             ${personInfo}
@@ -2459,13 +2457,17 @@
                         <button class="edit-btn" onclick="editExpense('${type}','${item.id}')">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="delete-btn" onclick="deleteExpense('${type}','${item.id}','${item.title || 'खर्च'}')">
+                        <button class="delete-btn" onclick="deleteExpense('${type}','${item.id}','${escapeHtml(item.title || 'खर्च')}')">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 </div>
             `;
         }).join('');
+    }
+
+    function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     }
 
     // ===== UPDATE TOTALS =====
@@ -2498,7 +2500,8 @@
 
     function openAddModal(type) {
         modalType = type;
-        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-plus-circle"></i> नया ${type === 'home' ? 'घर' : type === 'daily' ? 'दैनिक' : 'व्यक्ति'} खर्च`;
+        const labels = { home: 'घर', daily: 'दैनिक', person: 'व्यक्ति' };
+        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-plus-circle"></i> नया ${labels[type]} खर्च`;
         document.getElementById('expType').value = type;
         document.getElementById('expEditId').value = '';
         document.getElementById('expTitle').value = '';
@@ -2506,7 +2509,6 @@
         document.getElementById('expDate').value = new Date().toISOString().split('T')[0];
         document.getElementById('expPersonName').value = '';
         
-        // Show/hide person field
         document.getElementById('personField').style.display = type === 'person' ? 'block' : 'none';
         
         if (!modalInstance) {
@@ -2520,7 +2522,8 @@
         if (!item) return;
         
         modalType = type;
-        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-edit"></i> एडिट ${type === 'home' ? 'घर' : type === 'daily' ? 'दैनिक' : 'व्यक्ति'} खर्च`;
+        const labels = { home: 'घर', daily: 'दैनिक', person: 'व्यक्ति' };
+        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-edit"></i> एडिट ${labels[type]} खर्च`;
         document.getElementById('expType').value = type;
         document.getElementById('expEditId').value = id;
         document.getElementById('expTitle').value = item.title || '';
@@ -2568,21 +2571,25 @@
         const ref = database.ref('expenses/' + type);
         
         if (editId) {
-            // Update existing
             ref.child(editId).update(data)
                 .then(() => {
-                    modalInstance.hide();
+                    if (modalInstance) modalInstance.hide();
                     showToast('✅ खर्च अपडेट हो गया');
                 })
-                .catch(() => showToast('❌ अपडेट में गलती'));
+                .catch((err) => {
+                    console.error(err);
+                    showToast('❌ अपडेट में गलती: ' + err.message);
+                });
         } else {
-            // Add new
             ref.push(data)
                 .then(() => {
-                    modalInstance.hide();
+                    if (modalInstance) modalInstance.hide();
                     showToast('✅ नया खर्च जुड़ गया');
                 })
-                .catch(() => showToast('❌ जोड़ने में गलती'));
+                .catch((err) => {
+                    console.error(err);
+                    showToast('❌ जोड़ने में गलती: ' + err.message);
+                });
         }
     }
 
@@ -2592,7 +2599,10 @@
         
         database.ref('expenses/' + type + '/' + id).remove()
             .then(() => showToast('🗑️ डिलीट हो गया'))
-            .catch(() => showToast('❌ डिलीट में गलती'));
+            .catch((err) => {
+                console.error(err);
+                showToast('❌ डिलीट में गलती: ' + err.message);
+            });
     }
 
     // ===== SHARE REPORT =====
@@ -2604,7 +2614,7 @@
 
         let msg = '🏠 *घरेलू खर्च रिपोर्ट*\n';
         msg += '━━━━━━━━━━━━━━━\n\n';
-        msg += `📅 तारीख: ${new Date().toLocaleDateString('hi-IN')}\n\n`;
+        msg += `📅 तारीख: ${new Date().toLocaleDateString('hi-IN', { day: '2-digit', month: 'long', year: 'numeric' })}\n\n`;
         msg += `🏠 घर का खर्च: ${home}\n`;
         msg += `☕ दैनिक खर्च: ${daily}\n`;
         msg += `👤 अन्य व्यक्ति: ${person}\n\n`;
@@ -2612,14 +2622,13 @@
         msg += '━━━━━━━━━━━━━━━\n\n';
         msg += '📋 *विवरण:*\n\n';
 
-        // Add all expenses
         ['home', 'daily', 'person'].forEach(type => {
             const label = type === 'home' ? '🏠 घर' : type === 'daily' ? '☕ दैनिक' : '👤 व्यक्ति';
             const items = allExpenses[type] || [];
             if (items.length > 0) {
                 msg += `*${label}*\n`;
                 items.forEach(item => {
-                    const date = item.date ? new Date(item.date).toLocaleDateString('hi-IN') : '';
+                    const date = item.date ? new Date(item.date).toLocaleDateString('hi-IN', { day: '2-digit', month: 'short' }) : '';
                     const personInfo = item.personName ? ` (${item.personName})` : '';
                     msg += `• ${item.title}${personInfo}: ₹${item.amount} (${date})\n`;
                 });
@@ -2630,24 +2639,18 @@
         msg += '━━━━━━━━━━━━━━━\n';
         msg += '🙏 धन्यवाद!';
 
-        // Try to share via WhatsApp
-        if (navigator.share) {
-            navigator.share({
-                title: 'घरेलू खर्च रिपोर्ट',
-                text: msg
-            }).catch(() => copyToClipboard(msg));
-        } else {
-            // WhatsApp fallback
-            const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        }
+        // Try WhatsApp first
+        const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank');
+        
+        // Also copy to clipboard
+        copyToClipboard(msg);
     }
 
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
-            showToast('📋 कॉपी हो गया! अब कहीं भी पेस्ट करें');
+            showToast('📋 कॉपी हो गया! WhatsApp में पेस्ट करें');
         }).catch(() => {
-            // Fallback
             const ta = document.createElement('textarea');
             ta.value = text;
             document.body.appendChild(ta);
@@ -2671,17 +2674,15 @@
         setTimeout(() => toast.remove(), 3000);
     }
 
-    // ===== LOAD ON START =====
-    // Check if already logged in via session (simple)
+    // ===== AUTO LOGIN CHECK =====
     document.addEventListener('DOMContentLoaded', function() {
-        // Default: show login
         document.getElementById('loginPage').classList.remove('app-hidden');
         document.getElementById('appMain').classList.add('app-hidden');
+        
+        // Clear fields on load
+        document.getElementById('loginUser').value = '';
+        document.getElementById('loginPass').value = '';
     });
-
-    // For demo: click login with pre-filled values
-    // You can remove this if you want manual login
-    console.log('👤 Use: home123 / home@123');
 </script>
 
 </body>
