@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>घरेलू खर्च प्रबंधन</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f0f9ff;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* ===== LOGIN PAGE ===== */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: linear-gradient(135deg, #0284c7, #075985);
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.3);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+        }
+
+        .login-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0c4a6e;
+        }
+
+        .login-header p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .input-group-custom i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 16px;
+            z-index: 1;
+        }
+
+        .input-group-custom input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            font-size: 15px;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .input-group-custom input:focus {
+            border-color: #0284c7;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.08);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            border: none;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+
+        .login-error {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        /* ===== MAIN APP ===== */
+        .app-hidden {
+            display: none !important;
+        }
+
+        .app-navbar {
+            background: white;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.08);
+        }
+
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .app-brand .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .app-brand .brand-text {
+            font-weight: 700;
+            font-size: 15px;
+            color: #0c4a6e;
+        }
+
+        .app-brand .brand-text small {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            color: #64748b;
+        }
+
+        .logout-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:active {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .main-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* ===== TOTAL EXPENSE CARD ===== */
+        .total-card {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-radius: 28px;
+            padding: 22px 20px;
+            margin-bottom: 18px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .total-card::after {
+            content: '💰';
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 60px;
+            opacity: 0.1;
+        }
+
+        .total-card .label {
+            font-size: 12px;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+        }
+
+        .total-card .amount {
+            font-size: 38px;
+            font-weight: 800;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        .total-card .sub-info {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+            font-size: 11px;
+            opacity: 0.8;
+            flex-wrap: wrap;
+        }
+
+        .total-card .sub-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .share-btn-top {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s;
+        }
+
+        .share-btn-top:active {
+            transform: scale(0.95);
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* ===== TABS ===== */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            background: white;
+            padding: 4px;
+            border-radius: 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid rgba(2, 132, 199, 0.08);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 6px;
+            border: none;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .tab-btn i {
+            font-size: 14px;
+        }
+
+        .tab-btn.active {
+            background: #0284c7;
+            color: white;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        .tab-btn:active {
+            transform: scale(0.96);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== ADD BUTTON ===== */
+        .add-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 2px dashed #0284c7;
+            border-radius: 20px;
+            color: #0284c7;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 14px;
+        }
+
+        .add-btn:active {
+            background: #f0f9ff;
+            border-style: solid;
+            transform: scale(0.98);
+        }
+
+        /* ===== EXPENSE ITEMS ===== */
+        .expense-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .expense-item {
+            background: white;
+            border-radius: 20px;
+            padding: 14px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid rgba(2, 132, 199, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .expense-item:active {
+            transform: scale(0.99);
+        }
+
+        .expense-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .expense-icon.home { background: #dbeafe; color: #0284c7; }
+        .expense-icon.daily { background: #dcfce7; color: #16a34a; }
+        .expense-icon.person { background: #fef3c7; color: #d97706; }
+
+        .expense-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .expense-info .title {
+            font-weight: 600;
+            color: #0c4a6e;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .expense-info .meta {
+            display: flex;
+            gap: 10px;
+            font-size: 11px;
+            color: #64748b;
+            flex-wrap: wrap;
+        }
+
+        .expense-info .meta i {
+            margin-right: 2px;
+            color: #94a3b8;
+        }
+
+        .expense-amount {
+            font-weight: 700;
+            color: #0284c7;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        .expense-actions {
+            display: flex;
+            gap: 4px;
+            margin-left: 4px;
+        }
+
+        .expense-actions button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 10px;
+            background: #f1f5f9;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .expense-actions button:active {
+            transform: scale(0.92);
+        }
+
+        .expense-actions .edit-btn:active { background: #fef3c7; color: #d97706; }
+        .expense-actions .delete-btn:active { background: #fee2e2; color: #dc2626; }
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            text-align: center;
+            padding: 30px 16px;
+            background: white;
+            border-radius: 20px;
+        }
+
+        .empty-state i {
+            font-size: 40px;
+            color: #e0f2fe;
+            margin-bottom: 8px;
+        }
+
+        .empty-state h4 {
+            color: #0c4a6e;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .empty-state p {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* ===== TOAST ===== */
+        .toast-custom {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            padding: 14px 20px;
+            border-radius: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            max-width: 400px;
+            margin: 0 auto;
+            border-left: 4px solid #0284c7;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toast-custom i {
+            font-size: 20px;
+            color: #0284c7;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-content {
+            border-radius: 24px;
+            border: none;
+        }
+
+        .modal-header {
+            background: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 24px 24px 0 0;
+            padding: 16px 20px;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #f1f5f9;
+            padding: 16px 20px;
+        }
+
+        .form-control {
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            margin-bottom: 12px;
+        }
+
+        .form-control:focus {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.08);
+        }
+
+        .btn-primary-custom {
+            background: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            padding: 10px 24px;
+            font-weight: 600;
+        }
+
+        .btn-primary-custom:active {
+            transform: scale(0.97);
+        }
+
+        @media (max-width: 380px) {
+            .tab-btn {
+                font-size: 10px;
+                padding: 8px 4px;
+            }
+            .tab-btn i {
+                font-size: 12px;
+            }
+            .total-card .amount {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========================== LOGIN PAGE ========================== -->
+<div id="loginPage" class="login-page">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="login-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <h2>घरेलू खर्च प्रबंधन</h2>
+            <p>केवल अधिकृत उपयोगकर्ता</p>
+        </div>
+
+        <div id="loginError" class="login-error">
+            <i class="fas fa-exclamation-circle"></i> गलत यूजरनेम या पासवर्ड
+        </div>
+
+        <div class="input-group-custom">
+            <i class="fas fa-user"></i>
+            <input type="text" id="loginUser" placeholder="यूजरनेम">
+        </div>
+
+        <div class="input-group-custom">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="loginPass" placeholder="पासवर्ड" onkeypress="if(event.key==='Enter') doLogin()">
+        </div>
+
+        <button class="login-btn" onclick="doLogin()">
+            <i class="fas fa-sign-in-alt"></i> लॉगिन करें
+        </button>
+        
+        <div style="text-align:center; margin-top:12px; font-size:12px; color:#94a3b8;">
+            <i class="fas fa-info-circle"></i> home123 / home@123
+        </div>
+    </div>
+</div>
+
+<!-- ========================== MAIN APP ========================== -->
+<div id="appMain" class="app-hidden">
+
+    <!-- Navbar -->
+    <div class="app-navbar">
+        <div class="app-brand">
+            <div class="logo"><i class="fas fa-home"></i></div>
+            <div class="brand-text">
+                घरेलू खर्च
+                <small>श्री बालाजी</small>
+            </div>
+        </div>
+        <button class="logout-btn" onclick="doLogout()" title="लॉगआउट">
+            <i class="fas fa-sign-out-alt"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Total Card -->
+        <div class="total-card" id="totalCard">
+            <div class="label"><i class="fas fa-calculator"></i> कुल खर्च</div>
+            <div class="amount" id="grandTotal">₹0</div>
+            <div class="sub-info">
+                <span><i class="fas fa-home"></i> घर: <strong id="totalHome">₹0</strong></span>
+                <span><i class="fas fa-coffee"></i> दैनिक: <strong id="totalDaily">₹0</strong></span>
+                <span><i class="fas fa-users"></i> अन्य: <strong id="totalPerson">₹0</strong></span>
+            </div>
+            <button class="share-btn-top" onclick="shareReport()">
+                <i class="fas fa-share-alt"></i> शेयर करें
+            </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="home" onclick="switchTab('home')">
+                <i class="fas fa-home"></i> घर
+            </button>
+            <button class="tab-btn" data-tab="daily" onclick="switchTab('daily')">
+                <i class="fas fa-coffee"></i> दैनिक
+            </button>
+            <button class="tab-btn" data-tab="person" onclick="switchTab('person')">
+                <i class="fas fa-user-plus"></i> अन्य
+            </button>
+        </div>
+
+        <!-- ===== TAB: HOME ===== -->
+        <div id="tab-home" class="tab-content active">
+            <button class="add-btn" onclick="openAddModal('home')">
+                <i class="fas fa-plus-circle"></i> नया घर का खर्च जोड़ें
+            </button>
+            <div id="homeList" class="expense-list">
+                <div class="empty-state">
+                    <i class="fas fa-home"></i>
+                    <h4>कोई घर का खर्च नहीं</h4>
+                    <p>बाउंड्री, टॉयलेट या मरम्मत का खर्च यहाँ जोड़ें</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TAB: DAILY ===== -->
+        <div id="tab-daily" class="tab-content">
+            <button class="add-btn" onclick="openAddModal('daily')">
+                <i class="fas fa-plus-circle"></i> नया दैनिक खर्च जोड़ें
+            </button>
+            <div id="dailyList" class="expense-list">
+                <div class="empty-state">
+                    <i class="fas fa-coffee"></i>
+                    <h4>कोई दैनिक खर्च नहीं</h4>
+                    <p>रोजाना के खर्चे यहाँ जोड़ें</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TAB: PERSON ===== -->
+        <div id="tab-person" class="tab-content">
+            <button class="add-btn" onclick="openAddModal('person')">
+                <i class="fas fa-plus-circle"></i> नया व्यक्ति खर्च जोड़ें
+            </button>
+            <div id="personList" class="expense-list">
+                <div class="empty-state">
+                    <i class="fas fa-users"></i>
+                    <h4>कोई व्यक्ति खर्च नहीं</h4>
+                    <p>अलग-अलग लोगों के खर्चे यहाँ जोड़ें</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========================== MODALS ========================== -->
+
+<!-- Add/Edit Modal -->
+<div class="modal fade" id="expenseModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">
+                    <i class="fas fa-plus-circle"></i> नया खर्च
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" id="expTitle" placeholder="खर्च का विवरण *">
+                <input type="number" class="form-control" id="expAmount" placeholder="राशि (₹) *">
+                <input type="date" class="form-control" id="expDate">
+                
+                <!-- Extra field for Person tab -->
+                <div id="personField" style="display:none;">
+                    <input type="text" class="form-control" id="expPersonName" placeholder="व्यक्ति का नाम *">
+                </div>
+                
+                <small class="text-muted">* आवश्यक फील्ड</small>
+                <input type="hidden" id="expType">
+                <input type="hidden" id="expEditId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">रद्द करें</button>
+                <button type="button" class="btn btn-primary-custom" onclick="saveExpense()">सेव करें</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================== FIREBASE ========================== -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // ===== FIREBASE CONFIG =====
+    const firebaseConfig = {
+        apiKey: "AIzaSyDMO9CwYSF4tH4y3y0eD9IEaoYq1yIeP7g",
+        authDomain: "shree-balaji-variety-store.firebaseapp.com",
+        databaseURL: "https://shree-balaji-variety-store-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "shree-balaji-variety-store",
+        storageBucket: "shree-balaji-variety-store.firebasestorage.app",
+        messagingSenderId: "455588388635",
+        appId: "1:455588388635:web:6958b0e092b7455d9a3dbe"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const database = firebase.database();
+
+    // ===== LOGIN SYSTEM =====
+    const VALID_USER = 'home123';
+    const VALID_PASS = 'home@123';
+
+    function doLogin() {
+        const user = document.getElementById('loginUser').value.trim();
+        const pass = document.getElementById('loginPass').value.trim();
+        const errorDiv = document.getElementById('loginError');
+
+        if (!user || !pass) {
+            errorDiv.classList.add('show');
+            errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> कृपया यूजरनेम और पासवर्ड डालें';
+            setTimeout(() => errorDiv.classList.remove('show'), 3000);
+            return;
+        }
+
+        if (user === VALID_USER && pass === VALID_PASS) {
+            errorDiv.classList.remove('show');
+            document.getElementById('loginPage').classList.add('app-hidden');
+            document.getElementById('appMain').classList.remove('app-hidden');
+            loadAllExpenses();
+            showToast('✅ लॉगिन सफल! स्वागत है');
+        } else {
+            errorDiv.classList.add('show');
+            errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> गलत यूजरनेम या पासवर्ड';
+            setTimeout(() => errorDiv.classList.remove('show'), 3000);
+        }
+    }
+
+    function doLogout() {
+        document.getElementById('appMain').classList.add('app-hidden');
+        document.getElementById('loginPage').classList.remove('app-hidden');
+        document.getElementById('loginUser').value = '';
+        document.getElementById('loginPass').value = '';
+        showToast('🔒 लॉगआउट हो गया');
+    }
+
+    document.getElementById('loginPass').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') doLogin();
+    });
+
+    // ===== GLOBAL STATE =====
+    let allExpenses = { home: [], daily: [], person: [] };
+    let currentTab = 'home';
+
+    // ===== LOAD DATA =====
+    function loadAllExpenses() {
+        database.ref('expenses').on('value', (snapshot) => {
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+                allExpenses.home = data.home ? Object.keys(data.home).map(key => ({ ...data.home[key], id: key })) : [];
+                allExpenses.daily = data.daily ? Object.keys(data.daily).map(key => ({ ...data.daily[key], id: key })) : [];
+                allExpenses.person = data.person ? Object.keys(data.person).map(key => ({ ...data.person[key], id: key })) : [];
+            } else {
+                allExpenses = { home: [], daily: [], person: [] };
+            }
+            updateUI();
+        });
+    }
+
+    // ===== UPDATE UI =====
+    function updateUI() {
+        renderList('home');
+        renderList('daily');
+        renderList('person');
+        updateTotals();
+    }
+
+    function renderList(type) {
+        const container = document.getElementById(type + 'List');
+        const items = allExpenses[type] || [];
+        
+        if (items.length === 0) {
+            const emptyMessages = {
+                home: 'कोई घर का खर्च नहीं',
+                daily: 'कोई दैनिक खर्च नहीं',
+                person: 'कोई व्यक्ति खर्च नहीं'
+            };
+            const icons = {
+                home: 'fa-home',
+                daily: 'fa-coffee',
+                person: 'fa-users'
+            };
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas ${icons[type]}"></i>
+                    <h4>${emptyMessages[type]}</h4>
+                    <p>नया खर्च जोड़ने के लिए नीचे बटन दबाएँ</p>
+                </div>
+            `;
+            return;
+        }
+
+        const icons = {
+            home: { class: 'home', icon: 'fa-home' },
+            daily: { class: 'daily', icon: 'fa-coffee' },
+            person: { class: 'person', icon: 'fa-user' }
+        };
+
+        container.innerHTML = items.map(item => {
+            const date = item.date ? new Date(item.date).toLocaleDateString('hi-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'कोई तारीख नहीं';
+            const personInfo = item.personName ? `<span><i class="fas fa-user"></i> ${item.personName}</span>` : '';
+            
+            return `
+                <div class="expense-item">
+                    <div class="expense-icon ${icons[type].class}">
+                        <i class="fas ${icons[type].icon}"></i>
+                    </div>
+                    <div class="expense-info">
+                        <div class="title">${escapeHtml(item.title || 'बिना शीर्षक')}</div>
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> ${date}</span>
+                            ${personInfo}
+                        </div>
+                    </div>
+                    <div class="expense-amount">₹${Number(item.amount || 0).toLocaleString()}</div>
+                    <div class="expense-actions">
+                        <button class="edit-btn" onclick="editExpense('${type}','${item.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="delete-btn" onclick="deleteExpense('${type}','${item.id}','${escapeHtml(item.title || 'खर्च')}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    // ===== UPDATE TOTALS =====
+    function updateTotals() {
+        const sum = (arr) => arr.reduce((s, i) => s + Number(i.amount || 0), 0);
+        
+        const totalHome = sum(allExpenses.home);
+        const totalDaily = sum(allExpenses.daily);
+        const totalPerson = sum(allExpenses.person);
+        const grandTotal = totalHome + totalDaily + totalPerson;
+        
+        document.getElementById('totalHome').textContent = '₹' + totalHome.toLocaleString();
+        document.getElementById('totalDaily').textContent = '₹' + totalDaily.toLocaleString();
+        document.getElementById('totalPerson').textContent = '₹' + totalPerson.toLocaleString();
+        document.getElementById('grandTotal').textContent = '₹' + grandTotal.toLocaleString();
+    }
+
+    // ===== TABS =====
+    function switchTab(tab) {
+        currentTab = tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+    }
+
+    // ===== MODAL =====
+    let modalInstance = null;
+    let modalType = '';
+
+    function openAddModal(type) {
+        modalType = type;
+        const labels = { home: 'घर', daily: 'दैनिक', person: 'व्यक्ति' };
+        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-plus-circle"></i> नया ${labels[type]} खर्च`;
+        document.getElementById('expType').value = type;
+        document.getElementById('expEditId').value = '';
+        document.getElementById('expTitle').value = '';
+        document.getElementById('expAmount').value = '';
+        document.getElementById('expDate').value = new Date().toISOString().split('T')[0];
+        document.getElementById('expPersonName').value = '';
+        
+        document.getElementById('personField').style.display = type === 'person' ? 'block' : 'none';
+        
+        if (!modalInstance) {
+            modalInstance = new bootstrap.Modal(document.getElementById('expenseModal'));
+        }
+        modalInstance.show();
+    }
+
+    function editExpense(type, id) {
+        const item = allExpenses[type].find(i => i.id === id);
+        if (!item) return;
+        
+        modalType = type;
+        const labels = { home: 'घर', daily: 'दैनिक', person: 'व्यक्ति' };
+        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-edit"></i> एडिट ${labels[type]} खर्च`;
+        document.getElementById('expType').value = type;
+        document.getElementById('expEditId').value = id;
+        document.getElementById('expTitle').value = item.title || '';
+        document.getElementById('expAmount').value = item.amount || '';
+        document.getElementById('expDate').value = item.date || new Date().toISOString().split('T')[0];
+        document.getElementById('expPersonName').value = item.personName || '';
+        
+        document.getElementById('personField').style.display = type === 'person' ? 'block' : 'none';
+        
+        if (!modalInstance) {
+            modalInstance = new bootstrap.Modal(document.getElementById('expenseModal'));
+        }
+        modalInstance.show();
+    }
+
+    // ===== SAVE EXPENSE =====
+    function saveExpense() {
+        const type = document.getElementById('expType').value;
+        const editId = document.getElementById('expEditId').value;
+        const title = document.getElementById('expTitle').value.trim();
+        const amount = document.getElementById('expAmount').value.trim();
+        const date = document.getElementById('expDate').value;
+        const personName = document.getElementById('expPersonName').value.trim();
+
+        if (!title) {
+            showToast('❌ कृपया विवरण डालें');
+            return;
+        }
+        if (!amount || isNaN(amount) || Number(amount) <= 0) {
+            showToast('❌ कृपया सही राशि डालें');
+            return;
+        }
+
+        const data = {
+            title: title,
+            amount: Number(amount),
+            date: date || new Date().toISOString().split('T')[0],
+            timestamp: Date.now()
+        };
+
+        if (type === 'person' && personName) {
+            data.personName = personName;
+        }
+
+        const ref = database.ref('expenses/' + type);
+        
+        if (editId) {
+            ref.child(editId).update(data)
+                .then(() => {
+                    if (modalInstance) modalInstance.hide();
+                    showToast('✅ खर्च अपडेट हो गया');
+                })
+                .catch((err) => {
+                    console.error(err);
+                    showToast('❌ अपडेट में गलती: ' + err.message);
+                });
+        } else {
+            ref.push(data)
+                .then(() => {
+                    if (modalInstance) modalInstance.hide();
+                    showToast('✅ नया खर्च जुड़ गया');
+                })
+                .catch((err) => {
+                    console.error(err);
+                    showToast('❌ जोड़ने में गलती: ' + err.message);
+                });
+        }
+    }
+
+    // ===== DELETE EXPENSE =====
+    function deleteExpense(type, id, title) {
+        if (!confirm(`⚠️ "${title}" को डिलीट करें?`)) return;
+        
+        database.ref('expenses/' + type + '/' + id).remove()
+            .then(() => showToast('🗑️ डिलीट हो गया'))
+            .catch((err) => {
+                console.error(err);
+                showToast('❌ डिलीट में गलती: ' + err.message);
+            });
+    }
+
+    // ===== SHARE REPORT =====
+    function shareReport() {
+        const total = document.getElementById('grandTotal').textContent;
+        const home = document.getElementById('totalHome').textContent;
+        const daily = document.getElementById('totalDaily').textContent;
+        const person = document.getElementById('totalPerson').textContent;
+
+        let msg = '🏠 *घरेलू खर्च रिपोर्ट*\n';
+        msg += '━━━━━━━━━━━━━━━\n\n';
+        msg += `📅 तारीख: ${new Date().toLocaleDateString('hi-IN', { day: '2-digit', month: 'long', year: 'numeric' })}\n\n`;
+        msg += `🏠 घर का खर्च: ${home}\n`;
+        msg += `☕ दैनिक खर्च: ${daily}\n`;
+        msg += `👤 अन्य व्यक्ति: ${person}\n\n`;
+        msg += `💰 *कुल खर्च: ${total}*\n`;
+        msg += '━━━━━━━━━━━━━━━\n\n';
+        msg += '📋 *विवरण:*\n\n';
+
+        ['home', 'daily', 'person'].forEach(type => {
+            const label = type === 'home' ? '🏠 घर' : type === 'daily' ? '☕ दैनिक' : '👤 व्यक्ति';
+            const items = allExpenses[type] || [];
+            if (items.length > 0) {
+                msg += `*${label}*\n`;
+                items.forEach(item => {
+                    const date = item.date ? new Date(item.date).toLocaleDateString('hi-IN', { day: '2-digit', month: 'short' }) : '';
+                    const personInfo = item.personName ? ` (${item.personName})` : '';
+                    msg += `• ${item.title}${personInfo}: ₹${item.amount} (${date})\n`;
+                });
+                msg += '\n';
+            }
+        });
+
+        msg += '━━━━━━━━━━━━━━━\n';
+        msg += '🙏 धन्यवाद!';
+
+        // Try WhatsApp first
+        const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank');
+        
+        // Also copy to clipboard
+        copyToClipboard(msg);
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('📋 कॉपी हो गया! WhatsApp में पेस्ट करें');
+        }).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+            showToast('📋 कॉपी हो गया!');
+        });
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+        const existing = document.querySelector('.toast-custom');
+        if (existing) existing.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast-custom';
+        toast.innerHTML = `<i class="fas fa-info-circle"></i> ${msg}`;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    // ===== AUTO LOGIN CHECK =====
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('loginPage').classList.remove('app-hidden');
+        document.getElementById('appMain').classList.add('app-hidden');
+        
+        // Clear fields on load
+        document.getElementById('loginUser').value = '';
+        document.getElementById('loginPass').value = '';
+    });
+</script>
+
+</body>
+</html>
