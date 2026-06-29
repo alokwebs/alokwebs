@@ -332,7 +332,6 @@
             background: rgba(255,255,255,0.25);
         }
 
-        /* ===== TABS ===== */
         .tabs {
             display: flex;
             gap: 4px;
@@ -695,7 +694,7 @@
         </button>
         
         <div style="text-align:center; margin-top:12px; font-size:12px; color:#94a3b8;">
-            <i class="fas fa-info-circle"></i> home123 / home@123
+            <i class="fas fa-info-circle"></i> homehouse2005 / househome2005
         </div>
     </div>
 </div>
@@ -703,7 +702,6 @@
 <!-- ===== MAIN APP ===== -->
 <div id="appMain" class="app-hidden">
 
-    <!-- Navbar -->
     <div class="app-navbar">
         <div class="app-brand">
             <div class="logo"><i class="fas fa-home"></i></div>
@@ -717,10 +715,9 @@
         </button>
     </div>
 
-    <!-- Main Container -->
     <div class="main-container">
 
-        <!-- ===== BALANCE CARD ===== -->
+        <!-- Balance Card -->
         <div class="balance-card">
             <div class="label"><i class="fas fa-wallet"></i> शेष राशि (बचत)</div>
             <div class="amount" id="remainingBalance">₹0</div>
@@ -730,7 +727,7 @@
             </div>
         </div>
 
-        <!-- ===== TOTAL EXPENSE CARD ===== -->
+        <!-- Total Expense Card -->
         <div class="total-card">
             <div class="label"><i class="fas fa-calculator"></i> कुल खर्च (विवरण)</div>
             <div class="amount" id="grandTotal">₹0</div>
@@ -744,7 +741,7 @@
             </button>
         </div>
 
-        <!-- ===== TABS ===== -->
+        <!-- Tabs -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="home" onclick="switchTab('home')">
                 <i class="fas fa-home"></i> घर
@@ -760,7 +757,7 @@
             </button>
         </div>
 
-        <!-- ===== TAB: HOME ===== -->
+        <!-- TAB: HOME -->
         <div id="tab-home" class="tab-content active">
             <button class="add-btn" onclick="openAddModal('home')">
                 <i class="fas fa-plus-circle"></i> नया घर का खर्च जोड़ें
@@ -774,7 +771,7 @@
             </div>
         </div>
 
-        <!-- ===== TAB: DAILY ===== -->
+        <!-- TAB: DAILY -->
         <div id="tab-daily" class="tab-content">
             <button class="add-btn" onclick="openAddModal('daily')">
                 <i class="fas fa-plus-circle"></i> नया दैनिक खर्च जोड़ें
@@ -788,7 +785,7 @@
             </div>
         </div>
 
-        <!-- ===== TAB: PERSON ===== -->
+        <!-- TAB: PERSON -->
         <div id="tab-person" class="tab-content">
             <button class="add-btn" onclick="openAddModal('person')">
                 <i class="fas fa-plus-circle"></i> नया व्यक्ति खर्च जोड़ें
@@ -802,7 +799,7 @@
             </div>
         </div>
 
-        <!-- ===== TAB: INCOME ===== -->
+        <!-- TAB: INCOME -->
         <div id="tab-income" class="tab-content">
             <button class="add-btn green" onclick="openAddModal('income')">
                 <i class="fas fa-plus-circle"></i> नई आय जोड़ें
@@ -877,9 +874,8 @@
     const database = firebase.database();
 
     // ===== LOGIN =====
-    const VALID_USER = 'home123';
-    const VALID_PASS = 'home@123';
-    let currentUser = null;
+    const VALID_USER = 'homehouse2005';
+    const VALID_PASS = 'househome2005';
 
     function doLogin() {
         const user = document.getElementById('loginUser').value.trim();
@@ -895,19 +891,17 @@
 
         if (user === VALID_USER && pass === VALID_PASS) {
             errorDiv.classList.remove('show');
-            currentUser = user;
             document.getElementById('loginPage').classList.add('app-hidden');
             document.getElementById('appMain').classList.remove('app-hidden');
             
-            // Firebase Anonymous Login for security
+            // Anonymous login for Firebase
             auth.signInAnonymously()
                 .then(() => {
                     loadAllData();
                     showToast('✅ लॉगिन सफल!');
                 })
-                .catch((err) => {
-                    console.error(err);
-                    loadAllData(); // Fallback
+                .catch(() => {
+                    loadAllData();
                 });
         } else {
             errorDiv.classList.add('show');
@@ -917,7 +911,6 @@
     }
 
     function doLogout() {
-        currentUser = null;
         document.getElementById('appMain').classList.add('app-hidden');
         document.getElementById('loginPage').classList.remove('app-hidden');
         document.getElementById('loginUser').value = '';
@@ -935,11 +928,10 @@
     let currentTab = 'home';
     let modalInstance = null;
     let editIndex = -1;
-    let editId = '';
 
-    // ===== LOAD DATA =====
+    // ===== LOAD DATA (PURANA DATA BHI AAYEGA) =====
     function loadAllData() {
-        const userId = 'home123_data';
+        const userId = 'homehouse2005_data';
         
         database.ref('users/' + userId).on('value', (snapshot) => {
             if (snapshot.exists()) {
@@ -949,6 +941,7 @@
                 allData.person = data.person || [];
                 allData.income = data.income || [];
             } else {
+                // Agar naya user hai toh default empty
                 allData = { home: [], daily: [], person: [], income: [] };
             }
             updateUI();
@@ -957,7 +950,7 @@
 
     // ===== SAVE DATA =====
     function saveAllData() {
-        const userId = 'home123_data';
+        const userId = 'homehouse2005_data';
         database.ref('users/' + userId).set({
             home: allData.home || [],
             daily: allData.daily || [],
@@ -1074,10 +1067,9 @@
         const totalExpense = sum(allData.home) + sum(allData.daily) + sum(allData.person);
         const balance = totalIncome - totalExpense;
         
-        document.getElementById('remainingBalance').textContent = '₹' + balance.toLocaleString();
-        
-        // Color change
         const balanceEl = document.getElementById('remainingBalance');
+        balanceEl.textContent = '₹' + balance.toLocaleString();
+        
         if (balance < 0) {
             balanceEl.style.color = '#fca5a5';
         } else {
@@ -1102,7 +1094,6 @@
     function openAddModal(type) {
         const isIncome = type === 'income';
         editIndex = -1;
-        editId = '';
         
         const labels = { home: 'घर', daily: 'दैनिक', person: 'व्यक्ति', income: 'आय' };
         document.getElementById('modalTitle').innerHTML = `<i class="fas ${isIncome ? 'fa-money-bill-wave' : 'fa-plus-circle'}"></i> नया ${labels[type]} ${isIncome ? 'आय' : 'खर्च'}`;
@@ -1139,7 +1130,6 @@
         const item = items[index];
         const isIncome = type === 'income';
         editIndex = index;
-        editId = '';
         
         const labels = { home: 'घर', daily: 'दैनिक', person: 'व्यक्ति', income: 'आय' };
         document.getElementById('modalTitle').innerHTML = `<i class="fas fa-edit"></i> एडिट ${labels[type]} ${isIncome ? 'आय' : 'खर्च'}`;
